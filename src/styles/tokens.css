@@ -1,0 +1,47 @@
+:root {
+--font-display: 'Lilita One', 'Trebuchet MS', cursive;
+--font-body: 'Poppins', 'Segoe UI', sans-serif;
+
+--color-brand-blue: #5d7bff;
+--color-brand-blue-strong: #4f6def;
+--color-brand-blue-dark: #3f57c4;
+--color-brand-ink: #4e5f8f;
+--color-brand-ink-strong: #38456d;
+
+--color-brand-cream: #fff3c4;
+--color-brand-lilac: #eaf1ff;
+--color-brand-mint: #dff3e6;
+--color-brand-peach: #ffe0d1;
+
+--color-bg: #f6f8ff;
+--color-surface: #ffffff;
+--color-muted: var(--color-brand-lilac);
+--color-primary: var(--color-brand-blue);
+--color-primary-dark: var(--color-brand-blue-dark);
+--color-text: var(--color-brand-ink-strong);
+--color-text-soft: var(--color-brand-ink);
+--color-border: #ced9ff;
+--color-danger: #bf2f48;
+
+--shadow-soft: 0 14px 32px rgba(93, 123, 255, 0.14);
+--shadow-card: 0 10px 24px rgba(93, 123, 255, 0.12);
+--shadow-hover: 0 18px 36px rgba(93, 123, 255, 0.18);
+
+--radius-sm: 0.7rem;
+--radius-md: 1.15rem;
+--radius-lg: 1.8rem;
+--radius-xl: 2.6rem;
+--radius-pill: 999px;
+
+--space-2xs: 0.45rem;
+--space-xs: 0.75rem;
+--space-sm: 1rem;
+--space-md: 1.45rem;
+--space-lg: 2.2rem;
+--space-xl: 3.2rem;
+--space-2xl: 4.5rem;
+--max-width: 74rem;
+
+--icon-stroke-width: 2.35;
+--pattern-dot: rgba(93, 123, 255, 0.26);
+}

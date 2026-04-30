@@ -1,0 +1,78 @@
+---
+import BrandIcon from "../ui/BrandIcon.astro";
+
+const pillars: Array<{
+  title: string;
+  description: string;
+  icon: "clipboard" | "heart" | "microbiota" | "leaf";
+}> = [
+  {
+    title: "Basado en evidencia",
+    description: "Información científica aplicada a tu realidad.",
+    icon: "clipboard",
+  },
+  {
+    title: "Salud hormonal",
+    description: "Enfoque integral para el equilibrio de tu cuerpo.",
+    icon: "heart",
+  },
+  {
+    title: "Microbiota",
+    description: "Cuidamos tu digestión desde la raíz.",
+    icon: "microbiota",
+  },
+  {
+    title: "Hábitos sostenibles",
+    description: "Pequeños cambios que generan grandes resultados.",
+    icon: "leaf",
+  },
+];
+---
+
+<section class="home-hero section" id="inicio">
+  <div class="container home-hero__grid">
+    <div class="home-hero__intro">
+      <p class="eyebrow">Nutrición clínica personalizada</p>
+      <h1>Nutrición real para una vida mejor</h1>
+      <p>
+        Te acompaño a construir hábitos saludables que se adapten a ti, con
+        ciencia, empatía y resultados duraderos.
+      </p>
+      <div class="button-row">
+        <a class="button" href="/contacto">Agenda tu cita</a>
+        <a class="button button--secondary" href="/blog">Quiero saber más</a>
+      </div>
+      <div class="wave-divider" aria-hidden="true"></div>
+    </div>
+
+    <div class="home-hero__visual" aria-hidden="true">
+      <div class="hero-blob hero-blob--one"></div>
+      <div class="hero-blob hero-blob--two"></div>
+      <div class="hero-dots"></div>
+      <div class="hero-plate">
+        <div class="hero-plate__ring"></div>
+        <span class="hero-plate__seed hero-plate__seed--1"></span>
+        <span class="hero-plate__seed hero-plate__seed--2"></span>
+        <span class="hero-plate__seed hero-plate__seed--3"></span>
+        <span class="hero-plate__seed hero-plate__seed--4"></span>
+        <span class="hero-plate__seed hero-plate__seed--5"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <ul class="home-pillars" aria-label="Pilares del acompañamiento">
+      {
+        pillars.map((pillar) => (
+          <li class="home-pillars__item">
+            <BrandIcon name={pillar.icon} />
+            <div>
+              <h2>{pillar.title}</h2>
+              <p>{pillar.description}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

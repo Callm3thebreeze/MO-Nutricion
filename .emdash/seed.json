@@ -1,0 +1,473 @@
+{
+  "version": "1",
+  "meta": {
+    "name": "Mara Olivares Nutrició",
+    "description": "Seed v1 con contenidos iniciales del blog",
+    "author": "Mara Olivares Nutrició"
+  },
+  "collections": [
+    {
+      "slug": "posts",
+      "label": "Artículos",
+      "labelSingular": "Artículo",
+      "description": "Contenido editorial de nutrición",
+      "supports": [
+        "drafts",
+        "revisions",
+        "search",
+        "seo"
+      ],
+      "urlPattern": "/blog/{slug}",
+      "fields": [
+        {
+          "slug": "title",
+          "label": "Título",
+          "type": "string",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "excerpt",
+          "label": "Extracto",
+          "type": "text",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "publish_date",
+          "label": "Fecha de publicación",
+          "type": "datetime",
+          "required": true
+        },
+        {
+          "slug": "update_date",
+          "label": "Fecha de actualización",
+          "type": "datetime"
+        },
+        {
+          "slug": "category",
+          "label": "Categoría",
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "salud-digestiva",
+              "label": "Salud digestiva"
+            },
+            {
+              "value": "microbiota",
+              "label": "Microbiota"
+            },
+            {
+              "value": "salud-hormonal",
+              "label": "Salud hormonal"
+            },
+            {
+              "value": "habitos",
+              "label": "Hábitos"
+            }
+          ]
+        },
+        {
+          "slug": "tags",
+          "label": "Etiquetas",
+          "type": "multiSelect",
+          "required": true
+        },
+        {
+          "slug": "cover_image",
+          "label": "Imagen de portada",
+          "type": "image",
+          "required": true
+        },
+        {
+          "slug": "cover_image_alt",
+          "label": "Alt de portada",
+          "type": "string",
+          "required": true
+        },
+        {
+          "slug": "content",
+          "label": "Contenido",
+          "type": "portableText",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "seo_title",
+          "label": "SEO Title",
+          "type": "string"
+        },
+        {
+          "slug": "seo_description",
+          "label": "SEO Description",
+          "type": "text"
+        },
+        {
+          "slug": "canonical_url",
+          "label": "Canonical URL",
+          "type": "url"
+        },
+        {
+          "slug": "draft",
+          "label": "Borrador",
+          "type": "boolean",
+          "defaultValue": false
+        }
+      ]
+    }
+  ],
+  "taxonomies": [
+    {
+      "name": "category",
+      "label": "Categorías",
+      "labelSingular": "Categoría",
+      "hierarchical": true,
+      "collections": [
+        "posts"
+      ],
+      "terms": [
+        {
+          "slug": "salud-digestiva",
+          "label": "Salud digestiva"
+        },
+        {
+          "slug": "microbiota",
+          "label": "Microbiota"
+        },
+        {
+          "slug": "salud-hormonal",
+          "label": "Salud hormonal"
+        },
+        {
+          "slug": "habitos",
+          "label": "Hábitos"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "label": "Etiquetas",
+      "labelSingular": "Etiqueta",
+      "hierarchical": false,
+      "collections": [
+        "posts"
+      ],
+      "terms": [
+        {
+          "slug": "digestion",
+          "label": "Digestión"
+        },
+        {
+          "slug": "inflamacion",
+          "label": "Inflamación"
+        },
+        {
+          "slug": "habitos",
+          "label": "Hábitos"
+        },
+        {
+          "slug": "microbiota",
+          "label": "Microbiota"
+        },
+        {
+          "slug": "fibra",
+          "label": "Fibra"
+        },
+        {
+          "slug": "prebioticos",
+          "label": "Prebióticos"
+        },
+        {
+          "slug": "hormonas",
+          "label": "Hormonas"
+        },
+        {
+          "slug": "estres",
+          "label": "Estrés"
+        },
+        {
+          "slug": "rutina",
+          "label": "Rutina"
+        }
+      ]
+    }
+  ],
+  "content": {
+    "posts": [
+      {
+        "id": "post-senales-digestion-necesita-apoyo",
+        "slug": "senales-digestion-necesita-apoyo",
+        "status": "published",
+        "data": {
+          "title": "5 señales de que tu digestión necesita apoyo nutricional",
+          "excerpt": "Hinchazón, pesadez o cambios intestinales pueden indicar un desequilibrio digestivo. Te explico cuándo consultar y cómo empezar a mejorar.",
+          "publish_date": "2026-05-05T09:00:00+02:00",
+          "category": "salud-digestiva",
+          "tags": [
+            "digestión",
+            "inflamación",
+            "hábitos"
+          ],
+          "cover_image": {
+            "provider": "external",
+            "id": "cover-digestivo",
+            "src": "/assets/logo/main-logo.png",
+            "alt": "Logotipo de Mara Olivares Nutrició"
+          },
+          "cover_image_alt": "Logotipo de Mara Olivares Nutrició",
+          "seo_title": "Señales digestivas que indican que necesitas apoyo nutricional",
+          "seo_description": "Descubre cinco señales frecuentes de desequilibrio digestivo y pasos iniciales para mejorar con enfoque nutricional.",
+          "canonical_url": "https://maraolivaresnutricio.com/blog/senales-digestion-necesita-apoyo",
+          "content": [
+            {
+              "_type": "block",
+              "_key": "p1h2",
+              "style": "h2",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "¿Qué señales observar?",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "_key": "p1p1",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "La hinchazón frecuente, la pesadez tras las comidas y la irregularidad intestinal son señales comunes de que tu sistema digestivo necesita apoyo.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "_key": "p1h22",
+              "style": "h2",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Primeros pasos prácticos",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "_key": "p1p2",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Empieza por ordenar horarios, aumentar fibra progresivamente, hidratarte bien y revisar cómo te sientan los alimentos ultraprocesados.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            }
+          ],
+          "draft": false
+        },
+        "taxonomies": {
+          "category": [
+            "salud-digestiva"
+          ],
+          "tag": [
+            "digestion",
+            "inflamacion",
+            "habitos"
+          ]
+        }
+      },
+      {
+        "id": "post-microbiota-intestinal-habitos-diarios",
+        "slug": "microbiota-intestinal-habitos-diarios",
+        "status": "published",
+        "data": {
+          "title": "Microbiota intestinal: hábitos diarios para cuidarla",
+          "excerpt": "La microbiota influye en energía, inmunidad y bienestar digestivo. Estos hábitos prácticos te ayudarán a nutrirla de forma sostenible.",
+          "publish_date": "2026-05-12T09:00:00+02:00",
+          "category": "microbiota",
+          "tags": [
+            "microbiota",
+            "fibra",
+            "prebióticos"
+          ],
+          "cover_image": {
+            "provider": "external",
+            "id": "cover-microbiota",
+            "src": "/assets/logo/main-logo.png",
+            "alt": "Logotipo de Mara Olivares Nutrició"
+          },
+          "cover_image_alt": "Logotipo de Mara Olivares Nutrició",
+          "seo_title": "Microbiota intestinal: hábitos cotidianos que sí funcionan",
+          "seo_description": "Aprende cómo proteger tu microbiota con fibra, prebióticos naturales y rutinas sencillas que mejoran tu salud digestiva.",
+          "canonical_url": "https://maraolivaresnutricio.com/blog/microbiota-intestinal-habitos-diarios",
+          "content": [
+            {
+              "_type": "block",
+              "_key": "p2h2",
+              "style": "h2",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Tu microbiota en el día a día",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "_key": "p2p1",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "La diversidad bacteriana mejora cuando combinas frutas, verduras, legumbres, descanso adecuado y movimiento diario.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "_key": "p2h22",
+              "style": "h2",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Hábitos clave",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "_key": "p2p2",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Incluye prebióticos naturales (avena, ajo, cebolla), limita antibióticos innecesarios y prioriza una rutina de sueño estable.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            }
+          ],
+          "draft": false
+        },
+        "taxonomies": {
+          "category": [
+            "microbiota"
+          ],
+          "tag": [
+            "microbiota",
+            "fibra",
+            "prebioticos"
+          ]
+        }
+      },
+      {
+        "id": "post-nutricion-y-salud-hormonal-claves",
+        "slug": "nutricion-y-salud-hormonal-claves",
+        "status": "published",
+        "data": {
+          "title": "Nutrición y salud hormonal: claves para equilibrar tu día a día",
+          "excerpt": "La alimentación puede apoyar el equilibrio hormonal en etapas de estrés y cambios vitales. Revisa las bases que marcan la diferencia.",
+          "publish_date": "2026-05-19T09:00:00+02:00",
+          "category": "salud-hormonal",
+          "tags": [
+            "hormonas",
+            "estrés",
+            "rutina"
+          ],
+          "cover_image": {
+            "provider": "external",
+            "id": "cover-hormonal",
+            "src": "/assets/logo/main-logo.png",
+            "alt": "Logotipo de Mara Olivares Nutrició"
+          },
+          "cover_image_alt": "Logotipo de Mara Olivares Nutrició",
+          "seo_title": "Nutrición y salud hormonal: bases para tu energía diaria",
+          "seo_description": "Te cuento cómo estructurar tu alimentación para apoyar el equilibrio hormonal y mejorar energía, estrés y bienestar.",
+          "canonical_url": "https://maraolivaresnutricio.com/blog/nutricion-y-salud-hormonal-claves",
+          "content": [
+            {
+              "_type": "block",
+              "_key": "p3h2",
+              "style": "h2",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Energía y regulación hormonal",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "_key": "p3p1",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Comer de forma suficiente y equilibrada ayuda a estabilizar energía, apetito y respuesta al estrés, factores muy relacionados con el eje hormonal.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "_key": "p3h22",
+              "style": "h2",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Bases nutricionales",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "_key": "p3p2",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Asegura proteína en comidas principales, grasas de calidad, carbohidratos complejos y micronutrientes como magnesio y omega-3.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            }
+          ],
+          "draft": false
+        },
+        "taxonomies": {
+          "category": [
+            "salud-hormonal"
+          ],
+          "tag": [
+            "hormonas",
+            "estres",
+            "rutina"
+          ]
+        }
+      }
+    ]
+  }
+}

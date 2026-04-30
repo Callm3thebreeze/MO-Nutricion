@@ -1,0 +1,36 @@
+---
+import type { PostCategory } from '../../content/schemas/post';
+import { categoryLabels } from '../../lib/emdash';
+
+interface Props {
+publishedAt: string;
+category: PostCategory;
+tags?: string[];
+}
+
+const { publishedAt, category, tags = [] } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('es-ES', {
+day: '2-digit',
+month: 'long',
+year: 'numeric',
+}).format(new Date(publishedAt));
+---
+
+<div class="blog-meta">
+<p>
+<span class="sr-only">Publicado el</span>
+<time datetime={publishedAt}>{formattedDate}</time>
+</p>
+<p>
+<span class="sr-only">Categoría:</span>
+{categoryLabels[category]}
+</p>
+{
+tags.length > 0 && (
+<ul class="tag-list" aria-label="Etiquetas del artículo">
+{tags.map((tag) => <li>{tag}</li>)}
+</ul>
+)
+}
+</div>

@@ -1,0 +1,94 @@
+---
+import BrandIcon from "../ui/BrandIcon.astro";
+
+const testimonials = [
+  {
+    quote:
+      "Mara me ayudó a entender mi cuerpo y a crear hábitos que realmente puedo mantener.",
+    author: "Ana P.",
+  },
+  {
+    quote:
+      "Su enfoque es cercano y profesional. Los planes son realistas y se adaptan totalmente a mi estilo de vida.",
+    author: "Luis G.",
+  },
+  {
+    quote:
+      "Gracias a Mara mejoró mi digestión y mi relación con la comida. La recomiendo con los ojos cerrados.",
+    author: "Sofía M.",
+  },
+];
+
+const faqs = [
+  {
+    question: "¿Cómo funciona la consulta nutricional?",
+    answer:
+      "Comenzamos con una evaluación inicial para conocer tu historia, tus objetivos y tu contexto, y desde ahí construimos un plan claro y sostenible.",
+  },
+  {
+    question: "¿Las consultas son presenciales u online?",
+    answer:
+      "Trabajo en formato presencial y online para que puedas elegir la opción que mejor encaje con tu rutina.",
+  },
+  {
+    question: "¿Qué incluye el plan nutricional?",
+    answer:
+      "Incluye estrategia personalizada, recomendaciones prácticas, pautas de seguimiento y ajustes en función de tu evolución.",
+  },
+  {
+    question: "¿Cuánto tiempo necesito para ver resultados?",
+    answer:
+      "Cada caso es distinto, pero normalmente empezamos a ver mejoras en digestión, energía y organización en las primeras semanas.",
+  },
+];
+---
+
+<section class="section social-proof">
+  <div class="container social-proof__grid">
+    <div class="social-proof__column">
+      <h2>Lo que dicen mis pacientes</h2>
+      <div class="wave-divider" aria-hidden="true"></div>
+      <div class="testimonial-grid">
+        {
+          testimonials.map((testimonial) => (
+            <article class="testimonial-card">
+              <p class="testimonial-card__quote">“{testimonial.quote}”</p>
+              <p class="testimonial-card__author">{testimonial.author}</p>
+              <p class="testimonial-card__stars" aria-label="Valoración 5 de 5">
+                ★★★★★
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="social-proof__column">
+      <h2>Preguntas frecuentes</h2>
+      <div class="wave-divider" aria-hidden="true"></div>
+      <div class="faq-list">
+        {
+          faqs.map((faq, index) => (
+            <details class="faq-item" open={index === 0}>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container priority-cta">
+    <div class="priority-cta__icon" aria-hidden="true">
+      <BrandIcon name="calendar" />
+    </div>
+    <div>
+      <h2>Es momento de priorizarte</h2>
+      <p>Agenda tu cita y comencemos juntas este cambio.</p>
+    </div>
+    <a class="button" href="/contacto">Agenda tu cita</a>
+  </div>
+</section>

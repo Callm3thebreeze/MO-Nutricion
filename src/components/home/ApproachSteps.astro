@@ -1,0 +1,77 @@
+---
+import BrandIcon from "../ui/BrandIcon.astro";
+
+const steps: Array<{
+  title: string;
+  description: string;
+  icon: "user" | "target" | "clipboard" | "heart";
+}> = [
+  {
+    title: "Evaluación inicial",
+    description:
+      "Conocemos tu historia, hábitos y objetivos para priorizar lo importante.",
+    icon: "user",
+  },
+  {
+    title: "Objetivos realistas",
+    description:
+      "Definimos metas claras y alcanzables adaptadas a tu ritmo de vida.",
+    icon: "target",
+  },
+  {
+    title: "Plan personalizado",
+    description:
+      "Diseñamos un plan nutricional que se adapta a ti y no al revés.",
+    icon: "clipboard",
+  },
+  {
+    title: "Seguimiento y ajuste",
+    description: "Te acompaño en cada fase para mantener avances sostenibles.",
+    icon: "heart",
+  },
+];
+---
+
+<section class="section section--muted">
+  <div class="container approach-shell" id="sobre-mi">
+    <article class="about-card">
+      <h2>Sobre mí</h2>
+      <div class="wave-divider" aria-hidden="true"></div>
+      <p>
+        Soy Mara Olivares, nutricionista apasionada por acompañar a personas a
+        transformar su relación con la comida y su cuerpo.
+      </p>
+      <p>
+        Trabajo desde la evidencia científica y la empatía, para que logres
+        resultados reales y sostenibles.
+      </p>
+      <a class="button button--secondary" href="/contacto"
+        >Conoce más sobre mí</a
+      >
+      <div class="about-card__portrait" aria-hidden="true">
+        <BrandIcon name="user" class="about-card__portrait-icon" />
+      </div>
+    </article>
+
+    <article class="approach-card">
+      <h2>Mi enfoque</h2>
+      <div class="wave-divider" aria-hidden="true"></div>
+      <ol class="approach-list">
+        {
+          steps.map((step, index) => (
+            <li class="approach-list__item">
+              <div class="approach-list__index" aria-hidden="true">
+                {index + 1}
+              </div>
+              <BrandIcon name={step.icon} />
+              <div>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </article>
+  </div>
+</section>

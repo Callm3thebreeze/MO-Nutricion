@@ -1,0 +1,46 @@
+---
+import { absoluteUrl, buildPageTitle, SITE_DESCRIPTION, SITE_NAME } from '../../lib/seo';
+
+interface Props {
+title?: string;
+description?: string;
+canonicalPath?: string;
+canonicalUrl?: string;
+image?: string;
+type?: 'website' | 'article';
+noindex?: boolean;
+}
+
+const {
+title,
+description = SITE_DESCRIPTION,
+canonicalPath = '/',
+canonicalUrl,
+image = '/assets/logo/main-logo.png',
+type = 'website',
+noindex = false,
+} = Astro.props;
+
+const fullTitle = buildPageTitle(title);
+const finalCanonical = canonicalUrl ?? absoluteUrl(canonicalPath, Astro.site);
+const socialImage = image.startsWith('http') ? image : absoluteUrl(image, Astro.site);
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={finalCanonical} />
+<meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow'} />
+
+<meta property="og:site_name" content={SITE_NAME} />
+<meta property="og:type" content={type} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={finalCanonical} />
+<meta property="og:image" content={socialImage} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={socialImage} />

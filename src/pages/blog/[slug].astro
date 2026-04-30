@@ -1,0 +1,75 @@
+---
+import { PortableText } from 'astro-portabletext';
+
+import type { BlogPost } from '../../content/schemas/post';
+import BlogMeta from '../../components/blog/BlogMeta.astro';
+import { getPosts } from '../../lib/emdash';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/components/blog.css';
+
+export async function getStaticPaths() {
+const posts = await getPosts();
+return posts.map((post) => ({
+params: { slug: post.slug },
+props: { post },
+}));
+}
+
+const { post } = Astro.props as { post: BlogPost };
+const postPath = `/blog/${post.slug}`;
+---
+
+<BaseLayout
+title={post.seoTitle ?? post.title}
+description={post.seoDescription ?? post.excerpt}
+canonicalPath={postPath}
+	canonicalUrl={post.canonicalUrl}
+	type="article"
+>
+	<script slot="head" type="application/ld+json" is:inline>
+		{JSON.stringify({
+			'@context': 'https://schema.org',
+			'@type': 'BlogPosting',
+			headline: post.title,
+			description: post.excerpt,
+			datePublished: post.publishedAt,
+			dateModified: post.updatedAt ?? post.publishedAt,
+			url: post.canonicalUrl ?? `https://maraolivaresnutricio.com${postPath}`,
+			image: post.coverImage.src.startsWith('http')
+				? post.coverImage.src
+				: `https://maraolivaresnutricio.com${post.coverImage.src}`,
+			publisher: {
+				'@type': 'Organization',
+				name: 'Mara Olivares Nutrició',
+			},
+		})}
+	</script>
+	<section class="section">
+<div class="container article-layout">
+<article>
+<header class="article-header">
+<a class="button button--text article-back" href="/blog">← Volver al blog</a>
+<h1>{post.title}</h1>
+<BlogMeta publishedAt={post.publishedAt} category={post.category} tags={post.tags} />
+<img
+src={post.coverImage.src}
+alt={post.coverImage.alt}
+width="661"
+height="368"
+loading="lazy"
+decoding="async"
+/>
+</header>
+
+<div class="article-content">
+<PortableText value={post.content} />
+</div>
+
+<footer class="article-footer">
+<p>Si quieres un plan adaptado a tu caso, puedo ayudarte en consulta.</p>
+<a class="button" href="/contacto">Solicitar valoración</a>
+</footer>
+</article>
+</div>
+</section>
+</BaseLayout>

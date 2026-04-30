@@ -1,0 +1,29 @@
+---
+import ApproachSteps from '../components/home/ApproachSteps.astro';
+import HomeCta from '../components/home/HomeCta.astro';
+import HomeHero from '../components/home/HomeHero.astro';
+import ServicesSummary from '../components/home/ServicesSummary.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/components/home.css';
+---
+
+<BaseLayout
+title="Nutrición clínica digestiva, microbiota y salud hormonal"
+description="Clínica nutricional en español especializada en digestivo, microbiota y salud hormonal con planes personalizados."
+canonicalPath="/"
+>
+	<script slot="head" type="application/ld+json" is:inline>
+		{JSON.stringify({
+			'@context': 'https://schema.org',
+			'@type': 'MedicalBusiness',
+			name: 'Mara Olivares Nutrició',
+			url: 'https://maraolivaresnutricio.com',
+			areaServed: 'España',
+			medicalSpecialty: ['Nutrition', 'Digestive Health', 'Hormonal Health'],
+		})}
+	</script>
+	<HomeHero />
+<ServicesSummary />
+<ApproachSteps />
+<HomeCta />
+</BaseLayout>

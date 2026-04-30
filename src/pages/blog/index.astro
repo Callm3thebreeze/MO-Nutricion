@@ -1,0 +1,27 @@
+---
+import BlogList from "../../components/blog/BlogList.astro";
+import { getPosts } from "../../lib/emdash";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/components/blog.css";
+
+const posts = await getPosts();
+---
+
+<BaseLayout
+  title="Blog de nutrición"
+  description="Artículos en español sobre digestión, microbiota y salud hormonal para mejorar tu bienestar diario."
+  canonicalPath="/blog"
+>
+  <section class="section blog-index">
+    <div class="container">
+      <p class="eyebrow">Recursos y consejos</p>
+      <h1>Blog de nutrición</h1>
+      <div class="wave-divider" aria-hidden="true"></div>
+      <p class="blog-intro">
+        Artículos prácticos para entender tus síntomas, cuidar tu digestión y
+        construir hábitos sostenibles paso a paso.
+      </p>
+      <BlogList posts={posts} />
+    </div>
+  </section>
+</BaseLayout>

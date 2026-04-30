@@ -1,0 +1,40 @@
+---
+import Footer from '../components/ui/Footer.astro';
+import Header from '../components/ui/Header.astro';
+import SeoHead from '../components/ui/SeoHead.astro';
+import SkipLink from '../components/ui/SkipLink.astro';
+
+import '../styles/reset.css';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/utilities.css';
+import '../styles/components/layout.css';
+
+interface Props {
+title?: string;
+description?: string;
+canonicalPath?: string;
+canonicalUrl?: string;
+image?: string;
+type?: 'website' | 'article';
+noindex?: boolean;
+}
+
+const props = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+<head>
+<SeoHead {...props} />
+<slot name="head" />
+</head>
+<body>
+<SkipLink />
+<Header />
+<main id="main-content">
+<slot />
+</main>
+<Footer />
+</body>
+</html>

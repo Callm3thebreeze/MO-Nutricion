@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+title="Página no encontrada"
+description="La página que buscas no está disponible."
+canonicalPath="/404"
+noindex={true}
+>
+<section class="section">
+<div class="container not-found">
+<h1>404 · Página no encontrada</h1>
+<p>La URL que has visitado no existe o ha cambiado.</p>
+<a class="button" href="/">Volver al inicio</a>
+</div>
+</section>
+</BaseLayout>

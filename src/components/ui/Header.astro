@@ -1,0 +1,176 @@
+---
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+const navItems = [
+  { href: "/", label: "Inicio" },
+  { href: "/#sobre-mi", label: "Sobre mi" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/blog", label: "Recursos" },
+  { href: "/contacto", label: "Contacto" },
+];
+
+const isActive = (href: string): boolean => {
+  if (href.startsWith("/#")) {
+    return pathname === "/";
+  }
+
+  const pathOnly = href.split("#")[0] || "/";
+
+  if (pathOnly === "/") {
+    return pathname === "/";
+  }
+
+  return pathname === pathOnly || pathname.startsWith(`${pathOnly}/`);
+};
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a
+      class="site-logo"
+      href="/"
+      aria-label="Mara Olivares Nutrició, ir al inicio"
+    >
+      <img
+        src="/assets/logo/main-logo.png"
+        width="661"
+        height="368"
+        alt="Logotipo de Mara Olivares Nutrició"
+        loading="eager"
+        decoding="async"
+      />
+    </a>
+
+    <button
+      class="site-menu-toggle"
+      type="button"
+      aria-label="Abrir menú principal"
+      aria-expanded="false"
+      aria-controls="site-header-actions"
+      data-menu-toggle
+    >
+      <span class="site-menu-toggle__line" aria-hidden="true"></span>
+      <span class="site-menu-toggle__line" aria-hidden="true"></span>
+      <span class="site-menu-toggle__line" aria-hidden="true"></span>
+    </button>
+
+    <div class="site-header__actions" id="site-header-actions" data-menu-panel>
+      <nav aria-label="Navegación principal" class="site-nav">
+        <ul>
+          {
+            navItems.map((item) => (
+              <li>
+                <a
+                  aria-current={isActive(item.href) ? "page" : undefined}
+                  href={item.href}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <a class="button site-header__cta" href="/contacto">Agenda tu cita</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  (() => {
+    const header = document.querySelector<HTMLElement>(".site-header");
+    const menuToggle =
+      header?.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+    const menuPanel = header?.querySelector<HTMLElement>("[data-menu-panel]");
+    const menuLinks = menuPanel?.querySelectorAll<HTMLAnchorElement>("a");
+
+    if (!header || !menuToggle || !menuPanel) {
+      return;
+    }
+
+    const mobileQuery = window.matchMedia("(max-width: 46rem)");
+    let lastScrollY = window.scrollY;
+
+    const setMenuState = (isOpen: boolean): void => {
+      header.classList.toggle("site-header--menu-open", isOpen);
+      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Cerrar menú principal" : "Abrir menú principal",
+      );
+    };
+
+    const closeMenu = (): void => {
+      setMenuState(false);
+    };
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = header.classList.contains("site-header--menu-open");
+      setMenuState(!isOpen);
+      if (!isOpen) {
+        header.classList.remove("site-header--hidden");
+      }
+    });
+
+    menuLinks?.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (mobileQuery.matches) {
+          closeMenu();
+        }
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (
+        !mobileQuery.matches ||
+        !header.classList.contains("site-header--menu-open")
+      ) {
+        return;
+      }
+
+      if (!header.contains(event.target as Node)) {
+        closeMenu();
+      }
+    });
+
+    mobileQuery.addEventListener("change", (event) => {
+      if (!event.matches) {
+        closeMenu();
+        header.classList.remove("site-header--hidden");
+      }
+    });
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        const currentScrollY = window.scrollY;
+        const isMenuOpen = header.classList.contains("site-header--menu-open");
+
+        if (currentScrollY <= 36) {
+          header.classList.remove("site-header--hidden");
+          lastScrollY = currentScrollY;
+          return;
+        }
+
+        if (Math.abs(currentScrollY - lastScrollY) < 8) {
+          return;
+        }
+
+        if (isMenuOpen) {
+          header.classList.remove("site-header--hidden");
+          lastScrollY = currentScrollY;
+          return;
+        }
+
+        if (currentScrollY > lastScrollY) {
+          header.classList.add("site-header--hidden");
+        } else {
+          header.classList.remove("site-header--hidden");
+        }
+
+        lastScrollY = currentScrollY;
+      },
+      { passive: true },
+    );
+  })();
+</script>

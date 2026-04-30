@@ -1,0 +1,28 @@
+---
+import type { BlogPost } from "../../content/schemas/post";
+import BlogMeta from "./BlogMeta.astro";
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="blog-card">
+  <h2 class="blog-card__title">
+    <a href={`/blog/${post.slug}`}>{post.title}</a>
+  </h2>
+  <BlogMeta
+    publishedAt={post.publishedAt}
+    category={post.category}
+    tags={post.tags}
+  />
+  <p class="blog-card__excerpt">{post.excerpt}</p>
+  <a
+    class="button button--secondary blog-card__link"
+    href={`/blog/${post.slug}`}
+  >
+    Leer artículo<span class="sr-only">: {post.title}</span>
+  </a>
+</article>
