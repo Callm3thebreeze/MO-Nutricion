@@ -170,13 +170,24 @@ align-items: center;
 .site-footer__social a {
 display: grid;
 place-items: center;
-width: 2rem;
-height: 2rem;
+min-width: 2.75rem;
+min-height: 2.75rem;
 border-radius: 50%;
 border: 1px solid rgba(255, 255, 255, 0.46);
 color: #fff;
-font-size: 0.8rem;
+font-size: 0.82rem;
 font-weight: 700;
+transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.site-footer__social a:hover {
+background: rgba(255, 255, 255, 0.16);
+border-color: rgba(255, 255, 255, 0.76);
+}
+
+.site-footer__social a:focus-visible {
+outline: 2px solid rgba(255, 255, 255, 0.86);
+outline-offset: 2px;
 }
 
 .site-footer__column {
@@ -215,9 +226,13 @@ gap: 0.45rem;
 
 .site-footer__contact li {
 display: flex;
-align-items: center;
+align-items: flex-start;
 gap: 0.45rem;
 color: rgba(255, 255, 255, 0.9);
+}
+
+.site-footer__contact a {
+color: inherit;
 }
 
 .site-footer__contact li::before {

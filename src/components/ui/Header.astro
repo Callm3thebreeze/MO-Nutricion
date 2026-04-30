@@ -133,6 +133,19 @@ const isActive = (href: string): boolean => {
       }
     });
 
+    document.addEventListener("keydown", (event) => {
+      if (
+        event.key !== "Escape" ||
+        !mobileQuery.matches ||
+        !header.classList.contains("site-header--menu-open")
+      ) {
+        return;
+      }
+
+      closeMenu();
+      menuToggle.focus();
+    });
+
     mobileQuery.addEventListener("change", (event) => {
       if (!event.matches) {
         closeMenu();

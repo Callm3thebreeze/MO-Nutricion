@@ -41,6 +41,18 @@ fields.forEach((field) => setFieldError(field, ''));
 forms.forEach((form) => {
 const status = form.querySelector<HTMLElement>('[data-form-status]');
 
+const fields = form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(
+'input, textarea, select',
+);
+
+fields.forEach((field) => {
+const eventName = field instanceof HTMLInputElement && field.type === 'checkbox' ? 'change' : 'input';
+field.addEventListener(eventName, () => {
+setFieldError(field, '');
+setStatusMessage(status, '', { isError: false });
+});
+});
+
 form.addEventListener('submit', (event) => {
 event.preventDefault();
 clearErrors(form);

@@ -66,13 +66,13 @@ gap: var(--space-xs);
 align-items: start;
 }
 
-label {
+.contact-form label {
 font-weight: 600;
 }
 
-input,
-textarea,
-select {
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
 width: 100%;
 border-radius: var(--radius-md);
 border: 1px solid var(--color-border);
@@ -81,7 +81,7 @@ background: rgba(234, 241, 255, 0.46);
 color: var(--color-text);
 }
 
-input[type='checkbox'] {
+.contact-form input[type='checkbox'] {
 width: 1rem;
 height: 1rem;
 margin-top: 0.25rem;
