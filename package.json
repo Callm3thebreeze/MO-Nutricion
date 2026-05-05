@@ -16,6 +16,7 @@
     "@astrojs/check": "^0.9.9",
     "@astrojs/node": "^10.0.6",
     "@astrojs/react": "^5.0.4",
+    "@heroicons/react": "^2.2.0",
     "astro": "^6.1.10",
     "astro-portabletext": "^0.13.0",
     "emdash": "^0.8.0",

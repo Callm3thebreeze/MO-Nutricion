@@ -1,5 +1,6 @@
 ---
 import BrandIcon from "../ui/BrandIcon.astro";
+import WaveDivider from "../ui/WaveDivider.astro";
 
 const steps: Array<{
   title: string;
@@ -36,7 +37,7 @@ const steps: Array<{
   <div class="container approach-shell" id="sobre-mi">
     <article class="about-card">
       <h2>Sobre mí</h2>
-      <div class="wave-divider" aria-hidden="true"></div>
+      <WaveDivider />
       <p>
         Soy Mara Olivares, nutricionista apasionada por acompañar a personas a
         transformar su relación con la comida y su cuerpo.
@@ -55,7 +56,7 @@ const steps: Array<{
 
     <article class="approach-card">
       <h2>Mi enfoque</h2>
-      <div class="wave-divider" aria-hidden="true"></div>
+      <WaveDivider />
       <ol class="approach-list">
         {
           steps.map((step, index) => (

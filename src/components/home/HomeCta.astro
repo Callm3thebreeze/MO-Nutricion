@@ -1,5 +1,6 @@
 ---
 import BrandIcon from "../ui/BrandIcon.astro";
+import WaveDivider from "../ui/WaveDivider.astro";
 
 const testimonials = [
   {
@@ -47,7 +48,7 @@ const faqs = [
   <div class="container social-proof__grid">
     <div class="social-proof__column">
       <h2>Lo que dicen mis pacientes</h2>
-      <div class="wave-divider" aria-hidden="true"></div>
+      <WaveDivider />
       <div class="testimonial-grid">
         {
           testimonials.map((testimonial) => (
@@ -65,7 +66,7 @@ const faqs = [
 
     <div class="social-proof__column">
       <h2>Preguntas frecuentes</h2>
-      <div class="wave-divider" aria-hidden="true"></div>
+      <WaveDivider />
       <div class="faq-list">
         {
           faqs.map((faq, index) => (

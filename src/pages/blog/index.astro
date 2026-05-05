@@ -1,5 +1,6 @@
 ---
 import BlogList from "../../components/blog/BlogList.astro";
+import WaveDivider from "../../components/ui/WaveDivider.astro";
 import { getPosts } from "../../lib/emdash";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/components/blog.css";
@@ -16,7 +17,7 @@ const posts = await getPosts();
     <div class="container">
       <p class="eyebrow">Recursos y consejos</p>
       <h1>Blog de nutrición</h1>
-      <div class="wave-divider" aria-hidden="true"></div>
+      <WaveDivider />
       <p class="blog-intro">
         Artículos prácticos para entender tus síntomas, cuidar tu digestión y
         construir hábitos sostenibles paso a paso.

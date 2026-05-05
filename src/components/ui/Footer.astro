@@ -1,23 +1,10 @@
 ---
 import altLogo from "../../assets/logo/alt-logo.png";
-
-const socialLinks = [
-  {
-    href: "https://www.instagram.com/maraolivares.nutricion/",
-    label: "Instagram",
-    short: "IG",
-  },
-  {
-    href: "https://www.facebook.com/",
-    label: "Facebook",
-    short: "FB",
-  },
-  {
-    href: "https://wa.me/34600135465",
-    label: "WhatsApp",
-    short: "WA",
-  },
-];
+import {
+  EnvelopeIcon,
+  PhoneIcon,
+  MapPinIcon,
+} from "@heroicons/react/24/outline";
 ---
 
 <footer class="site-footer">
@@ -32,22 +19,6 @@ const socialLinks = [
         decoding="async"
       />
       <p>Nutrición real, hábitos que suman bienestar.</p>
-      <ul class="site-footer__social" aria-label="Redes sociales">
-        {
-          socialLinks.map((link) => (
-            <li>
-              <a
-                href={link.href}
-                aria-label={link.label}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link.short}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
     </div>
 
     <div class="site-footer__column">
@@ -65,23 +36,24 @@ const socialLinks = [
       <h2>Contacto</h2>
       <ul class="site-footer__contact">
         <li>
-          <a
-            href="https://www.instagram.com/maraolivares.nutricion/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            @maraolivares.nutricion
-          </a>
-        </li>
-        <li>
+          <EnvelopeIcon
+            className="site-footer__contact-icon"
+            aria-hidden="true"
+          />
           <a href="mailto:hola@maraolivares.com">hola@maraolivares.com</a>
         </li>
-        <li><a href="tel:+34600135465">+34 600 135 465</a></li>
-        <li>Consultas presenciales y online</li>
+        <li>
+          <PhoneIcon className="site-footer__contact-icon" aria-hidden="true" />
+          <a href="tel:+34600135465">+34 600 135 465</a>
+        </li>
+        <li>
+          <MapPinIcon
+            className="site-footer__contact-icon"
+            aria-hidden="true"
+          />
+          <span>Consultas presenciales y online</span>
+        </li>
       </ul>
-      <div class="site-footer__newsletter">
-        <p>Recursos y consejos para tu bienestar</p>
-      </div>
     </div>
   </div>
 

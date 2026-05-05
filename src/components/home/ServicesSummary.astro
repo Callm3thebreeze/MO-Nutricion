@@ -1,23 +1,12 @@
 ---
 import BrandIcon from "../ui/BrandIcon.astro";
+import WaveDivider from "../ui/WaveDivider.astro";
 
 const services: Array<{
   title: string;
   description: string;
-  icon:
-    | "scale"
-    | "stethoscope"
-    | "microbiota"
-    | "book"
-    | "dumbbell"
-    | "hormone";
+  icon: "stethoscope" | "microbiota" | "book" | "hormone";
 }> = [
-  {
-    title: "Pérdida de grasa",
-    description:
-      "Planes personalizados para una composición corporal más saludable.",
-    icon: "scale",
-  },
   {
     title: "Nutrición clínica",
     description: "Acompañamiento en condiciones de salud específicas.",
@@ -34,11 +23,6 @@ const services: Array<{
     icon: "book",
   },
   {
-    title: "Nutrición deportiva",
-    description: "Optimiza tu rendimiento y recuperación.",
-    icon: "dumbbell",
-  },
-  {
     title: "Salud hormonal",
     description: "Apoyo nutricional en etapas clave de tu vida hormonal.",
     icon: "hormone",
@@ -49,24 +33,21 @@ const services: Array<{
 <section class="section services-summary" id="servicios">
   <div class="container">
     <h2>¿Cómo te puedo ayudar?</h2>
-    <div class="wave-divider" aria-hidden="true"></div>
+    <WaveDivider />
     <div class="card-grid card-grid--services">
       {
         services.map((service) => (
-          <article class="service-card">
+          <a
+            class="service-card"
+            href="/contacto"
+            aria-label={`Quiero saber más sobre ${service.title}`}
+          >
             <div class="service-card__icon-wrap" aria-hidden="true">
               <BrandIcon name={service.icon} />
             </div>
             <h3>{service.title}</h3>
             <p>{service.description}</p>
-            <a
-              class="service-card__link"
-              href="/contacto"
-              aria-label={`Quiero saber más sobre ${service.title}`}
-            >
-              <span aria-hidden="true">→</span>
-            </a>
-          </article>
+          </a>
         ))
       }
     </div>

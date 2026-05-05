@@ -1,0 +1,22 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props as Props;
+---
+
+<svg
+  class={`wave-divider ${className}`.trim()}
+  viewBox="0 0 120 16"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  focusable="false"
+>
+  <path
+    d="M2 8C14 8 14 2 26 2C38 2 38 14 50 14C62 14 62 2 74 2C86 2 86 14 98 14C110 14 110 8 118 8"
+    stroke="currentColor"
+    stroke-width="3"
+    stroke-linecap="round"></path>
+</svg>
