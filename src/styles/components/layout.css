@@ -248,6 +248,13 @@ font-size: 0.9rem;
 color: #fff;
 }
 
+@media (max-width: 1612px) {
+.site-footer::before,
+.site-footer::after {
+display: none;
+}
+}
+
 @media (max-width: 46rem) {
 .site-header__inner {
 align-items: center;

@@ -59,11 +59,8 @@ const steps: Array<{
       <WaveDivider />
       <ol class="approach-list">
         {
-          steps.map((step, index) => (
+          steps.map((step) => (
             <li class="approach-list__item">
-              <div class="approach-list__index" aria-hidden="true">
-                {index + 1}
-              </div>
               <BrandIcon name={step.icon} />
               <div>
                 <h3>{step.title}</h3>
