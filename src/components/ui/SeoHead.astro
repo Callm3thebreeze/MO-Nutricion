@@ -1,29 +1,37 @@
 ---
-import { absoluteUrl, buildPageTitle, SITE_DESCRIPTION, SITE_NAME } from '../../lib/seo';
+import {
+  absoluteUrl,
+  buildPageTitle,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+} from "../../lib/seo";
+import mainLogo from "../../assets/logo/main-logo.png";
 
 interface Props {
-title?: string;
-description?: string;
-canonicalPath?: string;
-canonicalUrl?: string;
-image?: string;
-type?: 'website' | 'article';
-noindex?: boolean;
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  canonicalUrl?: string;
+  image?: string;
+  type?: "website" | "article";
+  noindex?: boolean;
 }
 
 const {
-title,
-description = SITE_DESCRIPTION,
-canonicalPath = '/',
-canonicalUrl,
-image = '/assets/logo/main-logo.png',
-type = 'website',
-noindex = false,
+  title,
+  description = SITE_DESCRIPTION,
+  canonicalPath = "/",
+  canonicalUrl,
+  image = mainLogo.src,
+  type = "website",
+  noindex = false,
 } = Astro.props;
 
 const fullTitle = buildPageTitle(title);
 const finalCanonical = canonicalUrl ?? absoluteUrl(canonicalPath, Astro.site);
-const socialImage = image.startsWith('http') ? image : absoluteUrl(image, Astro.site);
+const socialImage = image.startsWith("http")
+  ? image
+  : absoluteUrl(image, Astro.site);
 ---
 
 <meta charset="utf-8" />
@@ -31,7 +39,7 @@ const socialImage = image.startsWith('http') ? image : absoluteUrl(image, Astro.
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={finalCanonical} />
-<meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow'} />
+<meta name="robots" content={noindex ? "noindex,nofollow" : "index,follow"} />
 
 <meta property="og:site_name" content={SITE_NAME} />
 <meta property="og:type" content={type} />

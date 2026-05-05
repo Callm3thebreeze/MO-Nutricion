@@ -1,4 +1,6 @@
 ---
+import mainLogo from "../../assets/logo/main-logo.png";
+
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 const navItems = [
@@ -32,9 +34,9 @@ const isActive = (href: string): boolean => {
       aria-label="Mara Olivares Nutrició, ir al inicio"
     >
       <img
-        src="/assets/logo/main-logo.png"
-        width="661"
-        height="368"
+        src={mainLogo.src}
+        width={mainLogo.width}
+        height={mainLogo.height}
         alt="Logotipo de Mara Olivares Nutrició"
         loading="eager"
         decoding="async"

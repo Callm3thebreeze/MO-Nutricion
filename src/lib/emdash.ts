@@ -1,9 +1,10 @@
 import { getEmDashCollection, getEmDashEntry } from 'emdash';
+import mainLogo from '../assets/logo/main-logo.png';
 
 import { POST_CATEGORIES, type BlogPost, type PostCategory } from '../content/schemas/post';
 import { asBoolean, asString, asStringArray, isRecord, toPortableText } from './validators';
 
-const DEFAULT_COVER_IMAGE = '/assets/logo/main-logo.png';
+const DEFAULT_COVER_IMAGE = mainLogo.src;
 const DEFAULT_COVER_ALT = 'Logotipo de Mara Olivares Nutrició';
 const POSTS_CACHE_TTL_MS = 60_000;
 

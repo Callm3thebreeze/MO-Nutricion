@@ -1,5 +1,6 @@
 ---
 import BrandIcon from "../ui/BrandIcon.astro";
+import heroPattern from "../../assets/patron.png";
 
 const pillars: Array<{
   title: string;
@@ -29,10 +30,13 @@ const pillars: Array<{
 ];
 ---
 
-<section class="home-hero section" id="inicio">
+<section
+  class="home-hero section"
+  id="inicio"
+  style={`--hero-pattern-url: url(${heroPattern.src})`}
+>
   <div class="container home-hero__grid">
     <div class="home-hero__intro">
-      <p class="eyebrow">Nutrición clínica personalizada</p>
       <h1>Nutrición real para una vida mejor</h1>
       <p>
         Te acompaño a construir hábitos saludables que se adapten a ti, con
@@ -41,21 +45,6 @@ const pillars: Array<{
       <div class="button-row">
         <a class="button" href="/contacto">Agenda tu cita</a>
         <a class="button button--secondary" href="/blog">Quiero saber más</a>
-      </div>
-      <div class="wave-divider" aria-hidden="true"></div>
-    </div>
-
-    <div class="home-hero__visual" aria-hidden="true">
-      <div class="hero-blob hero-blob--one"></div>
-      <div class="hero-blob hero-blob--two"></div>
-      <div class="hero-dots"></div>
-      <div class="hero-plate">
-        <div class="hero-plate__ring"></div>
-        <span class="hero-plate__seed hero-plate__seed--1"></span>
-        <span class="hero-plate__seed hero-plate__seed--2"></span>
-        <span class="hero-plate__seed hero-plate__seed--3"></span>
-        <span class="hero-plate__seed hero-plate__seed--4"></span>
-        <span class="hero-plate__seed hero-plate__seed--5"></span>
       </div>
     </div>
   </div>

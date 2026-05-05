@@ -31,10 +31,10 @@ box-shadow: var(--shadow-card);
 }
 
 .contact-highlights__item h2 {
-font-family: var(--font-body);
+font-family: var(--font-display);
 font-size: 0.96rem;
 line-height: 1.25;
-letter-spacing: 0;
+letter-spacing: -0.03em;
 font-weight: 700;
 color: var(--color-primary-dark);
 }
