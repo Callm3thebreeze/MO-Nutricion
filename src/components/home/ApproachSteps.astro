@@ -1,6 +1,7 @@
 ---
 import BrandIcon from "../ui/BrandIcon.astro";
 import WaveDivider from "../ui/WaveDivider.astro";
+import profileImage from "../../assets/profile-landed.png";
 
 const steps: Array<{
   title: string;
@@ -46,11 +47,16 @@ const steps: Array<{
         Trabajo desde la evidencia científica y la empatía, para que logres
         resultados reales y sostenibles.
       </p>
-      <a class="button button--secondary" href="/contacto"
-        >Conoce más sobre mí</a
-      >
-      <div class="about-card__portrait" aria-hidden="true">
-        <BrandIcon name="user" class="about-card__portrait-icon" />
+      <div class="about-card__portrait">
+        <img
+          src={profileImage.src}
+          width={profileImage.width}
+          height={profileImage.height}
+          alt="Mara Olivares"
+          loading="lazy"
+          decoding="async"
+          class="about-card__portrait-image"
+        />
       </div>
     </article>
 

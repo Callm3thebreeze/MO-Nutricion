@@ -97,6 +97,7 @@ margin-top: 0.25rem;
 
 .services-summary {
 position: relative;
+background: #eaf1ff;
 }
 
 .card-grid--services {
@@ -183,12 +184,14 @@ radial-gradient(circle at 20% 82%, rgba(223, 243, 230, 0.92) 0 26%, transparent 
 linear-gradient(150deg, rgba(234, 241, 255, 0.95), #fff);
 display: grid;
 place-items: center;
+overflow: hidden;
 }
 
-.about-card__portrait-icon {
-width: 5.4rem;
-height: 5.4rem;
-color: var(--color-primary-dark);
+.about-card__portrait-image {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
 }
 
 .approach-list {

@@ -3,26 +3,31 @@ import BrandIcon from "../ui/BrandIcon.astro";
 import WaveDivider from "../ui/WaveDivider.astro";
 
 const services: Array<{
+  id: string;
   title: string;
   description: string;
   icon: "stethoscope" | "microbiota" | "book" | "hormone";
 }> = [
   {
+    id: "nutricion-clinica",
     title: "Nutrición clínica",
     description: "Acompañamiento en condiciones de salud específicas.",
     icon: "stethoscope",
   },
   {
+    id: "salud-digestiva",
     title: "Salud digestiva",
     description: "Mejoramos tu digestión y bienestar intestinal.",
     icon: "microbiota",
   },
   {
+    id: "educacion-nutricional",
     title: "Educación nutricional",
     description: "Aprende a comer mejor y tomar decisiones conscientes.",
     icon: "book",
   },
   {
+    id: "salud-hormonal",
     title: "Salud hormonal",
     description: "Apoyo nutricional en etapas clave de tu vida hormonal.",
     icon: "hormone",
@@ -39,7 +44,7 @@ const services: Array<{
         services.map((service) => (
           <a
             class="service-card"
-            href="/contacto"
+            href={`/servicios#${service.id}`}
             aria-label={`Quiero saber más sobre ${service.title}`}
           >
             <div class="service-card__icon-wrap" aria-hidden="true">

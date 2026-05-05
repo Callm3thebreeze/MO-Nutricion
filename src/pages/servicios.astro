@@ -1,0 +1,131 @@
+---
+import WaveDivider from "../components/ui/WaveDivider.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/components/services.css";
+
+const services: Array<{
+  id: string;
+  title: string;
+  intro: string;
+  focus: string;
+  approach: string;
+  outcomes: string[];
+}> = [
+  {
+    id: "nutricion-clinica",
+    title: "Nutricion clinica",
+    intro:
+      "Cuando hay sintomas, diagnosticos o tratamientos medicos, la alimentacion necesita estructura y calma.",
+    focus:
+      "Trabajo contigo para priorizar lo importante, reducir ruido y construir una pauta segura que puedas mantener en tu dia a dia.",
+    approach:
+      "Empezamos con valoracion de historia clinica y habitos, y aterrizamos una estrategia por fases para que avances sin sentirte desbordada.",
+    outcomes: [
+      "Plan personalizado y realista",
+      "Guia clara para decisiones diarias",
+      "Seguimiento y ajustes segun evolucion",
+    ],
+  },
+  {
+    id: "salud-digestiva",
+    title: "Salud digestiva",
+    intro:
+      "Inflamacion, hinchazon o malestar digestivo suelen afectar energia, descanso y bienestar emocional.",
+    focus:
+      "Analizamos sintomas, contexto y tolerancias para detectar detonantes y mejorar tu digestion de forma progresiva.",
+    approach:
+      "Aplicamos una metodologia ordenada: simplificar, observar respuesta del cuerpo y reintroducir con criterio.",
+    outcomes: [
+      "Menos molestias tras las comidas",
+      "Mejor regularidad digestiva",
+      "Relacion mas tranquila con la comida",
+    ],
+  },
+  {
+    id: "educacion-nutricional",
+    title: "Educacion nutricional",
+    intro:
+      "No se trata de memorizar reglas, sino de aprender a elegir con seguridad en cualquier situacion.",
+    focus:
+      "Transformamos informacion compleja en decisiones practicas para que ganes autonomia y constancia.",
+    approach:
+      "Sesiones centradas en herramientas simples: organizacion de menus, lectura de etiquetas y adaptaciones reales a tu rutina.",
+    outcomes: [
+      "Mas claridad al planificar tus comidas",
+      "Menos dependencia de dietas estrictas",
+      "Habitos sostenibles a largo plazo",
+    ],
+  },
+  {
+    id: "salud-hormonal",
+    title: "Salud hormonal",
+    intro:
+      "Las etapas hormonales requieren una nutricion que acompanie tus cambios de energia, apetito y descanso.",
+    focus:
+      "Adaptamos la estrategia nutricional a tu momento vital para mejorar sintomas y recuperar sensacion de equilibrio.",
+    approach:
+      "Combinamos pautas alimentarias, ritmo de comidas y ajustes de estilo de vida con seguimiento cercano.",
+    outcomes: [
+      "Mas estabilidad energetica",
+      "Mejor gestion del apetito y saciedad",
+      "Rutina alineada con tus necesidades hormonales",
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Servicios"
+  description="Conoce en detalle los servicios de Mara Olivares: nutricion clinica, salud digestiva, educacion nutricional y salud hormonal."
+  canonicalPath="/servicios"
+>
+  <section class="section services-hero">
+    <div class="container services-hero__inner">
+      <h1>Servicios</h1>
+      <WaveDivider />
+      <p>
+        Descubre como te puedo acompanar segun tu objetivo y tu momento vital.
+        Desplazate y ve cada servicio en bloques independientes.
+      </p>
+      <nav class="services-hero__index" aria-label="Indice de servicios">
+        {
+          services.map((service) => (
+            <a href={`#${service.id}`}>{service.title}</a>
+          ))
+        }
+      </nav>
+    </div>
+  </section>
+
+  <section class="services-flow" aria-label="Bloques de servicios">
+    {
+      services.map((service, index) => (
+        <article
+          id={service.id}
+          class={`service-block ${index % 2 === 0 ? "service-block--blue" : "service-block--cream"}`}
+        >
+          <div class="container service-block__inner">
+            <div class="service-block__sticky">
+              <h2>{service.title}</h2>
+              <WaveDivider class="service-block__divider" />
+              <p>{service.intro}</p>
+            </div>
+
+            <div class="service-block__content">
+              <h3>En que nos enfocamos</h3>
+              <p>{service.focus}</p>
+
+              <h3>Como trabajaremos</h3>
+              <p>{service.approach}</p>
+
+              <h3>Que puedes esperar</h3>
+              {service.outcomes.map((item) => (
+                <p class="service-block__outcome">{item}</p>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </section>
+</BaseLayout>
