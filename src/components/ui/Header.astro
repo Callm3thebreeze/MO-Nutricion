@@ -1,12 +1,11 @@
 ---
-import mainLogo from "../../assets/logo/main-logo.png";
+import mainLogo from "../../assets/logo/simple-logo.png";
 
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 const navItems = [
   { href: "/#sobre-mi", label: "Sobre mí" },
   { href: "/servicios", label: "Servicios" },
-  { href: "/blog", label: "Recursos" },
   { href: "/contacto", label: "Contacto" },
 ];
 
@@ -91,8 +90,16 @@ const isActive = (href: string): boolean => {
     const mobileQuery = window.matchMedia("(max-width: 46rem)");
     let lastScrollY = window.scrollY;
 
+    const setTopState = (isAtTop: boolean): void => {
+      header.classList.toggle("site-header--top", isAtTop);
+    };
+
     const setMenuState = (isOpen: boolean): void => {
       header.classList.toggle("site-header--menu-open", isOpen);
+      document.body.classList.toggle(
+        "body--menu-open",
+        isOpen && mobileQuery.matches,
+      );
       menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
       menuToggle.setAttribute(
         "aria-label",
@@ -103,6 +110,8 @@ const isActive = (href: string): boolean => {
     const closeMenu = (): void => {
       setMenuState(false);
     };
+
+    setTopState(window.scrollY <= 36);
 
     menuToggle.addEventListener("click", () => {
       const isOpen = header.classList.contains("site-header--menu-open");
@@ -149,6 +158,7 @@ const isActive = (href: string): boolean => {
     mobileQuery.addEventListener("change", (event) => {
       if (!event.matches) {
         closeMenu();
+        document.body.classList.remove("body--menu-open");
         header.classList.remove("site-header--hidden");
       }
     });
@@ -160,10 +170,13 @@ const isActive = (href: string): boolean => {
         const isMenuOpen = header.classList.contains("site-header--menu-open");
 
         if (currentScrollY <= 36) {
+          setTopState(true);
           header.classList.remove("site-header--hidden");
           lastScrollY = currentScrollY;
           return;
         }
+
+        setTopState(false);
 
         if (Math.abs(currentScrollY - lastScrollY) < 8) {
           return;

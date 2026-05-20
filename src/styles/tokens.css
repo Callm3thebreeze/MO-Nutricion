@@ -1,6 +1,7 @@
 :root {
 --font-display: 'Parkinsans', 'Trebuchet MS', sans-serif;
---font-body: 'Poppins', 'Segoe UI', sans-serif;
+--font-body: 'Parkinsans', 'Segoe UI', sans-serif;
+--font-serif: 'Inria Serif', Georgia, serif;
 
 --color-brand-blue: #5d7bff;
 --color-brand-blue-strong: #4f6def;

@@ -54,8 +54,8 @@ transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease, 
 background: #fffdf7;
 border-color: var(--color-primary);
 color: var(--color-primary);
-transform: translateY(-1px);
-box-shadow: var(--shadow-hover);
+transform: translateY(-2px);
+box-shadow: 0 20px 38px rgba(93, 123, 255, 0.24);
 }
 
 .button--secondary {

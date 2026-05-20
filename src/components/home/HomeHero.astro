@@ -1,66 +1,50 @@
 ---
-import BrandIcon from "../ui/BrandIcon.astro";
-import heroPattern from "../../assets/patron.png";
-
-const pillars: Array<{
-  title: string;
-  description: string;
-  icon: "clipboard" | "heart" | "microbiota" | "leaf";
-}> = [
-  {
-    title: "Basado en evidencia",
-    description: "Información científica aplicada a tu realidad.",
-    icon: "clipboard",
-  },
-  {
-    title: "Salud hormonal",
-    description: "Enfoque integral para el equilibrio de tu cuerpo.",
-    icon: "heart",
-  },
-  {
-    title: "Microbiota",
-    description: "Cuidamos tu digestión desde la raíz.",
-    icon: "microbiota",
-  },
-  {
-    title: "Hábitos sostenibles",
-    description: "Pequeños cambios que generan grandes resultados.",
-    icon: "leaf",
-  },
-];
+import heroImage from "../../assets/hero.png";
 ---
 
-<section
-  class="home-hero section"
-  id="inicio"
-  style={`--hero-pattern-url: url(${heroPattern.src})`}
->
+<section class="home-hero section" id="inicio">
+  <img
+    src={heroImage.src}
+    width={heroImage.width}
+    height={heroImage.height}
+    alt="Mara Olivares"
+    class="home-hero__image"
+    loading="eager"
+    decoding="async"
+  />
+
   <div class="container home-hero__grid">
     <div class="home-hero__intro">
-      <h1>Nutrición real para una vida mejor</h1>
-      <p>
-        Te acompaño a construir hábitos saludables que se adapten a ti, con
-        ciencia, empatía y resultados duraderos.
-      </p>
-      <div class="button-row">
-        <a class="button button--secondary" href="/contacto">Agenda tu cita</a>
-      </div>
+      <h1>
+        <span class="home-hero__title-line home-hero__title-line--top">
+          <span class="home-hero__title-bold">Nutrición real</span>
+          <span class="home-hero__title-regular">para</span>
+        </span>
+        <span class="home-hero__title-line home-hero__title-line--bottom">
+          <span class="home-hero__title-regular">una</span>
+          <span class="home-hero__title-serif">vida mejor</span>
+        </span>
+      </h1>
     </div>
   </div>
 
-  <div class="container">
-    <ul class="home-pillars" aria-label="Pilares del acompañamiento">
-      {
-        pillars.map((pillar) => (
-          <li class="home-pillars__item">
-            <BrandIcon name={pillar.icon} />
-            <div>
-              <h2>{pillar.title}</h2>
-              <p>{pillar.description}</p>
-            </div>
-          </li>
-        ))
-      }
-    </ul>
+  <div class="home-hero__subtitle-band">
+    <div class="container">
+      <p>
+        Te acompaño a construir hábitos saludables que se adapten a ti, con
+        ciencia, empatía y <strong>resultados duraderos.</strong>
+      </p>
+    </div>
+  </div>
+
+  <div class="container home-hero__actions">
+    <a
+      class="button home-hero__button home-hero__button--light"
+      href="/servicios">Servicios</a
+    >
+    <a
+      class="button home-hero__button home-hero__button--cream"
+      href="/contacto">Agenda tu cita</a
+    >
   </div>
 </section>
