@@ -1,52 +1,67 @@
 ---
-import BrandIcon from "../ui/BrandIcon.astro";
-import WaveDivider from "../ui/WaveDivider.astro";
 import profileImage from "../../assets/profile-landed.png";
 
 const steps: Array<{
   title: string;
   description: string;
-  icon: "user" | "target" | "clipboard" | "heart";
 }> = [
   {
     title: "Evaluación inicial",
     description:
       "Conocemos tu historia, hábitos y objetivos para priorizar lo importante.",
-    icon: "user",
   },
   {
     title: "Objetivos realistas",
     description:
       "Definimos metas claras y alcanzables adaptadas a tu ritmo de vida.",
-    icon: "target",
   },
   {
     title: "Plan personalizado",
     description:
       "Diseñamos un plan nutricional que se adapta a ti y no al revés.",
-    icon: "clipboard",
   },
   {
     title: "Seguimiento y ajuste",
     description: "Te acompaño en cada fase para mantener avances sostenibles.",
-    icon: "heart",
   },
 ];
 ---
 
-<section class="section section--muted">
-  <div class="container approach-shell" id="sobre-mi">
-    <article class="about-card">
-      <h2>Sobre mí</h2>
-      <WaveDivider />
-      <p>
-        Soy Mara Olivares, nutricionista apasionada por acompañar a personas a
-        transformar su relación con la comida y su cuerpo.
-      </p>
-      <p>
-        Trabajo desde la evidencia científica y la empatía, para que logres
-        resultados reales y sostenibles.
-      </p>
+<>
+  <section class="section home-approach">
+    <div class="container">
+      <h2>Mi enfoque</h2>
+      <ol class="approach-list">
+        {
+          steps.map((step, index) => (
+            <li class="approach-list__item">
+              <div>
+                <h3>
+                  <span>{index + 1}.</span> {step.title}
+                </h3>
+                <p>{step.description}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section home-about" id="sobre-mi">
+    <div class="container home-about__inner">
+      <article class="about-card">
+        <h2>Sobre mí</h2>
+        <p>
+          Soy Mara Olivares, nutricionista apasionada por acompañar a personas a
+          transformar su relación con la comida y su cuerpo.
+        </p>
+        <p>
+          Trabajo desde la evidencia científica y la empatía, para que logres
+          resultados reales y sostenibles.
+        </p>
+      </article>
+
       <div class="about-card__portrait">
         <img
           src={profileImage.src}
@@ -58,24 +73,6 @@ const steps: Array<{
           class="about-card__portrait-image"
         />
       </div>
-    </article>
-
-    <article class="approach-card">
-      <h2>Mi enfoque</h2>
-      <WaveDivider />
-      <ol class="approach-list">
-        {
-          steps.map((step) => (
-            <li class="approach-list__item">
-              <BrandIcon name={step.icon} />
-              <div>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-              </div>
-            </li>
-          ))
-        }
-      </ol>
-    </article>
-  </div>
-</section>
+    </div>
+  </section>
+</>

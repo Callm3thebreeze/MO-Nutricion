@@ -1,6 +1,4 @@
 ---
-import WaveDivider from "../ui/WaveDivider.astro";
-
 const testimonials = [
   {
     quote:
@@ -44,48 +42,58 @@ const faqs = [
 ---
 
 <section class="section social-proof">
-  <div class="container social-proof__grid">
-    <div class="social-proof__column">
+  <div class="container">
+    <div class="social-proof__header">
       <h2>Lo que dicen mis pacientes</h2>
-      <WaveDivider />
-      <div class="testimonial-grid">
-        {
-          testimonials.map((testimonial) => (
-            <article class="testimonial-card">
-              <p class="testimonial-card__quote">“{testimonial.quote}”</p>
-              <p class="testimonial-card__author">{testimonial.author}</p>
-              <p class="testimonial-card__stars" aria-label="Valoración 5 de 5">
-                ★★★★★
-              </p>
-            </article>
-          ))
-        }
-      </div>
+      <p>
+        Historias reales de cambios sostenibles, con una consulta cercana y
+        práctica.
+      </p>
     </div>
-
-    <div class="social-proof__column">
-      <h2>Preguntas frecuentes</h2>
-      <WaveDivider />
-      <div class="faq-list">
-        {
-          faqs.map((faq, index) => (
-            <details class="faq-item" open={index === 0}>
-              <summary>{faq.question}</summary>
-              <p>{faq.answer}</p>
-            </details>
-          ))
-        }
-      </div>
+    <div class="testimonial-grid">
+      {
+        testimonials.map((testimonial) => (
+          <article class="testimonial-card">
+            <p class="testimonial-card__stars" aria-label="Valoración 5 de 5">
+              ★★★★★
+            </p>
+            <p class="testimonial-card__quote">“{testimonial.quote}”</p>
+            <p class="testimonial-card__author">{testimonial.author}</p>
+          </article>
+        ))
+      }
     </div>
   </div>
 </section>
 
-<section class="section">
+<section class="section home-faq">
+  <div class="container home-faq__inner">
+    <div class="home-faq__copy">
+      <h2>Preguntas frecuentes</h2>
+      <p>
+        Resuelve las dudas habituales antes de empezar tu proceso nutricional.
+      </p>
+    </div>
+
+    <div class="faq-list">
+      {
+        faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section home-final-cta">
   <div class="container priority-cta">
     <div>
       <h2>Es momento de priorizarte</h2>
-      <p>Agenda tu cita y comencemos juntas este cambio.</p>
+      <p>Comencemos juntas este cambio.</p>
     </div>
-    <a class="button" href="/contacto">Agenda tu cita</a>
+    <a class="button button--secondary" href="/contacto">Agenda tu cita</a>
   </div>
 </section>
