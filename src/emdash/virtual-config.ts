@@ -1,5 +1,6 @@
-import { sqlite } from 'emdash/db';
+import { d1, r2 } from '@emdash-cms/cloudflare';
 
 export default {
-	database: sqlite({ url: 'file:./.emdash/data.db' }),
+	database: d1({ binding: 'EMDASH_DB', session: 'auto' }),
+	storage: r2({ binding: 'EMDASH_MEDIA' }),
 };

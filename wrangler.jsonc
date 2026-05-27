@@ -1,0 +1,25 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "mara-olivares-nutricio",
+	"compatibility_date": "2026-05-27",
+	"compatibility_flags": ["nodejs_compat"],
+	"observability": {
+		"enabled": true
+	},
+	"kv_namespaces": [
+		{
+			"binding": "SESSION"
+		}
+	],
+	"d1_databases": [
+		{
+			"binding": "EMDASH_DB",
+			"database_name": "mara-olivares-nutricio-emdash"
+		}
+	],
+	"r2_buckets": [
+		{
+			"binding": "EMDASH_MEDIA"
+		}
+	]
+}

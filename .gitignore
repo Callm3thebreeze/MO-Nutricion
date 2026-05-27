@@ -4,6 +4,9 @@ dist/
 # generated types
 .astro/
 
+# local Cloudflare/Wrangler state
+.wrangler/
+
 # local EmDash runtime data
 .emdash/data.db
 .emdash/uploads/
@@ -20,6 +23,8 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+.dev.vars
+.dev.vars.*
 
 # macOS-specific files
 .DS_Store

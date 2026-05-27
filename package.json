@@ -7,22 +7,27 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro check && astro build",
+    "deploy": "npm run build && wrangler deploy",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
-    "@astrojs/node": "^10.0.6",
     "@astrojs/react": "^5.0.4",
+    "@emdash-cms/cloudflare": "^0.14.0",
     "@heroicons/react": "^2.2.0",
     "astro": "^6.1.10",
     "astro-portabletext": "^0.13.0",
-    "emdash": "^0.8.0",
+    "emdash": "^0.14.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "typescript": "^5.9.3"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "@astrojs/cloudflare": "^13.5.5",
+    "wrangler": "^4.95.0"
+  }
 }
