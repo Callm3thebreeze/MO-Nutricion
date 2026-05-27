@@ -3,33 +3,9 @@
 
 /// <reference types="emdash/locals" />
 
-import type { ContentBylineCredit, PortableTextBlock } from "emdash";
-
-export interface Artículo {
-  id: string;
-  slug: string | null;
-  status: string;
-  title: string;
-  excerpt: string;
-  publish_date: string;
-  update_date?: string;
-  category: string;
-  tags: string[];
-  cover_image: { id: string; src?: string; alt?: string; width?: number; height?: number };
-  cover_image_alt: string;
-  content: PortableTextBlock[];
-  seo_title?: string;
-  seo_description?: string;
-  canonical_url?: string;
-  draft?: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-  publishedAt: Date | null;
-  bylines?: ContentBylineCredit[];
-}
+import type { ContentBylineCredit } from "emdash";
 
 declare module "emdash" {
   interface EmDashCollections {
-    posts: Artículo;
   }
 }
