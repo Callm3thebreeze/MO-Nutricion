@@ -14,8 +14,6 @@ scroll-behavior: smooth;
 
 body {
 min-height: 100vh;
-background: transparent;
-color: var(--color-text);
 }
 
 a {
@@ -66,7 +64,7 @@ isolation: isolate;
 overflow: clip;
 }
 
-.section {
+:where(.section) {
 padding: var(--section-space-compact) 0;
 position: relative;
 }

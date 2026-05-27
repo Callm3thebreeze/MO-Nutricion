@@ -1,4 +1,4 @@
-main {
+.home-main {
 	overflow: visible;
 	background: #f6f8ff;
 	--home-canvas-edge: max(0px, calc((100vw - 103.125rem) / 2));
@@ -91,14 +91,6 @@ main {
 	align-items: baseline;
 	gap: 0 0.22em;
 	white-space: nowrap;
-}
-
-.home-hero__title-line--top {
-	margin-left: 0;
-}
-
-.home-hero__title-line--bottom {
-	margin-left: 0;
 }
 
 .home-hero__title-bold {
@@ -219,8 +211,7 @@ main {
 }
 
 .home-section-heading h2,
-.about-card h2,
-.priority-cta h2 {
+.about-card h2 {
 	margin: 0;
 	font-size: clamp(2.35rem, 4.8vw, 4.8rem);
 	line-height: 0.98;
@@ -229,8 +220,7 @@ main {
 }
 
 .home-section-heading p,
-.about-card p,
-.priority-cta p {
+.about-card p {
 	max-width: 52ch;
 	font-size: clamp(1rem, 1.2vw, 1.13rem);
 	line-height: 1.58;
@@ -337,7 +327,7 @@ main {
 
 .home-approach__heading {
 	position: sticky;
-	top: 7.5rem;
+	top: var(--sticky-offset);
 }
 
 .approach-list {
@@ -532,7 +522,7 @@ main {
 
 .home-faq__copy {
 	position: sticky;
-	top: 7.5rem;
+	top: var(--sticky-offset);
 }
 
 .faq-list {
@@ -617,11 +607,19 @@ main {
 
 .priority-cta h2 {
 	max-width: 12ch;
+	margin: 0;
+	font-size: clamp(2.35rem, 4.8vw, 4.8rem);
+	line-height: 0.98;
+	letter-spacing: 0;
 	color: #fff;
 }
 
 .priority-cta p {
+	max-width: 52ch;
 	margin: var(--space-xs) 0 0;
+	font-size: clamp(1rem, 1.2vw, 1.13rem);
+	line-height: 1.58;
+	font-weight: 500;
 	color: rgba(255, 255, 255, 0.88);
 }
 
@@ -678,14 +676,6 @@ main {
 		display: grid;
 		grid-template-rows: auto 1fr auto auto;
 		align-content: stretch;
-	}
-
-	.home-hero__grid {
-		grid-template-columns: 1fr;
-		align-self: end;
-	}
-
-	.home-hero.section {
 		min-height: 100svh;
 		min-height: 100dvh;
 		height: 100svh;
@@ -694,8 +684,11 @@ main {
 		padding-bottom: calc(var(--space-xl) + var(--space-2xs));
 	}
 
+	.home-hero__grid {
+		align-self: end;
+	}
+
 	.home-hero__image {
-		width: auto;
 		height: min(26rem, calc(100svh - 6.8rem));
 		max-height: calc(100svh - 6.8rem);
 		mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.78) 18%, #000 34%);
@@ -704,7 +697,6 @@ main {
 	}
 
 	.home-hero__intro h1 {
-		max-width: none;
 		font-size: clamp(3.55rem, 12vw, 6.2rem);
 	}
 
@@ -736,7 +728,7 @@ main {
 		align-self: end;
 	}
 
-	main {
+	.home-main {
 		--home-section-y: var(--section-space-compact);
 	}
 
@@ -777,7 +769,6 @@ main {
 	}
 
 	.home-hero__image {
-		width: auto;
 		height: min(24rem, calc(100svh - 6.2rem));
 		max-height: calc(100svh - 6.2rem);
 		mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.7) 16%, #000 30%);

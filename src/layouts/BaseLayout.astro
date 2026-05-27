@@ -18,21 +18,22 @@ interface Props {
   image?: string;
   type?: "website" | "article";
   noindex?: boolean;
+  mainClass?: string;
 }
 
-const props = Astro.props;
+const { mainClass, ...seoProps } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
-    <SeoHead {...props} />
+    <SeoHead {...seoProps} />
     <slot name="head" />
   </head>
   <body>
     <SkipLink />
     <Header />
-    <main id="main-content">
+    <main id="main-content" class={mainClass}>
       <slot />
     </main>
     <Footer />

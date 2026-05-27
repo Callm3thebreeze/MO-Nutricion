@@ -103,7 +103,6 @@
 
 .services-flow {
 	background: #fff;
-	scroll-behavior: smooth;
 }
 
 .service-block {
@@ -130,7 +129,7 @@
 
 .service-block__sticky {
 	position: sticky;
-	top: 7.5rem;
+	top: var(--sticky-offset);
 	display: grid;
 	gap: var(--space-xs);
 	justify-items: start;

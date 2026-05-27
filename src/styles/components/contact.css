@@ -13,7 +13,7 @@
 
 .contact-intro {
 	position: sticky;
-	top: 7.5rem;
+	top: var(--sticky-offset);
 	display: grid;
 	justify-items: start;
 }
@@ -123,7 +123,6 @@
 	padding: var(--space-xs) var(--space-sm);
 	background: rgba(246, 248, 255, 0.78);
 	color: var(--color-text);
-	font: inherit;
 	transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
