@@ -35,7 +35,7 @@ transform: translateY(calc(-100% - 0.2rem));
 }
 
 .site-logo img {
-width: 90%;
+width: 80%;
 height: auto;
 }
 
@@ -275,6 +275,12 @@ font-size: 0.9rem;
 color: #fff;
 }
 
+@media (max-width: 62rem) {
+.site-logo img {
+	width: 70%;
+}
+}
+
 @media (max-width: 46rem) {
 .site-header {
 top: var(--space-2xs);
@@ -297,8 +303,13 @@ width: min(var(--max-width), calc(100% - (var(--space-xs) * 2)));
 .site-header__inner {
 align-items: center;
 padding: var(--space-2xs) var(--space-xs);
-border-radius: 1.25rem;
+	border-radius: var(--radius-pill);
 	z-index: 2;
+}
+
+.site-logo img {
+	width: 65%;
+	margin-left: 0.75rem;
 }
 
 .site-header--menu-open .site-header__inner {
