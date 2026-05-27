@@ -1,7 +1,9 @@
 ---
 import { PortableText } from 'astro-portabletext';
 
+import defaultCoverImage from '../../assets/logo/alt-logo.png';
 import BlogMeta from '../../components/blog/BlogMeta.astro';
+import WaveDivider from '../../components/ui/WaveDivider.astro';
 import { getPostBySlug } from '../../lib/emdash';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/components/blog.css';
@@ -14,6 +16,10 @@ if (!post) {
 }
 
 const postPath = post ? `/blog/${post.slug}` : '/blog';
+const usesDefaultCover = post?.coverImage.src.startsWith('/assets/logo/') ?? false;
+const coverImageSrc = usesDefaultCover
+	? defaultCoverImage.src
+	: post?.coverImage.src;
 ---
 
 <BaseLayout
@@ -39,9 +45,9 @@ const postPath = post ? `/blog/${post.slug}` : '/blog';
 					datePublished: post.publishedAt,
 					dateModified: post.updatedAt ?? post.publishedAt,
 					url: post.canonicalUrl ?? `https://maraolivaresnutricio.com${postPath}`,
-					image: post.coverImage.src.startsWith('http')
-						? post.coverImage.src
-						: `https://maraolivaresnutricio.com${post.coverImage.src}`,
+					image: coverImageSrc?.startsWith('http')
+						? coverImageSrc
+						: `https://maraolivaresnutricio.com${coverImageSrc}`,
 					publisher: {
 						'@type': 'Organization',
 						name: 'Mara Olivares Nutrició',
@@ -53,16 +59,20 @@ const postPath = post ? `/blog/${post.slug}` : '/blog';
 
 	{
 		post ? (
-			<section class="section">
+			<section class="section article-section">
 				<div class="container article-layout">
 					<article>
-						<header class="article-header">
+						<header class="article-header scroll-reveal">
 							<a class="button button--text article-back" href="/blog">← Volver al blog</a>
+							<p class="eyebrow">Artículo</p>
 							<h1>{post.title}</h1>
+							<WaveDivider />
+							<p class="article-excerpt">{post.excerpt}</p>
 							<BlogMeta publishedAt={post.publishedAt} category={post.category} tags={post.tags} />
 							<img
-								src={post.coverImage.src}
+								src={coverImageSrc}
 								alt={post.coverImage.alt}
+								class={`article-header__image ${usesDefaultCover ? 'article-header__image--brand' : ''}`}
 								width="661"
 								height="368"
 								loading="lazy"
@@ -70,11 +80,11 @@ const postPath = post ? `/blog/${post.slug}` : '/blog';
 							/>
 						</header>
 
-						<div class="article-content">
+						<div class="article-content scroll-reveal" style="--home-reveal-delay: 90ms">
 							<PortableText value={post.content} />
 						</div>
 
-						<footer class="article-footer">
+						<footer class="article-footer scroll-reveal">
 							<p>Si quieres un plan adaptado a tu caso, puedo ayudarte en consulta.</p>
 							<a class="button" href="/contacto">Solicitar valoración</a>
 						</footer>

@@ -14,14 +14,25 @@ const posts = await getPosts();
   canonicalPath="/blog"
 >
   <section class="section blog-index">
-    <div class="container">
-      <p class="eyebrow">Recursos y consejos</p>
-      <h1>Blog de nutrición</h1>
-      <WaveDivider />
-      <p class="blog-intro">
-        Artículos prácticos para entender tus síntomas, cuidar tu digestión y
-        construir hábitos sostenibles paso a paso.
-      </p>
+    <div class="container blog-index__inner">
+      <div class="blog-index__copy scroll-reveal">
+        <p class="eyebrow">Recursos y consejos</p>
+        <h1>Blog de nutrición</h1>
+        <WaveDivider />
+        <p class="blog-intro">
+          Artículos prácticos para entender tus síntomas, cuidar tu digestión y
+          construir hábitos sostenibles paso a paso.
+        </p>
+      </div>
+      <aside
+        class="blog-index__panel scroll-reveal"
+        style="--home-reveal-delay: 90ms"
+      >
+        <p>
+          Lecturas para tomar mejores decisiones sin ruido, con criterio y
+          calma.
+        </p>
+      </aside>
       <BlogList posts={posts} />
     </div>
   </section>

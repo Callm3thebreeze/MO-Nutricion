@@ -1,28 +1,54 @@
 ---
 import type { BlogPost } from "../../content/schemas/post";
+import defaultCoverImage from "../../assets/logo/alt-logo.png";
 import BlogMeta from "./BlogMeta.astro";
 
 interface Props {
   post: BlogPost;
+  index?: number;
 }
 
-const { post } = Astro.props;
+const { post, index = 0 } = Astro.props;
+const usesDefaultCover = post.coverImage.src.startsWith("/assets/logo/");
+const coverImageSrc = usesDefaultCover
+  ? defaultCoverImage.src
+  : post.coverImage.src;
 ---
 
-<article class="blog-card">
-  <h2 class="blog-card__title">
-    <a href={`/blog/${post.slug}`}>{post.title}</a>
-  </h2>
-  <BlogMeta
-    publishedAt={post.publishedAt}
-    category={post.category}
-    tags={post.tags}
-  />
-  <p class="blog-card__excerpt">{post.excerpt}</p>
+<article
+  class="blog-card scroll-reveal"
+  style={`--home-reveal-delay: ${index * 70}ms`}
+>
   <a
-    class="button button--secondary blog-card__link"
+    class={`blog-card__media ${usesDefaultCover ? "blog-card__media--brand" : ""}`}
     href={`/blog/${post.slug}`}
+    aria-hidden="true"
+    tabindex="-1"
   >
-    Leer artículo<span class="sr-only">: {post.title}</span>
+    <img
+      src={coverImageSrc}
+      alt=""
+      width="661"
+      height="368"
+      loading="lazy"
+      decoding="async"
+    />
   </a>
+  <div class="blog-card__content">
+    <h2 class="blog-card__title">
+      <a href={`/blog/${post.slug}`}>{post.title}</a>
+    </h2>
+    <BlogMeta
+      publishedAt={post.publishedAt}
+      category={post.category}
+      tags={post.tags}
+    />
+    <p class="blog-card__excerpt">{post.excerpt}</p>
+    <a
+      class="button button--secondary blog-card__link"
+      href={`/blog/${post.slug}`}
+    >
+      Leer artículo<span class="sr-only">: {post.title}</span>
+    </a>
+  </div>
 </article>

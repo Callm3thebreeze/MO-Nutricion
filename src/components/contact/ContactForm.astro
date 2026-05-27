@@ -25,9 +25,9 @@ const contactHighlights = [
 ];
 ---
 
-<section class="section">
+<section class="section contact-section">
   <div class="container contact-wrapper">
-    <div class="contact-intro">
+    <div class="contact-intro scroll-reveal">
       <p class="eyebrow">Contacto</p>
       <h1>Cuéntame tu caso y diseñamos tu ruta de mejora</h1>
       <WaveDivider />
@@ -40,7 +40,9 @@ const contactHighlights = [
         {
           contactHighlights.map((highlight) => (
             <li class="contact-highlights__item">
-              <BrandIcon name={highlight.icon} />
+              <span class="contact-highlights__icon">
+                <BrandIcon name={highlight.icon} />
+              </span>
               <div>
                 <h2>{highlight.title}</h2>
                 <p>{highlight.description}</p>
@@ -51,7 +53,12 @@ const contactHighlights = [
       </ul>
     </div>
 
-    <form class="contact-form" data-contact-form novalidate>
+    <form
+      class="contact-form scroll-reveal"
+      style="--home-reveal-delay: 90ms"
+      data-contact-form
+      novalidate
+    >
       <div class="form-row">
         <label for="nombre">Nombre y apellidos</label>
         <input

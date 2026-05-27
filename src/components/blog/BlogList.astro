@@ -1,18 +1,24 @@
 ---
-import type { BlogPost } from '../../content/schemas/post';
-import BlogCard from './BlogCard.astro';
+import type { BlogPost } from "../../content/schemas/post";
+import BlogCard from "./BlogCard.astro";
 
 interface Props {
-posts: BlogPost[];
+  posts: BlogPost[];
 }
 
 const { posts } = Astro.props;
 ---
 
-{posts.length === 0 ? (
-<p class="empty-state" role="status">Todavía no hay artículos publicados. Vuelve pronto.</p>
-) : (
-<div class="blog-list">
-{posts.map((post) => <BlogCard post={post} />)}
-</div>
-)}
+{
+  posts.length === 0 ? (
+    <p class="empty-state" role="status">
+      Todavía no hay artículos publicados. Vuelve pronto.
+    </p>
+  ) : (
+    <div class="blog-list">
+      {posts.map((post, index) => (
+        <BlogCard post={post} index={index} />
+      ))}
+    </div>
+  )
+}

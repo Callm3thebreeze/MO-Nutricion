@@ -1,4 +1,4 @@
-const revealElements = Array.from(document.querySelectorAll<HTMLElement>('.home-reveal'));
+const revealElements = Array.from(document.querySelectorAll<HTMLElement>('.home-reveal, .scroll-reveal'));
 
 if (revealElements.length > 0) {
 	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
