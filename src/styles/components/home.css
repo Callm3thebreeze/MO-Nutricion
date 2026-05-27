@@ -7,7 +7,7 @@ main {
 	--home-section-y: var(--section-space);
 }
 
-.home-hero {
+.home-hero.section {
 	position: relative;
 	isolation: isolate;
 	padding-top: clamp(var(--space-4xl), 10vw, 10.5rem);
@@ -170,7 +170,7 @@ main {
 	margin-top: var(--space-xl);
 }
 
-.home-hero__button {
+.home-hero__button.button {
 	min-width: 10.2rem;
 	padding: var(--space-xs) var(--space-md);
 	border-radius: var(--radius-pill);
@@ -180,24 +180,24 @@ main {
 	border: 0;
 }
 
-.home-hero__button--light {
+.home-hero__button--light.button {
 	background: #fff;
 	color: #172956;
 }
 
-.home-hero__button--cream {
+.home-hero__button--cream.button {
 	background: #fff7d2;
 	color: #172956;
 }
 
-.home-hero__button:hover {
+.home-hero__button.button:hover {
 	background: #fff;
 	color: #172956;
 	transform: translateY(-2px);
 	box-shadow: 0 20px 38px rgba(39, 67, 166, 0.22);
 }
 
-.home-hero__button--cream:hover {
+.home-hero__button--cream.button:hover {
 	background: var(--color-brand-cream);
 }
 
@@ -674,7 +674,7 @@ main {
 }
 
 @media (max-width: 62rem) {
-	.home-hero {
+	.home-hero.section {
 		display: grid;
 		grid-template-rows: auto 1fr auto auto;
 		align-content: stretch;
@@ -685,7 +685,7 @@ main {
 		align-self: end;
 	}
 
-	.home-hero {
+	.home-hero.section {
 		min-height: 100svh;
 		min-height: 100dvh;
 		height: 100svh;
@@ -771,7 +771,7 @@ main {
 		grid-template-columns: 1fr;
 	}
 
-	.home-hero {
+	.home-hero.section {
 		padding-top: calc(var(--space-3xl) + var(--space-md));
 		padding-bottom: calc(var(--space-xl) + var(--space-sm));
 	}
@@ -836,7 +836,7 @@ main {
 		gap: var(--space-sm);
 	}
 
-	.home-hero__button {
+	.home-hero__button.button {
 		min-width: 8.6rem;
 		font-size: 0.92rem;
 	}
