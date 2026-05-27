@@ -103,6 +103,20 @@ color: var(--color-primary);
 flex-shrink: 0;
 }
 
+.glass-panel {
+border: 1px solid var(--glass-border);
+background: var(--glass-background);
+backdrop-filter: var(--glass-filter);
+-webkit-backdrop-filter: var(--glass-filter);
+box-shadow: var(--glass-shadow);
+}
+
+.glass-panel--strong {
+border-color: var(--glass-border-strong);
+background: var(--glass-background-strong);
+box-shadow: var(--glass-shadow-strong);
+}
+
 @media (prefers-reduced-motion: no-preference) {
 .home-reveal-ready :where(.home-reveal, .scroll-reveal) {
 opacity: 0.18;

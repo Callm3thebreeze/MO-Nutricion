@@ -4,17 +4,12 @@ main {
 	--home-canvas-edge: max(0px, calc((100vw - 103.125rem) / 2));
 	--home-ink: #172956;
 	--home-border: rgba(174, 194, 255, 0.52);
-	--home-surface: rgba(255, 255, 255, 0.9);
 	--home-section-y: var(--section-space);
 }
 
 .home-hero {
 	position: relative;
 	isolation: isolate;
-	min-height: 100svh;
-	min-height: 100dvh;
-	height: 100svh;
-	height: 100dvh;
 	padding-top: clamp(var(--space-4xl), 10vw, 10.5rem);
 	padding-bottom: var(--space-2xl);
 	overflow: hidden;
@@ -271,10 +266,12 @@ main {
 	align-items: start;
 	min-height: 12.5rem;
 	padding: var(--card-padding);
-	border: 1px solid var(--home-border);
+	border: 1px solid var(--glass-border-strong);
 	border-radius: 1.45rem;
-	background: var(--home-surface);
-	box-shadow: 0 18px 42px rgba(62, 86, 180, 0.09);
+	background: var(--glass-background);
+	backdrop-filter: var(--glass-filter);
+	-webkit-backdrop-filter: var(--glass-filter);
+	box-shadow: var(--glass-shadow);
 	color: var(--home-ink);
 	text-decoration: none;
 	transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
@@ -418,13 +415,14 @@ main {
 
 .home-about__inner {
 	display: grid;
-	grid-template-columns: minmax(18rem, 0.94fr) minmax(0, 1.06fr);
-	gap: var(--space-fluid-lg);
+	grid-template-columns: minmax(18rem, 0.9fr) minmax(0, 1.1fr);
+	gap: var(--space-fluid-md);
 	align-items: center;
 }
 
 .about-card__portrait {
 	position: relative;
+	z-index: 1;
 	aspect-ratio: 1.58 / 1;
 	min-height: 24rem;
 	border-radius: 2rem;
@@ -447,16 +445,22 @@ main {
 	height: 100%;
 	object-fit: cover;
 	object-position: 58% 45%;
+	filter: grayscale(1);
 }
 
 .about-card {
+	position: relative;
+	z-index: 2;
 	display: grid;
 	gap: var(--space-sm);
 	padding: var(--panel-padding);
-	border: 1px solid rgba(206, 217, 255, 0.78);
+	border: 1px solid var(--glass-border-strong);
 	border-radius: 2rem;
-	background: rgba(255, 255, 255, 0.78);
-	box-shadow: 0 18px 42px rgba(62, 86, 180, 0.08);
+	background: var(--glass-background);
+	backdrop-filter: var(--glass-filter);
+	-webkit-backdrop-filter: var(--glass-filter);
+	box-shadow: var(--glass-shadow);
+	transform: translateX(clamp(1.5rem, 4vw, 3.25rem));
 }
 
 .about-card p {
@@ -484,10 +488,12 @@ main {
 	align-content: start;
 	min-height: 15rem;
 	padding: var(--card-padding);
-	border: 1px solid var(--home-border);
+	border: 1px solid var(--glass-border-strong);
 	border-radius: 1.45rem;
-	background: #fff;
-	box-shadow: 0 18px 42px rgba(62, 86, 180, 0.08);
+	background: var(--glass-background);
+	backdrop-filter: var(--glass-filter);
+	-webkit-backdrop-filter: var(--glass-filter);
+	box-shadow: var(--glass-shadow);
 }
 
 .testimonial-card__stars {
@@ -654,6 +660,11 @@ main {
 
 	.home-about__inner {
 		gap: var(--space-fluid-md);
+	}
+
+	.about-card {
+		transform: none;
+		margin-bottom: calc(-1 * var(--space-xl));
 	}
 
 	.about-card__portrait {
@@ -860,6 +871,7 @@ main {
 	.about-card {
 		padding: var(--space-md);
 		border-radius: 1.45rem;
+		margin-bottom: calc(-1 * var(--space-lg));
 	}
 
 	.testimonial-card {

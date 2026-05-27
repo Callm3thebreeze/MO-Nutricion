@@ -2,6 +2,7 @@
 import mainLogo from "../../assets/logo/simple-logo.png";
 
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isHome = pathname === "/";
 
 const navItems = [
   { href: "/#sobre-mi", label: "Sobre mí" },
@@ -24,7 +25,7 @@ const isActive = (href: string): boolean => {
 };
 ---
 
-<header class="site-header">
+<header class={`site-header ${isHome ? "site-header--home" : ""}`}>
   <div class="container site-header__inner">
     <a
       class="site-logo"

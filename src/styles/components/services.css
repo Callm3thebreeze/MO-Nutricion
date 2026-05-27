@@ -60,10 +60,12 @@
 	display: grid;
 	gap: var(--space-sm);
 	padding: var(--panel-padding);
-	border: 1px solid rgba(206, 217, 255, 0.78);
+	border: 1px solid var(--glass-border-strong);
 	border-radius: 2rem;
-	background: rgba(255, 255, 255, 0.82);
-	box-shadow: 0 24px 58px rgba(62, 86, 180, 0.12);
+	background: var(--glass-background-strong);
+	backdrop-filter: var(--glass-filter);
+	-webkit-backdrop-filter: var(--glass-filter);
+	box-shadow: var(--glass-shadow-strong);
 }
 
 .services-hero__panel-icon,
@@ -171,10 +173,12 @@
 	display: grid;
 	gap: var(--space-2xs);
 	padding: var(--card-padding);
-	border: 1px solid rgba(206, 217, 255, 0.78);
+	border: 1px solid var(--glass-border-strong);
 	border-radius: 1.35rem;
-	background: rgba(255, 255, 255, 0.9);
-	box-shadow: 0 14px 34px rgba(62, 86, 180, 0.07);
+	background: var(--glass-background);
+	backdrop-filter: var(--glass-filter);
+	-webkit-backdrop-filter: var(--glass-filter);
+	box-shadow: var(--glass-shadow);
 }
 
 .service-block__panel h3 {
