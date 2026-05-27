@@ -11,7 +11,7 @@
 }
 
 .site-header .container {
-	width: min(var(--max-width), calc(100% - 3rem));
+	width: min(var(--max-width), calc(100% - (var(--container-gutter) * 2)));
 }
 
 .site-header--hidden {
@@ -22,8 +22,8 @@ transform: translateY(calc(-100% - 0.2rem));
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 1rem;
-	padding: 0.88rem 3rem;
+	gap: var(--space-sm);
+	padding: var(--space-xs) var(--space-xl);
 	position: relative;
 	border-radius: 3rem;
 	border: 1px solid rgba(224, 233, 255, 0.62);
@@ -49,7 +49,7 @@ height: auto;
 .site-header__actions {
 	display: flex;
 	align-items: center;
-	gap: 0.95rem;
+	gap: var(--space-sm);
 }
 
 .site-menu-toggle {
@@ -57,7 +57,7 @@ display: none;
 align-items: center;
 justify-content: center;
 flex-direction: column;
-gap: 0.28rem;
+gap: var(--space-3xs);
 width: 2.6rem;
 height: 2.6rem;
 border-radius: 0.85rem;
@@ -95,14 +95,14 @@ transform: translateY(-0.42rem) rotate(-45deg);
 .site-nav ul {
 display: flex;
 position: relative;
-gap: 0.42rem;
+gap: var(--space-2xs);
 flex-wrap: wrap;
 }
 
 .site-nav a {
 display: inline-flex;
 position: relative;
-padding: 0.54rem 0.86rem;
+padding: var(--space-2xs) var(--space-sm);
 border-radius: var(--radius-pill);
 font-size: 1.08rem;
 font-weight: 600;
@@ -155,7 +155,7 @@ background: transparent;
 }
 
 .site-header__cta {
-padding: 0.6rem 1.05rem;
+padding: var(--space-2xs) var(--space-sm);
 font-size: 0.94rem;
 white-space: nowrap;
 }
@@ -166,7 +166,7 @@ body.body--menu-open {
 
 .site-footer {
 margin-top: var(--space-2xl);
-padding: var(--space-xl) 0 var(--space-sm);
+padding: var(--space-xl) 0 var(--space-md);
 background: linear-gradient(
 	0deg,
 	#6687ff 0%,
@@ -213,14 +213,14 @@ background-image: url('../../assets/shapes/shape-1-vanilla.svg');
 .site-footer__inner {
 display: grid;
 grid-template-columns: 1.2fr repeat(2, minmax(0, 1fr));
-gap: var(--space-lg);
+gap: var(--space-xl);
 position: relative;
 z-index: 1;
 }
 
 .site-footer__brand {
 display: grid;
-gap: 0.8rem;
+gap: var(--space-xs);
 max-width: 21rem;
 }
 
@@ -236,7 +236,7 @@ color: #fff;
 .site-footer__column {
 display: grid;
 align-content: start;
-gap: 0.7rem;
+gap: var(--space-xs);
 }
 
 .site-footer__column h2 {
@@ -251,7 +251,7 @@ color: #fff;
 
 .site-footer__list {
 display: grid;
-gap: 0.45rem;
+gap: var(--space-2xs);
 color: #fff;
 }
 
@@ -266,13 +266,13 @@ opacity: 0.88;
 
 .site-footer__contact {
 display: grid;
-gap: 0.45rem;
+gap: var(--space-2xs);
 }
 
 .site-footer__contact li {
 display: flex;
 align-items: flex-start;
-gap: 0.45rem;
+gap: var(--space-2xs);
 color: #fff;
 }
 
@@ -285,12 +285,12 @@ width: 1.15rem;
 height: 1.15rem;
 color: #fff;
 flex: 0 0 auto;
-margin-top: 0.1rem;
+margin-top: calc(var(--space-3xs) / 2);
 }
 
 .site-footer__newsletter {
 display: grid;
-gap: 0.5rem;
+gap: var(--space-2xs);
 }
 
 .site-footer__newsletter p {
@@ -322,7 +322,7 @@ display: none;
 
 @media (max-width: 46rem) {
 .site-header {
-top: 0.55rem;
+top: var(--space-2xs);
 }
 
 .site-header--menu-open {
@@ -331,7 +331,7 @@ top: 0.55rem;
 }
 
 .site-header .container {
-width: min(var(--max-width), calc(100% - 1.4rem));
+width: min(var(--max-width), calc(100% - (var(--space-xs) * 2)));
 }
 
 .site-header--menu-open .container {
@@ -341,14 +341,14 @@ width: min(var(--max-width), calc(100% - 1.4rem));
 
 .site-header__inner {
 align-items: center;
-padding: 0.55rem 0.78rem;
+padding: var(--space-2xs) var(--space-xs);
 border-radius: 1.25rem;
 	z-index: 2;
 }
 
 .site-header--menu-open .site-header__inner {
 	min-height: 100dvh;
-	padding: 1rem;
+	padding: var(--space-sm);
 	align-items: flex-start;
 	border-radius: 0;
 	border: 0;
@@ -377,7 +377,7 @@ display: inline-flex;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 5.5rem 1.4rem 2rem;
+	padding: var(--space-3xl) var(--space-md) var(--space-lg);
 	background: transparent;
 opacity: 0;
 	transform: scale(0.98);
@@ -396,8 +396,8 @@ visibility: visible;
 
 .site-header--menu-open .site-menu-toggle {
 	position: fixed;
-	top: 1rem;
-	right: 1rem;
+	top: var(--space-sm);
+	right: var(--space-sm);
 	width: 3rem;
 	height: 3rem;
 	color: var(--color-brand-blue-dark);
@@ -413,7 +413,7 @@ visibility: visible;
 }
 
 .site-nav ul {
-	gap: 1.1rem;
+	gap: var(--space-sm);
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
@@ -423,7 +423,7 @@ visibility: visible;
 
 .site-nav a {
 	width: auto;
-	padding: 0.9rem 1rem;
+	padding: var(--space-xs) var(--space-sm);
 	font-size: clamp(1.55rem, 5vw, 2.3rem);
 	font-weight: 700;
 	color: var(--color-text-soft);

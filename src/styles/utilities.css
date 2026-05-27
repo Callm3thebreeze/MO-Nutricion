@@ -1,13 +1,13 @@
 .container {
-width: min(var(--max-width), calc(100% - 2.2rem));
+width: min(var(--max-width), calc(100% - (var(--container-gutter) * 2)));
 margin-inline: auto;
 }
 
 .eyebrow {
 display: inline-flex;
 align-items: center;
-gap: 0.5rem;
-padding: 0.4rem 0.9rem;
+gap: var(--space-2xs);
+padding: var(--space-2xs) var(--space-sm);
 margin-bottom: var(--space-sm);
 font-size: 0.82rem;
 font-weight: 600;
@@ -29,7 +29,7 @@ color: var(--color-primary);
 
 .button-row {
 display: flex;
-gap: 0.85rem;
+gap: var(--space-xs);
 flex-wrap: wrap;
 margin-top: var(--space-md);
 }
@@ -38,8 +38,8 @@ margin-top: var(--space-md);
 display: inline-flex;
 align-items: center;
 justify-content: center;
-gap: 0.35rem;
-padding: 0.75rem 1.35rem;
+gap: var(--space-3xs);
+padding: var(--space-xs) var(--space-md);
 border-radius: var(--radius-pill);
 font-weight: 600;
 text-decoration: none;

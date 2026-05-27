@@ -34,13 +34,29 @@
 --radius-xl: 2.6rem;
 --radius-pill: 999px;
 
---space-2xs: 0.45rem;
+--space-3xs: 0.25rem;
+--space-2xs: 0.5rem;
 --space-xs: 0.75rem;
 --space-sm: 1rem;
---space-md: 1.45rem;
---space-lg: 2.2rem;
---space-xl: 3.2rem;
+--space-md: 1.5rem;
+--space-lg: 2rem;
+--space-xl: 3rem;
 --space-2xl: 4.5rem;
+--space-3xl: 6rem;
+--space-4xl: 8rem;
+
+--space-fluid-xs: clamp(0.75rem, 1vw, 1rem);
+--space-fluid-sm: clamp(1rem, 1.6vw, 1.5rem);
+--space-fluid-md: clamp(1.5rem, 3vw, 2.5rem);
+--space-fluid-lg: clamp(2rem, 5vw, 4rem);
+--space-fluid-xl: clamp(4rem, 8vw, 7.5rem);
+
+--container-gutter: clamp(1.1rem, 4vw, 2.5rem);
+--section-space: clamp(4.5rem, 8vw, 7.5rem);
+--section-space-compact: clamp(3rem, 6vw, 5rem);
+--grid-gap: var(--space-fluid-sm);
+--card-padding: clamp(1.25rem, 2vw, 1.75rem);
+--panel-padding: clamp(1.5rem, 4vw, 3rem);
 --max-width: 74rem;
 
 --icon-stroke-width: 2.35;

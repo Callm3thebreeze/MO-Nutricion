@@ -6,12 +6,12 @@ grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .blog-card {
-padding: var(--space-md) var(--space-sm);
+padding: var(--card-padding);
 border-radius: var(--radius-lg);
 border: 1px solid var(--color-border);
 background: #fff;
 display: grid;
-gap: 0.8rem;
+gap: var(--space-xs);
 box-shadow: var(--shadow-card);
 }
 
@@ -41,7 +41,7 @@ justify-self: start;
 .blog-meta {
 display: flex;
 flex-wrap: wrap;
-gap: 0.45rem 0.85rem;
+gap: var(--space-2xs) var(--space-xs);
 align-items: center;
 font-size: 0.87rem;
 color: var(--color-brand-ink);
@@ -56,7 +56,7 @@ flex-wrap: wrap;
 .tag-list li {
 background: rgba(234, 241, 255, 0.95);
 border-radius: 999px;
-padding: 0.22rem 0.62rem;
+padding: var(--space-3xs) var(--space-xs);
 font-size: 0.76rem;
 color: var(--color-primary-dark);
 border: 1px solid var(--color-border);
@@ -67,12 +67,12 @@ max-width: 48rem;
 }
 
 .article-back {
-margin-bottom: 0.25rem;
+margin-bottom: var(--space-3xs);
 }
 
 .article-header {
 display: grid;
-gap: 0.9rem;
+gap: var(--space-sm);
 margin-bottom: var(--space-lg);
 }
 
@@ -86,7 +86,7 @@ box-shadow: var(--shadow-card);
 
 .article-content {
 display: grid;
-gap: 0.9rem;
+gap: var(--space-sm);
 padding: var(--space-lg);
 border-radius: var(--radius-lg);
 border: 1px solid var(--color-border);
@@ -106,7 +106,7 @@ line-height: 1.6;
 
 .article-content ul,
 .article-content ol {
-padding-left: 1.1rem;
+padding-left: var(--space-md);
 }
 
 .article-content ul {
@@ -126,7 +126,7 @@ gap: var(--space-sm);
 }
 
 .blog-index h1 {
-margin-bottom: 0.2rem;
+margin-bottom: var(--space-3xs);
 }
 
 .blog-intro {

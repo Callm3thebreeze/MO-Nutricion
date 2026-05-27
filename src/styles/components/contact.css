@@ -6,7 +6,7 @@ gap: var(--space-md);
 
 .contact-intro {
 display: grid;
-gap: 0.75rem;
+gap: var(--space-xs);
 }
 
 .contact-intro p {
@@ -16,14 +16,14 @@ max-width: 62ch;
 .contact-highlights {
 display: grid;
 grid-template-columns: repeat(3, minmax(0, 1fr));
-gap: 0.8rem;
+gap: var(--grid-gap);
 }
 
 .contact-highlights__item {
 display: flex;
-gap: 0.7rem;
+gap: var(--space-xs);
 align-items: flex-start;
-padding: 0.8rem;
+padding: var(--space-sm);
 border: 1px solid var(--color-border);
 border-radius: var(--radius-md);
 background: #fff;
@@ -40,14 +40,14 @@ color: var(--color-primary-dark);
 }
 
 .contact-highlights__item p {
-margin-top: 0.2rem;
+margin-top: var(--space-3xs);
 font-size: 0.86rem;
 line-height: 1.42;
 }
 
 .contact-form {
 display: grid;
-gap: 0.95rem;
+gap: var(--space-sm);
 padding: var(--space-lg);
 border-radius: var(--radius-lg);
 border: 1px solid var(--color-border);
@@ -57,7 +57,7 @@ box-shadow: var(--shadow-soft);
 
 .form-row {
 display: grid;
-gap: 0.38rem;
+gap: var(--space-2xs);
 }
 
 .form-row--checkbox {
@@ -76,7 +76,7 @@ font-weight: 600;
 width: 100%;
 border-radius: var(--radius-md);
 border: 1px solid var(--color-border);
-padding: 0.72rem 0.82rem;
+padding: var(--space-xs) var(--space-sm);
 background: rgba(234, 241, 255, 0.46);
 color: var(--color-text);
 }
@@ -84,7 +84,7 @@ color: var(--color-text);
 .contact-form input[type='checkbox'] {
 width: 1rem;
 height: 1rem;
-margin-top: 0.25rem;
+margin-top: var(--space-3xs);
 accent-color: var(--color-primary);
 }
 
