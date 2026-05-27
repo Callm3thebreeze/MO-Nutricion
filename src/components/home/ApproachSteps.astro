@@ -1,44 +1,61 @@
 ---
 import profileImage from "../../assets/profile-landed.png";
+import BrandIcon from "../ui/BrandIcon.astro";
 
 const steps: Array<{
   title: string;
   description: string;
+  icon: "clipboard" | "target" | "calendar" | "chat";
 }> = [
   {
     title: "Evaluación inicial",
     description:
       "Conocemos tu historia, hábitos y objetivos para priorizar lo importante.",
+    icon: "clipboard",
   },
   {
     title: "Objetivos realistas",
     description:
       "Definimos metas claras y alcanzables adaptadas a tu ritmo de vida.",
+    icon: "target",
   },
   {
     title: "Plan personalizado",
     description:
       "Diseñamos un plan nutricional que se adapta a ti y no al revés.",
+    icon: "calendar",
   },
   {
     title: "Seguimiento y ajuste",
     description: "Te acompaño en cada fase para mantener avances sostenibles.",
+    icon: "chat",
   },
 ];
 ---
 
 <>
   <section class="section home-approach">
-    <div class="container">
-      <h2>Mi enfoque</h2>
+    <div class="container home-approach__inner">
+      <div class="home-section-heading home-approach__heading home-reveal">
+        <h2>Mi enfoque</h2>
+        <p>
+          Un proceso sencillo, con prioridades claras y ajustes reales para tu
+          día a día.
+        </p>
+      </div>
       <ol class="approach-list">
         {
           steps.map((step, index) => (
-            <li class="approach-list__item">
-              <div>
-                <h3>
-                  <span>{index + 1}.</span> {step.title}
-                </h3>
+            <li
+              class="approach-list__item home-reveal"
+              style={`--home-reveal-delay: ${index * 80}ms`}
+            >
+              <span class="approach-list__number">0{index + 1}</span>
+              <span class="approach-list__icon-wrap">
+                <BrandIcon name={step.icon} class="approach-list__icon" />
+              </span>
+              <div class="approach-list__content">
+                <h3>{step.title}</h3>
                 <p>{step.description}</p>
               </div>
             </li>
@@ -50,19 +67,7 @@ const steps: Array<{
 
   <section class="section home-about" id="sobre-mi">
     <div class="container home-about__inner">
-      <article class="about-card">
-        <h2>Sobre mí</h2>
-        <p>
-          Soy Mara Olivares, nutricionista apasionada por acompañar a personas a
-          transformar su relación con la comida y su cuerpo.
-        </p>
-        <p>
-          Trabajo desde la evidencia científica y la empatía, para que logres
-          resultados reales y sostenibles.
-        </p>
-      </article>
-
-      <div class="about-card__portrait">
+      <div class="about-card__portrait home-reveal">
         <img
           src={profileImage.src}
           width={profileImage.width}
@@ -73,6 +78,18 @@ const steps: Array<{
           class="about-card__portrait-image"
         />
       </div>
+
+      <article class="about-card home-reveal" style="--home-reveal-delay: 90ms">
+        <h2>Sobre mí</h2>
+        <p>
+          Soy Mara Olivares, nutricionista apasionada por acompañar a personas a
+          transformar su relación con la comida y su cuerpo.
+        </p>
+        <p>
+          Trabajo desde la evidencia científica y la empatía, para que logres
+          resultados reales y sostenibles.
+        </p>
+      </article>
     </div>
   </section>
 </>

@@ -59,13 +59,13 @@ box-shadow: 0 20px 38px rgba(93, 123, 255, 0.24);
 }
 
 .button--secondary {
-background: var(--color-brand-cream);
+background: #fff7d2;
 color: var(--color-primary-dark);
 border-color: rgba(93, 123, 255, 0.24);
 }
 
 .button--secondary:hover {
-background: #fffdf7;
+background: var(--color-brand-cream);
 color: var(--color-primary);
 border-color: var(--color-primary);
 }

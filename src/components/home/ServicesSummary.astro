@@ -1,55 +1,72 @@
 ---
+import BrandIcon from "../ui/BrandIcon.astro";
+
 const services: Array<{
   id: string;
   title: string;
   description: string;
+  icon: "stethoscope" | "heart" | "microbiota" | "book" | "hormone" | "target";
 }> = [
   {
     id: "nutricion-clinica",
     title: "Nutrición clínica",
     description: "Acompañamiento en condiciones de salud específicas.",
+    icon: "stethoscope",
   },
   {
     id: "salud-digestiva",
     title: "Salud digestiva",
     description: "Mejoramos tu digestión y bienestar intestinal.",
+    icon: "heart",
   },
   {
     id: "salud-digestiva",
     title: "Microbiota intestinal",
     description: "Estrategias para cuidar equilibrio digestivo y bienestar.",
+    icon: "microbiota",
   },
   {
     id: "educacion-nutricional",
     title: "Educación nutricional",
     description: "Aprende a comer mejor y tomar decisiones conscientes.",
+    icon: "book",
   },
   {
     id: "salud-hormonal",
     title: "Salud hormonal",
     description: "Apoyo nutricional en etapas clave de tu vida hormonal.",
+    icon: "hormone",
   },
   {
     id: "educacion-nutricional",
     title: "Cambio de hábitos",
     description: "Rutinas sostenibles que encajan con tu día a día.",
+    icon: "target",
   },
 ];
 ---
 
 <section class="section services-summary" id="servicios">
-  <div class="container">
-    <h2>¿Cómo te puedo ayudar?</h2>
+  <div class="container services-summary__inner">
+    <div class="home-section-heading services-summary__heading home-reveal">
+      <h2>¿Cómo te puedo ayudar?</h2>
+    </div>
     <div class="services-summary__grid">
       {
-        services.map((service) => (
+        services.map((service, index) => (
           <a
-            class="service-card"
+            class="service-card home-reveal"
             href={`/servicios#${service.id}`}
             aria-label={`Quiero saber más sobre ${service.title}`}
+            style={`--home-reveal-delay: ${index * 70}ms`}
           >
-            <h3>{service.title}</h3>
-            <p>{service.description}</p>
+            <span class="service-card__icon-wrap">
+              <BrandIcon name={service.icon} class="service-card__icon" />
+            </span>
+            <span class="service-card__content">
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+            </span>
           </a>
         ))
       }

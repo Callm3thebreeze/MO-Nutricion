@@ -167,7 +167,13 @@ body.body--menu-open {
 .site-footer {
 margin-top: var(--space-2xl);
 padding: var(--space-xl) 0 var(--space-sm);
-background: linear-gradient(160deg, #5d7bff 0%, #4c67dd 90%);
+background: linear-gradient(
+	0deg,
+	#6687ff 0%,
+	#6687ff 22%,
+	#8ea6fb 56%,
+	#e3ffee 128%
+);
 color: #fff;
 position: relative;
 overflow: hidden;
