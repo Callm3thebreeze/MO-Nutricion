@@ -27,19 +27,28 @@ const contactHighlights = [
 
 <section class="section contact-section">
   <div class="container contact-wrapper">
-    <div class="contact-intro scroll-reveal">
-      <p class="eyebrow">Contacto</p>
+    <header class="contact-intro scroll-reveal">
       <h1>Cuéntame tu caso y diseñamos tu ruta de mejora</h1>
       <WaveDivider />
       <p>
         Si quieres que valoremos tu caso, completa este formulario. En esta
         versión el envío es simulado para validar la experiencia de usuario.
       </p>
+    </header>
 
-      <ul class="contact-highlights" aria-label="Beneficios del acompañamiento">
+    <div class="contact-content">
+      <ul
+        class="contact-highlights scroll-reveal"
+        style="--home-reveal-delay: 50ms"
+        aria-label="Beneficios del acompañamiento"
+      >
         {
           contactHighlights.map((highlight) => (
             <li class="contact-highlights__item">
+              <BrandIcon
+                name={highlight.icon}
+                class="contact-highlights__watermark"
+              />
               <span class="contact-highlights__icon">
                 <BrandIcon name={highlight.icon} />
               </span>
@@ -51,14 +60,13 @@ const contactHighlights = [
           ))
         }
       </ul>
-    </div>
 
-    <form
-      class="contact-form scroll-reveal"
-      style="--home-reveal-delay: 90ms"
-      data-contact-form
-      novalidate
-    >
+      <form
+        class="contact-form scroll-reveal"
+        style="--home-reveal-delay: 90ms"
+        data-contact-form
+        novalidate
+      >
       <div class="form-row">
         <label for="nombre">Nombre y apellidos</label>
         <input
@@ -175,7 +183,8 @@ const contactHighlights = [
         aria-atomic="true"
       >
       </p>
-    </form>
+      </form>
+    </div>
   </div>
 </section>
 

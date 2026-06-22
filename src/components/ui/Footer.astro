@@ -1,5 +1,5 @@
 ---
-import altLogo from "../../assets/logo/alt-logo.png";
+import mainLogo from "../../assets/logo/simple-logo.png";
 import {
   EnvelopeIcon,
   PhoneIcon,
@@ -10,14 +10,20 @@ import {
 <footer class="site-footer">
   <div class="container site-footer__inner">
     <div class="site-footer__brand">
-      <img
-        src={altLogo.src}
-        width={altLogo.width}
-        height={altLogo.height}
-        alt="Logotipo de Mara Olivares Nutrició"
-        loading="lazy"
-        decoding="async"
-      />
+      <a
+        class="site-footer__logo-glass"
+        href="/"
+        aria-label="Mara Olivares Nutrició, ir al inicio"
+      >
+        <img
+          src={mainLogo.src}
+          width={mainLogo.width}
+          height={mainLogo.height}
+          alt="Logotipo de Mara Olivares Nutrició"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
       <p>Nutrición real, hábitos que suman bienestar.</p>
     </div>
 

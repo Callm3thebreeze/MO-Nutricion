@@ -24,7 +24,7 @@
 	letter-spacing: 0;
 }
 
-.services-hero__copy p:not(.eyebrow) {
+.services-hero__copy > p {
 	max-width: 54ch;
 	font-size: clamp(1rem, 1.25vw, 1.16rem);
 	font-weight: 500;
@@ -42,21 +42,63 @@
 	display: inline-flex;
 	align-items: center;
 	padding: var(--space-2xs) var(--space-sm);
-	border: 1px solid rgba(206, 217, 255, 0.86);
+	border: 0;
 	border-radius: var(--radius-pill);
-	background: rgba(255, 255, 255, 0.84);
+	background: var(--neo-surface);
 	color: var(--color-primary-dark);
 	font-weight: 700;
-	box-shadow: 0 10px 24px rgba(62, 86, 180, 0.08);
+	box-shadow: var(--neo-raised-soft);
+	transition: box-shadow 180ms ease, background 180ms ease;
 }
 
 .services-hero__index a:hover {
-	background: #fff;
-	border-color: rgba(93, 123, 255, 0.42);
-	transform: translateY(-2px);
+	background: var(--neo-surface);
+	transform: none;
+	box-shadow: var(--neo-inset);
+}
+
+.services-hero__index a:active {
+	transform: none;
+	box-shadow: var(--neo-inset-deep);
+}
+
+.services-hero__visual {
+	position: relative;
+	isolation: isolate;
+	min-height: 29rem;
+	display: grid;
+	align-items: end;
+	padding: clamp(5rem, 10vw, 8rem) 0 0 clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.services-hero__panel-photo {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 0;
+	width: min(23rem, 86%);
+	height: min(25rem, 86%);
+	object-fit: cover;
+	object-position: 58% 34%;
+	border-radius: 50% 50% 2.2rem 2.2rem;
+	filter: grayscale(1);
+	opacity: 0.82;
+}
+
+.services-hero__panel-wave {
+	position: absolute;
+	left: -1.5rem;
+	top: 28%;
+	z-index: 0;
+	width: 15rem;
+	height: auto;
+	color: rgba(93, 123, 255, 0.34);
+	transform: rotate(-12deg);
 }
 
 .services-hero__panel {
+	position: relative;
+	z-index: 1;
 	display: grid;
 	gap: var(--space-sm);
 	padding: var(--panel-padding);
@@ -66,25 +108,6 @@
 	backdrop-filter: var(--glass-filter);
 	-webkit-backdrop-filter: var(--glass-filter);
 	box-shadow: var(--glass-shadow-strong);
-}
-
-.services-hero__panel-icon,
-.service-block__icon-wrap {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	width: 3.45rem;
-	height: 3.45rem;
-	border: 1px solid rgba(206, 217, 255, 0.82);
-	border-radius: 1.05rem;
-	background: linear-gradient(145deg, #ffffff 0%, var(--color-brand-lilac) 100%);
-}
-
-.services-hero__panel-icon .brand-icon,
-.service-block__icon {
-	width: 2.05rem;
-	height: 2.05rem;
-	color: var(--color-brand-blue-strong);
 }
 
 .services-hero__panel h2,
@@ -116,8 +139,8 @@
 	background: linear-gradient(180deg, #ffffff 0%, #f6f8ff 100%);
 }
 
-.service-block--cream {
-	background: linear-gradient(180deg, #ffffff 0%, rgba(255, 247, 210, 0.54) 100%);
+.service-block--lilac {
+	background: linear-gradient(180deg, #ffffff 0%, rgba(234, 241, 255, 0.72) 100%);
 }
 
 .service-block__inner {
@@ -133,14 +156,6 @@
 	display: grid;
 	gap: var(--space-xs);
 	justify-items: start;
-}
-
-.service-block__number {
-	font-family: var(--font-display);
-	font-size: 0.95rem;
-	font-weight: 800;
-	line-height: 1;
-	color: rgba(79, 109, 239, 0.58);
 }
 
 .service-block__sticky h2 {
@@ -249,16 +264,24 @@
 
 .services-cta .button {
 	min-width: clamp(11.5rem, 18vw, 15rem);
-	border-color: rgba(255, 255, 255, 0.56);
-	background: #fff7d2;
+	border: 0;
+	background: var(--neo-surface);
 	color: #172956;
 	box-shadow: 0 16px 36px rgba(31, 47, 118, 0.18);
 }
 
 .services-cta .button:hover {
-	background: var(--color-brand-cream);
+	background: var(--color-brand-lilac);
 	color: #172956;
-	box-shadow: 0 20px 42px rgba(31, 47, 118, 0.24);
+	box-shadow:
+		inset 0.24rem 0.24rem 0.55rem rgba(31, 47, 118, 0.18),
+		inset -0.22rem -0.22rem 0.5rem rgba(255, 255, 255, 0.8);
+}
+
+.services-cta .button:active {
+	background: var(--color-brand-lilac);
+	color: #172956;
+	box-shadow: var(--neo-inset-deep);
 }
 
 @media (max-width: 70rem) {
@@ -274,6 +297,11 @@
 	.services-hero__copy h1,
 	.service-block__sticky h2 {
 		max-width: 13ch;
+	}
+
+	.services-hero__visual {
+		width: min(100%, 38rem);
+		min-height: 27rem;
 	}
 
 	.services-cta__inner {
@@ -298,6 +326,16 @@
 	.service-block__panel,
 	.services-cta__inner {
 		border-radius: 1.45rem;
+	}
+
+	.services-hero__visual {
+		min-height: 23rem;
+		padding-left: var(--space-sm);
+	}
+
+	.services-hero__panel-photo {
+		width: min(20rem, 92%);
+		height: 19rem;
 	}
 
 	.services-hero__index {

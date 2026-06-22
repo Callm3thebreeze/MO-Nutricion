@@ -60,6 +60,10 @@ const services: Array<{
             aria-label={`Quiero saber más sobre ${service.title}`}
             style={`--home-reveal-delay: ${index * 70}ms`}
           >
+            <BrandIcon
+              name={service.icon}
+              class="service-card__watermark"
+            />
             <span class="service-card__icon-wrap">
               <BrandIcon name={service.icon} class="service-card__icon" />
             </span>

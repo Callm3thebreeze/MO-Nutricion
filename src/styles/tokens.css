@@ -28,16 +28,25 @@
 --shadow-card: 0 10px 24px rgba(93, 123, 255, 0.12);
 --shadow-hover: 0 18px 36px rgba(93, 123, 255, 0.18);
 
---glass-filter: blur(16px) saturate(145%);
+--glass-filter: blur(18px) saturate(165%) brightness(1.04);
 --glass-background: linear-gradient(132deg, rgba(255, 255, 255, 0.68), rgba(234, 241, 255, 0.34));
 --glass-background-strong: linear-gradient(132deg, rgba(255, 255, 255, 0.82), rgba(234, 241, 255, 0.46));
 --glass-header-background: linear-gradient(132deg, rgba(219, 229, 255, 0.56), rgba(212, 223, 255, 0.24));
 --glass-menu-background: linear-gradient(132deg, rgba(219, 229, 255, 0.58), rgba(212, 223, 255, 0.28));
 --glass-border: rgba(224, 233, 255, 0.68);
 --glass-border-strong: rgba(206, 217, 255, 0.82);
---glass-shadow: 0 18px 42px rgba(62, 86, 180, 0.1);
---glass-shadow-strong: 0 24px 58px rgba(62, 86, 180, 0.14);
---glass-header-shadow: 0 15px 34px rgba(53, 78, 175, 0.2);
+--glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.56), 0 18px 42px rgba(62, 86, 180, 0.1);
+--glass-shadow-strong: inset 0 1px 0 rgba(255, 255, 255, 0.68), 0 24px 58px rgba(62, 86, 180, 0.14);
+--glass-header-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 15px 34px rgba(53, 78, 175, 0.2);
+--glass-specular: linear-gradient(135deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.12) 24%, transparent 46%);
+
+--neo-surface: #f1f5ff;
+--neo-light: rgba(255, 255, 255, 0.92);
+--neo-dark: rgba(62, 86, 180, 0.16);
+--neo-raised: 0.45rem 0.45rem 1rem var(--neo-dark), -0.45rem -0.45rem 1rem var(--neo-light);
+--neo-raised-soft: 0.34rem 0.34rem 0.78rem rgba(62, 86, 180, 0.13), -0.34rem -0.34rem 0.78rem rgba(255, 255, 255, 0.86);
+--neo-inset: inset 0.28rem 0.28rem 0.62rem rgba(62, 86, 180, 0.15), inset -0.28rem -0.28rem 0.62rem rgba(255, 255, 255, 0.88);
+--neo-inset-deep: inset 0.38rem 0.38rem 0.78rem rgba(62, 86, 180, 0.2), inset -0.38rem -0.38rem 0.78rem rgba(255, 255, 255, 0.86);
 
 --radius-sm: 0.7rem;
 --radius-md: 1.15rem;

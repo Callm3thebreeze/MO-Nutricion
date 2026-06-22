@@ -1,6 +1,5 @@
 ---
 import WaveDivider from "../components/ui/WaveDivider.astro";
-import BrandIcon from "../components/ui/BrandIcon.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/components/services.css";
 
@@ -11,7 +10,6 @@ const services: Array<{
   focus: string;
   approach: string;
   outcomes: string[];
-  icon: "stethoscope" | "heart" | "book" | "hormone";
 }> = [
   {
     id: "nutricion-clinica",
@@ -27,7 +25,6 @@ const services: Array<{
       "Guía clara para decisiones diarias",
       "Seguimiento y ajustes según evolución",
     ],
-    icon: "stethoscope",
   },
   {
     id: "salud-digestiva",
@@ -43,7 +40,6 @@ const services: Array<{
       "Mejor regularidad digestiva",
       "Relación más tranquila con la comida",
     ],
-    icon: "heart",
   },
   {
     id: "educacion-nutricional",
@@ -59,7 +55,6 @@ const services: Array<{
       "Menos dependencia de dietas estrictas",
       "Hábitos sostenibles a largo plazo",
     ],
-    icon: "book",
   },
   {
     id: "salud-hormonal",
@@ -75,7 +70,6 @@ const services: Array<{
       "Mejor gestión del apetito y saciedad",
       "Rutina alineada con tus necesidades hormonales",
     ],
-    icon: "hormone",
   },
 ];
 ---
@@ -88,7 +82,6 @@ const services: Array<{
   <section class="section services-hero">
     <div class="container services-hero__inner">
       <div class="services-hero__copy scroll-reveal">
-        <p class="eyebrow">Servicios</p>
         <h1>Nutrición adaptada a lo que necesitas ahora</h1>
         <WaveDivider />
         <p>
@@ -108,9 +101,6 @@ const services: Array<{
         class="services-hero__panel scroll-reveal"
         style="--home-reveal-delay: 90ms"
       >
-        <span class="services-hero__panel-icon">
-          <BrandIcon name="clipboard" />
-        </span>
         <h2>Una ruta con prioridades claras</h2>
         <p>
           Primero entendemos tu contexto. Después convertimos esa información en
@@ -125,14 +115,10 @@ const services: Array<{
       services.map((service, index) => (
         <article
           id={service.id}
-          class={`service-block ${index % 2 === 0 ? "service-block--blue" : "service-block--cream"}`}
+          class={`service-block ${index % 2 === 0 ? "service-block--blue" : "service-block--lilac"}`}
         >
           <div class="container service-block__inner">
             <div class="service-block__sticky scroll-reveal">
-              <span class="service-block__number">0{index + 1}</span>
-              <span class="service-block__icon-wrap">
-                <BrandIcon name={service.icon} class="service-block__icon" />
-              </span>
               <h2>{service.title}</h2>
               <WaveDivider class="service-block__divider" />
               <p>{service.intro}</p>
@@ -170,7 +156,6 @@ const services: Array<{
   <section class="section services-cta">
     <div class="container services-cta__inner scroll-reveal">
       <div>
-        <p class="eyebrow">Primer paso</p>
         <h2>Cuéntame qué te está pasando y vemos por dónde empezar.</h2>
       </div>
       <a class="button" href="/contacto">Solicitar valoración</a>
