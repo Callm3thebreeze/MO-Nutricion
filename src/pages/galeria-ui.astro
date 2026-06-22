@@ -1,0 +1,221 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BrandIcon from "../components/ui/BrandIcon.astro";
+import "../styles/components/ui-gallery.css";
+
+const services = [
+  {
+    icon: "stethoscope" as const,
+    title: "Nutrición clínica",
+    description: "Acompañamiento cercano basado en evidencia y en tu contexto.",
+    tone: "blue",
+  },
+  {
+    icon: "heart" as const,
+    title: "Salud digestiva",
+    description: "Un enfoque amable para recuperar calma y bienestar intestinal.",
+    tone: "peach",
+  },
+  {
+    icon: "leaf" as const,
+    title: "Hábitos sostenibles",
+    description: "Cambios realistas que encajan en tu día a día y pueden durar.",
+    tone: "mint",
+  },
+];
+---
+
+<BaseLayout
+  title="Galería UI: glassmorphism y neumorfismo"
+  description="Laboratorio visual de componentes para la web de Mara Olivares Nutrició."
+  canonicalPath="/galeria-ui"
+  noindex
+  mainClass="ui-gallery-main"
+>
+  <section class="ui-gallery-hero">
+    <div class="container ui-gallery-hero__inner">
+      <div class="ui-gallery-hero__copy home-reveal">
+        <span class="ui-gallery-kicker">Laboratorio visual · 01</span>
+        <h1>Suave al mirar.<br /><em>Claro al tocar.</em></h1>
+        <p>
+          Una galería de componentes que combina superficies de cristal con
+          controles neumórficos, usando exclusivamente la identidad cromática
+          de Mara Olivares.
+        </p>
+        <nav class="ui-gallery-hero__nav" aria-label="Secciones de la galería">
+          <a href="#botones">Botones</a>
+          <a href="#tarjetas">Tarjetas</a>
+          <a href="#controles">Controles</a>
+        </nav>
+      </div>
+
+      <aside class="ui-gallery-material-card glass-panel glass-panel--strong home-reveal" aria-label="Principio de diseño">
+        <span class="ui-gallery-material-card__orb" aria-hidden="true"></span>
+        <p class="ui-gallery-material-card__label">Regla del sistema</p>
+        <p class="ui-gallery-material-card__formula">
+          <strong>Glass</strong> contiene<br />
+          <strong>Neo</strong> responde
+        </p>
+        <div class="ui-gallery-material-card__sample" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="ui-gallery-section" id="botones" aria-labelledby="buttons-title">
+    <div class="container">
+      <header class="ui-gallery-section__header home-reveal">
+        <div>
+          <span class="ui-gallery-index">01</span>
+          <h2 id="buttons-title">Botones con tacto</h2>
+        </div>
+        <p>El relieve se reserva para aquello que invita a actuar.</p>
+      </header>
+
+      <div class="ui-gallery-stage glass-panel home-reveal">
+        <div class="ui-gallery-button-group" aria-label="Variantes de botones">
+          <a class="neo-button neo-button--primary" href="/contacto">
+            Agenda tu cita
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a class="neo-button neo-button--cream" href="/servicios">Ver servicios</a>
+          <button class="neo-button neo-button--soft" type="button">
+            Guardar selección
+          </button>
+          <button class="neo-button neo-button--pressed" type="button" aria-pressed="true">
+            <BrandIcon name="check" class="neo-button__icon" />
+            Seleccionado
+          </button>
+        </div>
+
+        <div class="ui-gallery-icon-actions" aria-label="Botones compactos">
+          <button class="neo-icon-button neo-icon-button--blue" type="button" aria-label="Añadir a favoritos">
+            <BrandIcon name="heart" />
+          </button>
+          <button class="neo-icon-button neo-icon-button--mint" type="button" aria-label="Abrir calendario">
+            <BrandIcon name="calendar" />
+          </button>
+          <button class="neo-icon-button neo-icon-button--peach" type="button" aria-label="Enviar un mensaje">
+            <BrandIcon name="chat" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ui-gallery-section ui-gallery-section--tinted" id="tarjetas" aria-labelledby="cards-title">
+    <div class="container">
+      <header class="ui-gallery-section__header home-reveal">
+        <div>
+          <span class="ui-gallery-index">02</span>
+          <h2 id="cards-title">Capas que respiran</h2>
+        </div>
+        <p>La tarjeta permanece ligera; el icono aporta la sensación física.</p>
+      </header>
+
+      <div class="ui-gallery-card-grid">
+        {services.map((service, index) => (
+          <article class="ui-demo-card glass-panel home-reveal" style={`--home-reveal-delay: ${index * 80}ms`}>
+            <span class={`ui-demo-card__icon ui-demo-card__icon--${service.tone}`}>
+              <BrandIcon name={service.icon} />
+            </span>
+            <div>
+              <span class="ui-demo-card__number">0{index + 1}</span>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+            </div>
+            <a href="/servicios" aria-label={`Conocer ${service.title}`}>
+              Conocer más <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        ))}
+      </div>
+
+      <article class="ui-gallery-feature home-reveal">
+        <div class="ui-gallery-feature__copy">
+          <span class="ui-gallery-kicker">Combinación recomendada</span>
+          <h3>Una superficie de cristal, un gesto con volumen.</h3>
+          <p>
+            El desenfoque construye el ambiente. La profundidad neumórfica
+            aparece únicamente en el control para dejar clara la interacción.
+          </p>
+        </div>
+        <div class="ui-gallery-feature__action">
+          <span class="ui-gallery-feature__halo" aria-hidden="true"></span>
+          <a class="neo-button neo-button--cream" href="/contacto">Empezar ahora</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="ui-gallery-section" id="controles" aria-labelledby="controls-title">
+    <div class="container">
+      <header class="ui-gallery-section__header home-reveal">
+        <div>
+          <span class="ui-gallery-index">03</span>
+          <h2 id="controls-title">Controles y estados</h2>
+        </div>
+        <p>Las sombras interiores hacen visible dónde escribir o qué está activo.</p>
+      </header>
+
+      <div class="ui-gallery-controls-grid">
+        <form class="ui-demo-form glass-panel glass-panel--strong home-reveal">
+          <div class="ui-demo-form__heading">
+            <span class="ui-demo-form__icon"><BrandIcon name="chat" /></span>
+            <div>
+              <h3>Cuéntame qué necesitas</h3>
+              <p>Campos hundidos sobre una superficie translúcida.</p>
+            </div>
+          </div>
+          <div class="ui-demo-field">
+            <label for="gallery-name">Nombre</label>
+            <input id="gallery-name" name="name" type="text" autocomplete="name" placeholder="Tu nombre" />
+          </div>
+          <div class="ui-demo-field">
+            <label for="gallery-email">Correo electrónico</label>
+            <input id="gallery-email" name="email" type="email" autocomplete="email" placeholder="nombre@correo.com" />
+          </div>
+          <button class="neo-button neo-button--primary" type="button">Enviar consulta <span aria-hidden="true">→</span></button>
+        </form>
+
+        <div class="ui-demo-controls home-reveal">
+          <fieldset class="ui-demo-choice">
+            <legend>Formato de consulta</legend>
+            <label>
+              <input type="radio" name="format" checked />
+              <span class="ui-demo-choice__control" aria-hidden="true"></span>
+              Online
+            </label>
+            <label>
+              <input type="radio" name="format" />
+              <span class="ui-demo-choice__control" aria-hidden="true"></span>
+              Presencial
+            </label>
+          </fieldset>
+
+          <div class="ui-demo-switch-row">
+            <div>
+              <strong>Recordatorio de cita</strong>
+              <span>Recibir aviso 24 horas antes</span>
+            </div>
+            <label class="ui-demo-switch">
+              <span class="sr-only">Activar recordatorio de cita</span>
+              <input type="checkbox" checked />
+              <span aria-hidden="true"></span>
+            </label>
+          </div>
+
+          <details class="ui-demo-faq" open>
+            <summary>¿Cómo funciona la primera consulta?</summary>
+            <p>Revisamos tu historia, tus hábitos y tus objetivos para definir un punto de partida realista.</p>
+          </details>
+          <details class="ui-demo-faq">
+            <summary>¿El plan es personalizado?</summary>
+            <p>Sí, se adapta a tu contexto, necesidades y ritmo de vida.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
