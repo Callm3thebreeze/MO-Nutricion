@@ -33,3 +33,19 @@ npm run dev
 - `/404`
 - `/sitemap.xml`
 - `/robots.txt`
+
+# Formulario de contacto con Resend
+
+El endpoint `POST /api/contact` envía las solicitudes mediante Resend sin
+exponer la API key al navegador.
+
+Para desarrollo local, copia `.dev.vars.example` como `.dev.vars` y sustituye
+los valores. Para producción en Cloudflare configura la clave como secreto:
+
+```sh
+npx wrangler secret put RESEND_API_KEY
+```
+
+Configura también `CONTACT_TO_EMAIL` y `CONTACT_FROM_EMAIL` como variables o
+secretos del Worker. El dominio utilizado en `CONTACT_FROM_EMAIL` debe estar
+verificado en Resend.

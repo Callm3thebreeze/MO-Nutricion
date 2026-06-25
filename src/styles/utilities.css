@@ -130,7 +130,7 @@ flex-shrink: 0;
 }
 
 .glass-panel {
-border: 1px solid var(--glass-border);
+border: 0;
 background: var(--glass-background);
 backdrop-filter: var(--glass-filter);
 -webkit-backdrop-filter: var(--glass-filter);
@@ -138,7 +138,6 @@ box-shadow: var(--glass-shadow);
 }
 
 .glass-panel--strong {
-border-color: var(--glass-border-strong);
 background: var(--glass-background-strong);
 box-shadow: var(--glass-shadow-strong);
 }

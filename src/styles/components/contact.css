@@ -4,6 +4,10 @@
 	background: linear-gradient(180deg, #eef4fb 0%, #f6f8ff 48%, #ffffff 100%);
 }
 
+.contact-main + .site-footer {
+	margin-top: 0;
+}
+
 .contact-wrapper {
 	display: grid;
 	gap: var(--space-fluid-md);
@@ -56,7 +60,7 @@
 	gap: var(--space-sm);
 	align-items: start;
 	padding: var(--card-padding);
-	border: 1px solid var(--glass-border-strong);
+	border: 0;
 	border-radius: 1.35rem;
 	background: var(--glass-background);
 	backdrop-filter: var(--glass-filter);
@@ -120,12 +124,20 @@
 	display: grid;
 	gap: var(--space-sm);
 	padding: var(--panel-padding);
-	border: 1px solid var(--glass-border-strong);
+	border: 0;
 	border-radius: 2rem;
 	background: var(--glass-background-strong);
 	backdrop-filter: var(--glass-filter);
 	-webkit-backdrop-filter: var(--glass-filter);
 	box-shadow: var(--glass-shadow-strong);
+}
+
+.contact-honeypot {
+	position: absolute;
+	left: -10000px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
 }
 
 .form-row {

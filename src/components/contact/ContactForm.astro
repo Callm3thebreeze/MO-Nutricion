@@ -31,8 +31,8 @@ const contactHighlights = [
       <h1>Cuéntame tu caso y diseñamos tu ruta de mejora</h1>
       <WaveDivider />
       <p>
-        Si quieres que valoremos tu caso, completa este formulario. En esta
-        versión el envío es simulado para validar la experiencia de usuario.
+        Si quieres que valoremos tu caso, completa este formulario y me pondré
+        en contacto contigo lo antes posible.
       </p>
     </header>
 
@@ -65,8 +65,20 @@ const contactHighlights = [
         class="contact-form scroll-reveal"
         style="--home-reveal-delay: 90ms"
         data-contact-form
+        action="/api/contact"
+        method="post"
         novalidate
       >
+      <div class="contact-honeypot" aria-hidden="true">
+        <label for="website">No rellenes este campo</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabindex="-1"
+          autocomplete="off"
+        />
+      </div>
       <div class="form-row">
         <label for="nombre">Nombre y apellidos</label>
         <input
@@ -173,7 +185,9 @@ const contactHighlights = [
       >
       </p>
 
-      <button type="submit" class="button">Enviar solicitud</button>
+      <button type="submit" class="button" data-submit-button>
+        Enviar solicitud
+      </button>
       <p
         class="form-status"
         id="contacto-status"

@@ -102,7 +102,7 @@
 	display: grid;
 	gap: var(--space-sm);
 	padding: var(--panel-padding);
-	border: 1px solid var(--glass-border-strong);
+	border: 0;
 	border-radius: 2rem;
 	background: var(--glass-background-strong);
 	backdrop-filter: var(--glass-filter);
@@ -187,7 +187,7 @@
 	display: grid;
 	gap: var(--space-2xs);
 	padding: var(--card-padding);
-	border: 1px solid var(--glass-border-strong);
+	border: 0;
 	border-radius: 1.35rem;
 	background: var(--glass-background);
 	backdrop-filter: var(--glass-filter);
@@ -247,7 +247,7 @@
 	justify-content: space-between;
 	gap: var(--space-fluid-lg);
 	padding: var(--panel-padding);
-	border: 1px solid rgba(255, 255, 255, 0.5);
+	border: 0;
 	border-radius: 2rem;
 	background: linear-gradient(135deg, #5d7bff 0%, #6f8aff 60%, #87a0ff 100%);
 	box-shadow: 0 28px 70px rgba(62, 86, 180, 0.22);

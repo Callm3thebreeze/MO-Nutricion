@@ -2,6 +2,12 @@ const forms = document.querySelectorAll<HTMLFormElement>('[data-contact-form]');
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+interface ContactResponse {
+ok?: boolean;
+message?: string;
+errors?: Record<string, string>;
+}
+
 const setStatusMessage = (
 status: HTMLElement | null,
 message: string,
@@ -53,7 +59,7 @@ setStatusMessage(status, '', { isError: false });
 });
 });
 
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', async (event) => {
 event.preventDefault();
 clearErrors(form);
 setStatusMessage(status, '', { isError: false });
@@ -113,7 +119,77 @@ firstInvalidField.focus();
 return;
 }
 
+const submitButton = form.querySelector<HTMLButtonElement>('[data-submit-button]');
+const originalButtonText = submitButton?.textContent ?? 'Enviar solicitud';
+
+if (submitButton) {
+submitButton.disabled = true;
+submitButton.setAttribute('aria-disabled', 'true');
+submitButton.textContent = 'Enviando…';
+}
+
+setStatusMessage(status, 'Enviando tu solicitud…', { isError: false });
+
+try {
+const response = await fetch(form.action, {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({
+nombre,
+email,
+motivo,
+mensaje,
+consentimiento,
+website: (formData.get('website') ?? '').toString(),
+}),
+});
+
+const result = (await response.json()) as ContactResponse;
+
+if (!response.ok || !result.ok) {
+if (result.errors) {
+Object.entries(result.errors).forEach(([fieldName, message]) => {
+const field = form.elements.namedItem(fieldName);
+if (field instanceof HTMLElement) {
+setFieldError(field, message);
+}
+});
+
+const firstServerError = Object.keys(result.errors)[0];
+const field = firstServerError
+? form.elements.namedItem(firstServerError)
+: null;
+if (field instanceof HTMLElement) {
+field.focus();
+}
+}
+
+setStatusMessage(
+status,
+result.message ?? 'No se pudo enviar la solicitud. Inténtalo de nuevo.',
+{ isError: true },
+);
+return;
+}
+
 form.reset();
-setStatusMessage(status, 'Gracias, tu solicitud se ha validado correctamente (envío simulado).', { isError: false });
+setStatusMessage(
+status,
+result.message ?? 'Gracias. He recibido tu solicitud.',
+{ isError: false },
+);
+} catch {
+setStatusMessage(
+status,
+'No se pudo conectar con el servicio de envío. Comprueba tu conexión e inténtalo de nuevo.',
+{ isError: true },
+);
+} finally {
+if (submitButton) {
+submitButton.disabled = false;
+submitButton.removeAttribute('aria-disabled');
+submitButton.textContent = originalButtonText;
+}
+}
 });
 });

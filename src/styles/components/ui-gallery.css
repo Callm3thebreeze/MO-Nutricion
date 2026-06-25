@@ -476,15 +476,6 @@
   overflow: hidden;
 }
 
-.ui-gallery-feature::before {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  z-index: -1;
-  border: 1px solid rgba(255, 255, 255, 0.38);
-  border-radius: inherit;
-}
-
 .ui-gallery-feature__copy {
   max-width: 45rem;
 }
@@ -612,7 +603,7 @@
 .ui-demo-choice,
 .ui-demo-switch-row,
 .ui-demo-faq {
-  border: 1px solid rgba(255, 255, 255, 0.78);
+  border: 0;
   background: var(--neo-surface);
   box-shadow: var(--neo-raised-soft);
 }

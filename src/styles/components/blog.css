@@ -36,7 +36,7 @@
 
 .blog-index__panel {
 	padding: var(--card-padding);
-	border: 1px solid var(--glass-border-strong);
+	border: 0;
 	border-radius: 1.45rem;
 	background: var(--glass-background-strong);
 	backdrop-filter: var(--glass-filter);
@@ -66,7 +66,7 @@
 	display: grid;
 	grid-template-rows: auto 1fr;
 	min-height: 100%;
-	border: 1px solid var(--glass-border-strong);
+	border: 0;
 	border-radius: 1.45rem;
 	background: var(--glass-background);
 	backdrop-filter: var(--glass-filter);
@@ -77,7 +77,6 @@
 }
 
 .blog-card:hover {
-	border-color: rgba(93, 123, 255, 0.54);
 	background: #fff;
 	transform: translateY(-4px);
 	box-shadow: 0 24px 54px rgba(62, 86, 180, 0.14);
@@ -221,7 +220,7 @@
 	display: grid;
 	gap: var(--space-sm);
 	padding: var(--panel-padding);
-	border: 1px solid rgba(206, 217, 255, 0.78);
+	border: 0;
 	border-radius: 2rem;
 	background: rgba(255, 255, 255, 0.94);
 	box-shadow: 0 18px 42px rgba(62, 86, 180, 0.08);
@@ -269,7 +268,7 @@
 	gap: var(--space-fluid-md);
 	margin-top: var(--space-xl);
 	padding: var(--panel-padding);
-	border: 1px solid rgba(255, 255, 255, 0.5);
+	border: 0;
 	border-radius: 2rem;
 	background: linear-gradient(135deg, #5d7bff 0%, #6f8aff 60%, #87a0ff 100%);
 	box-shadow: 0 28px 70px rgba(62, 86, 180, 0.22);
@@ -312,7 +311,7 @@
 	grid-column: 1 / -1;
 	margin-top: var(--space-lg);
 	padding: var(--card-padding);
-	border: 1px dashed var(--color-border);
+	border: 0;
 	border-radius: var(--radius-lg);
 	background: #fff;
 	box-shadow: var(--shadow-card);
