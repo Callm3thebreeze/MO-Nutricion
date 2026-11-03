@@ -281,3 +281,94 @@ body.body--menu-open {
 	font-size: 1.125rem;
 	line-height: 1.6;
 }
+
+/* Transiciones entre páginas (View Transitions entre documentos).
+   La cabecera y el bloque ilustrado de la derecha se mantienen; solo cambia la imagen. */
+
+@view-transition {
+	navigation: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	@view-transition {
+		navigation: none;
+	}
+}
+
+.site-header {
+	view-transition-name: site-header;
+}
+
+[data-hero-visual] {
+	view-transition-name: hero-visual;
+}
+
+[data-hero-visual] img {
+	view-transition-name: hero-image;
+}
+
+/* el retrato forma parte del propio bloque: fundido simple, sin giro */
+[data-hero-visual='photo'] img {
+	view-transition-name: none;
+}
+
+/* al llegar con transición, el bloque ya está en pantalla: sin animación de entrada */
+.vt-arrival [data-hero-visual] {
+	opacity: 1;
+}
+
+::view-transition-old(root) {
+	animation: vt-page-out 300ms ease both;
+}
+
+::view-transition-new(root) {
+	animation: vt-page-in 450ms ease 150ms both;
+}
+
+::view-transition-group(hero-visual),
+::view-transition-group(hero-image) {
+	animation-duration: 700ms;
+	animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* evita que la imagen se deforme si cambian sus proporciones */
+::view-transition-old(hero-image),
+::view-transition-new(hero-image) {
+	height: 100%;
+	object-fit: contain;
+}
+
+::view-transition-old(hero-image) {
+	animation: vt-image-out 380ms ease both;
+}
+
+::view-transition-new(hero-image) {
+	animation: vt-image-in 850ms cubic-bezier(0.22, 1, 0.36, 1) 180ms both;
+}
+
+@keyframes vt-page-out {
+	to {
+		opacity: 0;
+		transform: translateY(-1.5rem);
+	}
+}
+
+@keyframes vt-page-in {
+	from {
+		opacity: 0;
+	}
+}
+
+@keyframes vt-image-out {
+	to {
+		opacity: 0;
+		transform: scale(0.88) rotate(4deg);
+	}
+}
+
+@keyframes vt-image-in {
+	from {
+		opacity: 0;
+		transform: scale(0.85) rotate(-6deg);
+	}
+}

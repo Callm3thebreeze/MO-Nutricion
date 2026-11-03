@@ -28,17 +28,25 @@ const initMotion = async (): Promise<void> => {
 	const heroCopy = document.querySelector<HTMLElement>('[data-hero-copy]');
 	const heroVisual = document.querySelector<HTMLElement>('[data-hero-visual]');
 
-	if (heroCopy && heroVisual) {
-		const title = heroCopy.querySelector<HTMLElement>('[data-split-title]');
+	if (heroCopy) {
+		const title = heroCopy.querySelector<HTMLElement>('[data-split-title], .page-title');
 		const others = Array.from(heroCopy.children).filter((child) => child !== title);
 		const timeline = gsap.timeline({ defaults: { ease, duration: 1.1 } });
 
-		timeline.fromTo(
-			heroVisual,
-			{ clipPath: 'inset(0 0 0 100%)', opacity: 1 },
-			{ clipPath: 'inset(0 0 0 0%)', duration: 1.4, ease: 'power4.inOut' },
-		);
-		timeline.from(heroVisual.querySelector('img'), { scale: 0.85, rotate: -6, duration: 1.6 }, '<0.35');
+		// si se llega con transición de vista, el bloque ilustrado ya lo anima el navegador
+		if (heroVisual && !root.classList.contains('vt-arrival')) {
+			if (heroVisual.dataset.heroVisual === 'photo') {
+				// retrato: aparición sencilla
+				timeline.to(heroVisual, { opacity: 1, duration: 1.2, ease: 'power2.out' }, 0.2);
+			} else {
+				timeline.fromTo(
+					heroVisual,
+					{ clipPath: 'inset(0 0 0 100%)', opacity: 1 },
+					{ clipPath: 'inset(0 0 0 0%)', duration: 1.4, ease: 'power4.inOut' },
+				);
+				timeline.from(heroVisual.querySelector('img'), { scale: 0.85, rotate: -6, duration: 1.6 }, '<0.35');
+			}
+		}
 
 		if (title) {
 			const split = SplitText.create(title, { type: 'lines' });
@@ -51,6 +59,10 @@ const initMotion = async (): Promise<void> => {
 
 	// Títulos de página: entrada por líneas
 	document.querySelectorAll<HTMLElement>('.page-title').forEach((title) => {
+		if (title.closest('[data-hero-copy]')) {
+			return;
+		}
+
 		const split = SplitText.create(title, { type: 'lines' });
 		gsap.set(title, { opacity: 1 });
 		gsap.from(split.lines, {
@@ -131,6 +143,32 @@ const initMotion = async (): Promise<void> => {
 	if (window.location.hash) {
 		window.setTimeout(() => scrollToHash(window.location.hash, false), 50);
 	}
+
+	// Transición entre páginas: el bloque ilustrado solo se conserva si sigue a la vista
+	window.addEventListener('pageswap', (event) => {
+		const { viewTransition } = event as Event & { viewTransition: ViewTransition | null };
+		if (!viewTransition) {
+			return;
+		}
+
+		const visual = document.querySelector<HTMLElement>('[data-hero-visual]');
+		if (!visual) {
+			return;
+		}
+
+		if (visual.getBoundingClientRect().bottom < window.innerHeight * 0.35) {
+			visual.style.viewTransitionName = 'none';
+			visual.querySelector('img')?.style.setProperty('view-transition-name', 'none');
+			return;
+		}
+
+		// solo se marca cuando el bloque ilustrado viaja a la página siguiente
+		try {
+			sessionStorage.setItem('mo-view-transition', '1');
+		} catch {
+			// sin almacenamiento la página nueva repite la entrada completa
+		}
+	});
 
 	// Detiene el scroll suave mientras el menú móvil está abierto
 	new MutationObserver(() => {

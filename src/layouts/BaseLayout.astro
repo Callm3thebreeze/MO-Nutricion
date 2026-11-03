@@ -29,17 +29,7 @@ const { mainClass, ...seoProps } = Astro.props;
   <head>
     <SeoHead {...seoProps} />
     <slot name="head" />
-    <script is:inline>
-      // Oculta los elementos animados antes del primer pintado; si GSAP no llega a cargar, se muestran igualmente
-      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        document.documentElement.classList.add("js-motion");
-        window.setTimeout(() => {
-          if (!document.documentElement.classList.contains("motion-ready")) {
-            document.documentElement.classList.remove("js-motion");
-          }
-        }, 3000);
-      }
-    </script>
+    <script is:inline src="/motion-init.js"></script>
   </head>
   <body>
     <SkipLink />

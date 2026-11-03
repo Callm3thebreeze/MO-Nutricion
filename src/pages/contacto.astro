@@ -1,7 +1,9 @@
 ---
 import ContactForm from '../components/contact/ContactForm.astro';
+import PageHero from '../components/ui/PageHero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/components/contact.css';
+import '../styles/components/pages.css';
 ---
 
 <BaseLayout
@@ -10,5 +12,17 @@ description="Reserva tu primera consulta de nutrición con Mara Olivares, online
 canonicalPath="/contacto"
 mainClass="contact-main"
 >
+<PageHero>
+<p class="page-label">Contacto</p>
+<h1 class="page-title">Empecemos por conocer <span class="serif-accent">tu caso</span></h1>
+<p class="page-hero__lead">
+Si quieres comenzar un proceso de acompañamiento nutricional, puedes
+solicitar tu primera consulta presencial en Albacete u online.
+</p>
+<p class="page-hero__text">
+Cada proceso comienza con una valoración individualizada para conocer
+tus necesidades y establecer las prioridades de trabajo.
+</p>
+</PageHero>
 <ContactForm />
 </BaseLayout>

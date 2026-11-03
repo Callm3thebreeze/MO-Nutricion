@@ -59,6 +59,10 @@
 	filter: drop-shadow(0 1.5rem 2rem rgba(29, 39, 88, 0.18));
 }
 
+.home-hero__image--wide {
+	width: min(94%, 39rem);
+}
+
 .home-hero__lead strong {
 	font-weight: 700;
 }

@@ -1,9 +1,8 @@
 ---
-import citrusImage from "../../assets/servicios/naranja-alcachofa.png";
 import PageCta from "../../components/ui/PageCta.astro";
+import PageHero from "../../components/ui/PageHero.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { areas } from "../../lib/content";
-import "../../styles/components/services.css";
 import "../../styles/components/pages.css";
 ---
 
@@ -13,19 +12,18 @@ import "../../styles/components/pages.css";
   canonicalPath="/servicios"
   mainClass="pages-main"
 >
-  <section class="services-hero">
-    <div class="services-hero__copy">
+  <PageHero>
       <p class="page-label">Áreas de especialización</p>
       <h1 class="page-title">
         Tres áreas, una misma <span class="serif-accent">forma de trabajar</span>
       </h1>
-      <p class="services-hero__lead">
+      <p class="page-hero__lead">
         Cada organismo tiene unas necesidades y cada situación requiere una
         valoración diferente. Mi consulta se estructura en tres áreas de
         especialización que permiten abordar la salud desde una perspectiva
         nutricional individualizada.
       </p>
-      <nav class="services-hero__index" aria-label="Índice de áreas">
+      <nav class="page-hero__index" aria-label="Índice de áreas">
         <ol>
           {
             areas.map((area, index) => (
@@ -39,20 +37,7 @@ import "../../styles/components/pages.css";
           }
         </ol>
       </nav>
-    </div>
-
-    <div class="checker-panel services-hero__visual">
-      <img
-        src={citrusImage.src}
-        width={citrusImage.width}
-        height={citrusImage.height}
-        alt="Naranja y alcachofa con efecto halftone"
-        loading="eager"
-        decoding="async"
-        fetchpriority="high"
-      />
-    </div>
-  </section>
+  </PageHero>
 
   <section class="services-areas">
     <div class="container">

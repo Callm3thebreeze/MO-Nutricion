@@ -1,5 +1,6 @@
 ---
 import PageCta from "../components/ui/PageCta.astro";
+import PageHero from "../components/ui/PageHero.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { methodPhases, processAssessment } from "../lib/content";
 import "../styles/components/pages.css";
@@ -11,26 +12,20 @@ import "../styles/components/pages.css";
   canonicalPath="/como-trabajo"
   mainClass="pages-main"
 >
-  <section class="page-intro">
-    <div class="container page-intro__inner">
-      <div class="page-intro__heading">
-        <p class="page-label">Cómo trabajo</p>
-        <h1 class="page-title">
-          Un proceso individualizado, <span class="serif-accent">no una dieta estándar</span>
-        </h1>
-      </div>
-      <div class="page-intro__text">
-        <p>Cada consulta comienza por conocer tu situación y comprender qué necesitas.</p>
-        <p>
-          No trabajo con menús cerrados ni con protocolos universales. Mi
-          metodología parte de una valoración individualizada y se desarrolla
-          mediante una estrategia nutricional que se adapta a tu evolución.
-        </p>
-      </div>
-    </div>
-  </section>
+  <PageHero>
+    <p class="page-label">Cómo trabajo</p>
+    <h1 class="page-title">
+      Un proceso individualizado, <span class="serif-accent">no una dieta estándar</span>
+    </h1>
+    <p class="page-hero__lead">Cada consulta comienza por conocer tu situación y comprender qué necesitas.</p>
+    <p class="page-hero__text">
+      No trabajo con menús cerrados ni con protocolos universales. Mi
+      metodología parte de una valoración individualizada y se desarrolla
+      mediante una estrategia nutricional que se adapta a tu evolución.
+    </p>
+  </PageHero>
 
-  <section class="method">
+  <section class="method pages-section">
     <div class="container">
       <ol class="phase-list">
         {

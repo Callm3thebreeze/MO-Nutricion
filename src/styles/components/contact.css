@@ -1,5 +1,5 @@
 .contact-section {
-	padding: clamp(3rem, 6vw, 5rem) 0 var(--page-space);
+	padding: var(--page-space) 0;
 }
 
 .contact-wrapper {
@@ -17,27 +17,12 @@
 	gap: 2rem;
 }
 
-.contact-intro__lead {
-	max-width: 30rem;
-	font-size: 1.125rem;
-	line-height: 1.6;
-	color: var(--color-brand-navy);
-}
-
-.contact-intro__text {
-	max-width: 30rem;
-	font-size: 1.03rem;
-	line-height: 1.65;
-	margin-top: -1rem;
-}
-
 .contact-form {
 	scroll-margin-top: 7rem;
 }
 
 .contact-steps {
 	max-width: 32rem;
-	margin-top: 1rem;
 	border-bottom: 1px solid var(--color-line);
 }
 

@@ -1,5 +1,6 @@
 ---
 import PageCta from "../components/ui/PageCta.astro";
+import PageHero from "../components/ui/PageHero.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { consultations, packConditions, schedule } from "../lib/content";
 import "../styles/components/pages.css";
@@ -11,24 +12,18 @@ import "../styles/components/pages.css";
   canonicalPath="/consultas"
   mainClass="pages-main"
 >
-  <section class="page-intro">
-    <div class="container page-intro__inner">
-      <div class="page-intro__heading">
-        <p class="page-label">Consultas y tarifas</p>
-        <h1 class="page-title">
-          Consultas y <span class="serif-accent">acompañamiento nutricional</span>
-        </h1>
-      </div>
-      <div class="page-intro__text">
-        <p>
-          Cada proceso comienza con una valoración individualizada para conocer
-          tus necesidades y establecer las prioridades de trabajo.
-        </p>
-      </div>
-    </div>
-  </section>
+  <PageHero>
+    <p class="page-label">Consultas y tarifas</p>
+    <h1 class="page-title">
+      Consultas y <span class="serif-accent">acompañamiento nutricional</span>
+    </h1>
+    <p class="page-hero__lead">
+      Cada proceso comienza con una valoración individualizada para conocer
+      tus necesidades y establecer las prioridades de trabajo.
+    </p>
+  </PageHero>
 
-  <section class="fees">
+  <section class="fees pages-section">
     <div class="container">
       <ul class="fee-list">
         {
