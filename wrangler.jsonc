@@ -10,9 +10,7 @@
 		"CONTACT_TO_EMAIL": "hola@maraolivares.com",
 		"CONTACT_FROM_EMAIL": "Mara Olivares Nutrició <contacto@maraolivaresnutricio.com>"
 	},
-	"secrets": {
-		"required": ["RESEND_API_KEY"]
-	},
+	// RESEND_API_KEY: añadir como secreto en Cloudflare cuando se active el formulario de contacto
 	"kv_namespaces": [
 		{
 			"binding": "SESSION"
