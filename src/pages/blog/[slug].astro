@@ -3,7 +3,6 @@ import { PortableText } from 'astro-portabletext';
 
 import defaultCoverImage from '../../assets/logo/alt-logo.png';
 import BlogMeta from '../../components/blog/BlogMeta.astro';
-import WaveDivider from '../../components/ui/WaveDivider.astro';
 import { getPostBySlug } from '../../lib/emdash';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/components/blog.css';
@@ -50,7 +49,7 @@ const coverImageSrc = usesDefaultCover
 						: `https://maraolivaresnutricio.com${coverImageSrc}`,
 					publisher: {
 						'@type': 'Organization',
-						name: 'Mara Olivares Nutrició',
+						name: 'Mara Olivares Nutrición Integrativa',
 					},
 				})}
 			</script>
@@ -59,16 +58,17 @@ const coverImageSrc = usesDefaultCover
 
 	{
 		post ? (
-			<section class="section article-section">
+			<section class="article-section">
 				<div class="container article-layout">
 					<article>
 						<header class="article-header scroll-reveal">
-							<a class="button button--text article-back" href="/blog">← Volver al blog</a>
-							<p class="eyebrow">Artículo</p>
-							<h1>{post.title}</h1>
-							<WaveDivider />
-							<p class="article-excerpt">{post.excerpt}</p>
+							<a class="link-arrow link-arrow--back article-back" href="/blog">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
+								Volver al blog
+							</a>
 							<BlogMeta publishedAt={post.publishedAt} category={post.category} tags={post.tags} />
+							<h1 class="page-title">{post.title}</h1>
+							<p class="article-excerpt">{post.excerpt}</p>
 							<img
 								src={coverImageSrc}
 								alt={post.coverImage.alt}
@@ -85,16 +85,20 @@ const coverImageSrc = usesDefaultCover
 						</div>
 
 						<footer class="article-footer scroll-reveal">
-							<p>Si quieres un plan adaptado a tu caso, puedo ayudarte en consulta.</p>
-							<a class="button" href="/contacto">Solicitar valoración</a>
+							<div class="cta-panel cta-panel--compact">
+								<h2>¿Quieres una estrategia <span class="serif-accent">adaptada a ti?</span></h2>
+								<p>Valoramos tu caso en una primera consulta de 90 minutos, online o presencial en Albacete.</p>
+								<a class="button" href="/contacto">Agenda tu primera consulta</a>
+							</div>
 						</footer>
 					</article>
 				</div>
 			</section>
 		) : (
-			<section class="section">
+			<section class="not-found-section">
 				<div class="container not-found">
-					<h1>Artículo no encontrado</h1>
+					<p class="page-label">Error 404</p>
+					<h1 class="page-title">Artículo no <span class="serif-accent">encontrado</span></h1>
 					<p>El contenido que buscas no está disponible o ya no está publicado.</p>
 					<a class="button" href="/blog">Volver al blog</a>
 				</div>

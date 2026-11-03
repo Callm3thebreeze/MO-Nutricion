@@ -1,15 +1,18 @@
 ---
-import ApproachSteps from '../components/home/ApproachSteps.astro';
+import HomeAbout from '../components/home/HomeAbout.astro';
 import HomeCta from '../components/home/HomeCta.astro';
 import HomeHero from '../components/home/HomeHero.astro';
+import HomeIntro from '../components/home/HomeIntro.astro';
+import HomeIndicators from '../components/home/HomeIndicators.astro';
+import HomeStatement from '../components/home/HomeStatement.astro';
 import ServicesSummary from '../components/home/ServicesSummary.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/components/home.css';
 ---
 
 <BaseLayout
-title="Nutrición clínica digestiva, microbiota y salud hormonal"
-description="Clínica nutricional en español especializada en digestivo, microbiota y salud hormonal con planes personalizados."
+title="Nutrición integrativa: salud hormonal, digestiva y metabólica"
+description="Consulta de nutrición clínica e integrativa con rigor científico. Salud hormonal y fertilidad en la mujer, microbiota y salud digestiva, y salud metabólica. Online y presencial en Albacete."
 canonicalPath="/"
 mainClass="home-main"
 >
@@ -17,14 +20,17 @@ mainClass="home-main"
 		{JSON.stringify({
 			'@context': 'https://schema.org',
 			'@type': 'MedicalBusiness',
-			name: 'Mara Olivares Nutrició',
+			name: 'Mara Olivares Nutrición Integrativa',
 			url: 'https://maraolivaresnutricio.com',
-			areaServed: 'España',
-			medicalSpecialty: ['Nutrition', 'Digestive Health', 'Hormonal Health'],
+			areaServed: ['España', 'Albacete'],
+			medicalSpecialty: ['Nutrition', 'Gastroenterologic', 'Endocrinology', 'Obstetric'],
 		})}
 	</script>
 	<HomeHero />
-<ServicesSummary />
-<ApproachSteps />
-<HomeCta />
+	<HomeIntro />
+	<ServicesSummary />
+	<HomeStatement />
+	<HomeIndicators />
+	<HomeAbout />
+	<HomeCta />
 </BaseLayout>

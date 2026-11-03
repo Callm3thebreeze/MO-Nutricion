@@ -1,0 +1,38 @@
+---
+interface Props {
+  text?: string;
+  href?: string;
+  label?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+  spaced?: boolean;
+}
+
+const {
+  text,
+  href = "/contacto",
+  label = "Reserva tu consulta",
+  secondaryHref,
+  secondaryLabel,
+  spaced = false,
+} = Astro.props;
+---
+
+<section class={`pages-cta ${spaced ? "pages-cta--spaced" : ""}`}>
+  <div class="container">
+    <div class="cta-panel cta-panel--compact scroll-reveal">
+      <h2><slot /></h2>
+      {text && <p>{text}</p>}
+      <div class="button-row">
+        <a class="button" href={href}>{label}</a>
+        {
+          secondaryHref && secondaryLabel && (
+            <a class="button button--secondary" href={secondaryHref}>
+              {secondaryLabel}
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

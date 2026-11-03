@@ -1,52 +1,57 @@
 ---
-import heroImage from "../../assets/hero.png";
+import eggsImage from "../../assets/eggs.png";
+import pomegranateImage from "../../assets/granade.png";
+import orangeImage from "../../assets/orange.png";
+import asparagusImage from "../../assets/sparagus.png";
+import tomatoesImage from "../../assets/tomatoes.png";
+
+// la página se renderiza en cada petición: cada visita muestra una imagen al azar,
+// con más probabilidad cuanto mayor es su peso. Las composiciones apaisadas se muestran algo más grandes.
+const heroImages = [
+  { image: tomatoesImage, alt: "Tomates en rama con efecto halftone", weight: 3 },
+  { image: pomegranateImage, alt: "Granada abierta y calabaza con efecto halftone", weight: 3 },
+  { image: asparagusImage, alt: "Manojo de espárragos y huevo con efecto halftone", weight: 2, wide: true },
+  { image: orangeImage, alt: "Naranja y alcachofa con efecto halftone", weight: 2, wide: true },
+  { image: eggsImage, alt: "Huevos fritos con efecto halftone", weight: 1 },
+];
+
+const pickWeighted = <T extends { weight: number }>(items: T[]): T => {
+  let ticket = Math.random() * items.reduce((total, item) => total + item.weight, 0);
+  return items.find((item) => (ticket -= item.weight) < 0) ?? items[0];
+};
+
+const hero = pickWeighted(heroImages);
 ---
 
-<section class="home-hero section" id="inicio">
-  <img
-    src={heroImage.src}
-    width={heroImage.width}
-    height={heroImage.height}
-    alt="Mara Olivares"
-    class="home-hero__image"
-    loading="eager"
-    decoding="async"
-  />
-
-  <div class="container home-hero__grid">
-    <div class="home-hero__intro">
-      <h1>
-        <span class="home-hero__title-line home-hero__title-line--top">
-          <span class="home-hero__title-bold">Nutrición real</span>
-          <span class="home-hero__title-regular home-hero__title-para"
-            >para</span
-          >
-        </span>
-        <span class="home-hero__title-line home-hero__title-line--bottom">
-          <span class="home-hero__title-regular home-hero__title-una">una</span>
-          <span class="home-hero__title-serif">vida mejor</span>
-        </span>
-      </h1>
+<section class="home-hero" id="inicio">
+  <div class="home-hero__copy" data-hero-copy>
+    <!-- Claim provisional: pendiente de definir con la clienta -->
+    <h1 class="home-hero__title" data-split-title>
+      Nutrición real <span class="home-hero__title-light">para una</span>
+      <span class="serif-accent">vida</span>
+      <span class="serif-accent home-hero__mark">mejor</span>
+    </h1>
+    <p class="home-hero__lead">
+      Te acompaño a construir hábitos saludables que se adapten a ti, con
+      ciencia, empatía y <strong>resultados duraderos</strong>.
+    </p>
+    <div class="home-hero__actions">
+      <a class="button" href="/como-trabajo">Conoce mi método de trabajo</a>
+      <a class="button button--secondary" href="/contacto">Reserva tu consulta</a>
     </div>
   </div>
 
-  <div class="home-hero__subtitle-band">
-    <div class="container">
-      <p>
-        Te acompaño a construir hábitos saludables que se adapten a ti, con
-        ciencia, empatía y <strong>resultados duraderos.</strong>
-      </p>
-    </div>
-  </div>
-
-  <div class="container home-hero__actions">
-    <a
-      class="button home-hero__button home-hero__button--light"
-      href="/servicios">Servicios</a
-    >
-    <a
-      class="button home-hero__button home-hero__button--cream"
-      href="/contacto">Agenda tu cita</a
-    >
+  <div class="home-hero__visual" data-hero-visual>
+    <img
+      src={hero.image.src}
+      width={hero.image.width}
+      height={hero.image.height}
+      alt={hero.alt}
+      class={`home-hero__image ${hero.wide ? "home-hero__image--wide" : ""}`}
+      data-speed="0.88"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+    />
   </div>
 </section>

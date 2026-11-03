@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 
+import { areas } from '../lib/content';
 import { getPosts } from '../lib/emdash';
 import { absoluteUrl } from '../lib/seo';
 
@@ -31,7 +32,17 @@ const toIsoDate = (value: string | undefined): string | undefined => {
 
 export const GET: APIRoute = async ({ site }) => {
   const posts = await getPosts();
-  const staticPaths = ['/', '/blog', '/contacto'];
+  const staticPaths = [
+    '/',
+    '/sobre-mi',
+    '/servicios',
+    ...areas.map((area) => `/servicios/${area.slug}`),
+    '/como-trabajo',
+    '/consultas',
+    '/preguntas-frecuentes',
+    '/blog',
+    '/contacto',
+  ];
 
   const entries: SitemapItem[] = [
     ...staticPaths.map((path) => ({

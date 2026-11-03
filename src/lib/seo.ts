@@ -1,8 +1,8 @@
 const FALLBACK_SITE_URL = 'https://maraolivaresnutricio.com';
 
-export const SITE_NAME = 'Mara Olivares Nutrició';
+export const SITE_NAME = 'Mara Olivares Nutrición Integrativa';
 export const SITE_DESCRIPTION =
-'Nutrición clínica en español especializada en salud digestiva, microbiota y salud hormonal.';
+'Nutrición clínica e integrativa con rigor científico: salud hormonal y fertilidad en la mujer, microbiota y salud digestiva, y salud metabólica. Consulta online y presencial en Albacete.';
 
 export const getSiteUrl = (site?: URL | string): string => {
 if (site instanceof URL) {

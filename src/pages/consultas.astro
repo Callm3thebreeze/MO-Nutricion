@@ -1,0 +1,85 @@
+---
+import PageCta from "../components/ui/PageCta.astro";
+import PageHero from "../components/ui/PageHero.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { consultations, packConditions, schedule } from "../lib/content";
+import "../styles/components/pages.css";
+---
+
+<BaseLayout
+  title="Consultas y tarifas"
+  description="Primera consulta de 90 minutos, consultas de seguimiento y pack de acompañamiento nutricional. Online o presencial en Albacete."
+  canonicalPath="/consultas"
+  mainClass="pages-main"
+>
+  <PageHero>
+    <p class="page-label">Consultas y tarifas</p>
+    <h1 class="page-title">
+      Consultas y <span class="serif-accent">acompañamiento nutricional</span>
+    </h1>
+    <p class="page-hero__lead">
+      Cada proceso comienza con una valoración individualizada para conocer
+      tus necesidades y establecer las prioridades de trabajo.
+    </p>
+  </PageHero>
+
+  <section class="fees pages-section">
+    <div class="container">
+      <ul class="fee-list">
+        {
+          consultations.map((item, index) => (
+            <li
+              class={`fee-card scroll-reveal ${item.featured ? "fee-card--featured" : ""}`}
+              style={`--home-reveal-delay: ${index * 80}ms`}
+            >
+              <h2>{item.title}</h2>
+              <p class="fee-card__price">{item.price}</p>
+              <p class="fee-card__detail">{item.detail}</p>
+              <p class="fee-card__description">{item.description}</p>
+              <h3>Incluye</h3>
+              <ul class="ruled-list">
+                {item.includes.map((line) => <li>{line}</li>)}
+              </ul>
+              {item.note && <p class="fee-card__note">{item.note}</p>}
+            </li>
+          ))
+        }
+      </ul>
+      <div class="fee-conditions scroll-reveal">
+        <strong>Condiciones del pack</strong>
+        {packConditions.map((condition) => <span>{condition}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="split-section split-section--cream" style="margin-top: var(--page-space)">
+    <div class="container split-section__inner scroll-reveal">
+      <h2 class="split-section__label">Modalidades de consulta</h2>
+      <div class="split-section__body">
+        <div class="modality-grid">
+          {
+            schedule.map((item) => (
+              <div class="modality">
+                <h3>{item.mode}</h3>
+                <p class="modality__time">
+                  {item.days} · {item.time}
+                </p>
+                <p>{item.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <PageCta
+    spaced
+    text="¿Tienes dudas antes de empezar? Revisa las preguntas frecuentes o escríbeme."
+    label="Reserva tu consulta"
+    secondaryHref="/preguntas-frecuentes"
+    secondaryLabel="Preguntas frecuentes"
+  >
+    Reserva tu <span class="serif-accent">primera consulta</span>
+  </PageCta>
+</BaseLayout>

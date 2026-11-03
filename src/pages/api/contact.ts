@@ -6,10 +6,10 @@ export const prerender = false;
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const reasons: Record<string, string> = {
-  digestivo: "Síntomas digestivos",
-  microbiota: "Microbiota",
-  hormonal: "Salud hormonal",
-  habitos: "Hábitos y educación nutricional",
+  hormonal: "Salud hormonal y fertilidad en la mujer",
+  digestivo: "Microbiota y salud digestiva",
+  metabolica: "Salud metabólica",
+  otro: "Otro motivo",
 };
 
 const json = (body: unknown, status = 200): Response =>
@@ -109,7 +109,7 @@ export const POST: APIRoute = async ({ request }) => {
   const toEmail = getSecret("CONTACT_TO_EMAIL") ?? "hola@maraolivares.com";
   const fromEmail =
     getSecret("CONTACT_FROM_EMAIL") ??
-    "Mara Olivares Nutrició <contacto@maraolivaresnutricio.com>";
+    "Mara Olivares Nutrición Integrativa <contacto@maraolivaresnutricio.com>";
 
   if (!apiKey) {
     console.error("Missing RESEND_API_KEY binding");
