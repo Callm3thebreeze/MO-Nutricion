@@ -1,0 +1,106 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { areas } from "../../lib/content";
+import "../../styles/components/pages.css";
+
+const index = areas.findIndex((item) => item.slug === Astro.params.slug);
+
+if (index === -1) {
+  return Astro.rewrite("/404");
+}
+
+const area = areas[index];
+const otherAreas = areas
+  .map((item, position) => ({ ...item, position }))
+  .filter((item) => item.slug !== area.slug);
+---
+
+<BaseLayout
+  title={area.title}
+  description={area.summary.join(" ")}
+  canonicalPath={`/servicios/${area.slug}`}
+  mainClass="pages-main"
+>
+  <section class="page-intro">
+    <div class="container page-intro__inner">
+      <div class="page-intro__heading">
+        <a class="link-arrow link-arrow--back" href="/servicios">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg>
+          Áreas de especialización
+        </a>
+        <p class="page-label">Área 0{index + 1}</p>
+        <h1 class="page-title">{area.title}</h1>
+        {area.forEveryone && (
+          <span class="audience-tag">Esta área está dirigida tanto a hombres como a mujeres</span>
+        )}
+      </div>
+      <div class="page-intro__text">
+        {area.intro.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="split-section">
+    <div class="container split-section__inner">
+      <h2 class="split-section__label scroll-reveal">¿En qué podemos trabajar?</h2>
+      <div class="split-section__body">
+        <ul class="topic-grid">
+          {
+            area.topics.map((topic, topicIndex) => (
+              <li
+                class="topic-grid__item scroll-reveal"
+                style={`--home-reveal-delay: ${(topicIndex % 2) * 80}ms`}
+              >
+                <span class="topic-grid__number serif-accent" aria-hidden="true">
+                  {String(topicIndex + 1).padStart(2, "0")}
+                </span>
+                <h3>{topic.title}</h3>
+                <p>{topic.description}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  {
+    area.extra && (
+      <section class="split-section split-section--cream">
+        <div class="container split-section__inner scroll-reveal">
+          <h2 class="split-section__label">{area.extra.title}</h2>
+          <div class="split-section__body">
+            <p class="split-section__statement">{area.extra.paragraphs[0]}</p>
+            <div class="text-columns">
+              {area.extra.paragraphs.slice(1).map((paragraph) => <p>{paragraph}</p>)}
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="area-closing">
+    <div class="container area-closing__inner scroll-reveal">
+      <p class="area-closing__text">{area.closing}</p>
+      <a class="button" href="/contacto">Reserva tu consulta</a>
+    </div>
+  </section>
+
+  <nav class="area-nav" aria-label="Otras áreas de especialización">
+    <div class="container">
+      <ul class="area-nav__list">
+        {
+          otherAreas.map((item) => (
+            <li>
+              <a href={`/servicios/${item.slug}`}>
+                <span class="page-label">Área 0{item.position + 1}</span>
+                <strong>{item.title}</strong>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </nav>
+</BaseLayout>

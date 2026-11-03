@@ -1,70 +1,59 @@
 ---
 import mainLogo from "../../assets/logo/simple-logo.png";
-import {
-  EnvelopeIcon,
-  PhoneIcon,
-  MapPinIcon,
-} from "@heroicons/react/24/outline";
 ---
 
 <footer class="site-footer">
   <div class="container site-footer__inner">
     <div class="site-footer__brand">
       <a
-        class="site-footer__logo-glass"
+        class="site-footer__logo"
         href="/"
-        aria-label="Mara Olivares Nutrició, ir al inicio"
+        aria-label="Mara Olivares Nutrición Integrativa, ir al inicio"
       >
         <img
           src={mainLogo.src}
           width={mainLogo.width}
           height={mainLogo.height}
-          alt="Logotipo de Mara Olivares Nutrició"
+          alt="Logotipo de Mara Olivares Nutrición Integrativa"
           loading="lazy"
           decoding="async"
         />
       </a>
-      <p>Nutrición real, hábitos que suman bienestar.</p>
+      <p>Salud hormonal y fertilidad en la mujer · Microbiota y salud digestiva · Salud metabólica.</p>
+      <p>Consulta presencial en Albacete y online.<br />Colegiada MAD01729.</p>
     </div>
 
-    <div class="site-footer__column">
-      <h2>Servicios</h2>
+    <nav class="site-footer__column" aria-label="Navegación del pie">
+      <h2>Navegación</h2>
       <ul class="site-footer__list">
-        <li>Consulta nutricional</li>
-        <li>Nutrición clínica</li>
-        <li>Salud digestiva</li>
-        <li>Nutrición deportiva</li>
-        <li>Salud hormonal</li>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/sobre-mi">Sobre mí</a></li>
+        <li><a href="/servicios">Áreas de especialización</a></li>
+        <li><a href="/como-trabajo">Cómo trabajo</a></li>
+        <li><a href="/consultas">Consultas y tarifas</a></li>
+        <li><a href="/preguntas-frecuentes">Preguntas frecuentes</a></li>
+        <li><a href="/contacto">Contacto</a></li>
       </ul>
-    </div>
+    </nav>
 
     <div class="site-footer__column">
       <h2>Contacto</h2>
-      <ul class="site-footer__contact">
-        <li>
-          <EnvelopeIcon
-            className="site-footer__contact-icon"
-            aria-hidden="true"
-          />
-          <a href="mailto:hola@maraolivares.com">hola@maraolivares.com</a>
-        </li>
-        <li>
-          <PhoneIcon className="site-footer__contact-icon" aria-hidden="true" />
-          <a href="tel:+34600135465">+34 600 135 465</a>
-        </li>
-        <li>
-          <MapPinIcon
-            className="site-footer__contact-icon"
-            aria-hidden="true"
-          />
-          <span>Consultas presenciales y online</span>
-        </li>
+      <ul class="site-footer__list">
+        <li><a href="mailto:hola@maraolivares.com">hola@maraolivares.com</a></li>
+        <li><a href="tel:+34600135465">+34 600 135 465</a></li>
+        <li>Online · martes y jueves</li>
+        <li>Presencial en Albacete · miércoles</li>
       </ul>
+    </div>
+
+    <div class="site-footer__column">
+      <h2>Primera consulta</h2>
+      <a class="button button--secondary" href="/contacto">Agenda tu cita</a>
     </div>
   </div>
 
   <div class="container site-footer__legal">
+    <p>© {new Date().getFullYear()} Mara Olivares – Nutrición Integrativa</p>
     <p>Aviso legal y política de privacidad disponibles próximamente.</p>
-    <p>© {new Date().getFullYear()} Mara Olivares Nutrició</p>
   </div>
 </footer>

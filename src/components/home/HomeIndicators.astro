@@ -1,0 +1,36 @@
+---
+import { healthIndicators } from "../../lib/content";
+---
+
+<section class="home-values">
+  <div class="container home-values__inner">
+    <div class="heading-row home-reveal">
+      <h2 class="display-title">
+        Tu salud no se define por un <span class="serif-accent">único parámetro</span>
+      </h2>
+      <p class="heading-row__text">
+        Una analítica aporta información muy valiosa, pero no cuenta por sí
+        sola toda la historia. Durante el proceso también prestamos atención a
+        otros indicadores que nos ayudan a valorar tu evolución.
+      </p>
+    </div>
+    <ul class="values-grid">
+      {
+        healthIndicators.map((indicator, index) => (
+          <li
+            class="values-grid__item home-reveal"
+            style={`--home-reveal-delay: ${(index % 3) * 80}ms`}
+          >
+            <h3>{indicator.title}</h3>
+            <p>{indicator.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="home-values__closing home-reveal">
+      La evolución no se mide únicamente en resultados analíticos, sino también
+      en <span class="serif-accent">cómo te encuentras</span> y en los cambios
+      que consigues mantener.
+    </p>
+  </div>
+</section>

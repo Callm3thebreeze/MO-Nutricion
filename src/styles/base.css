@@ -4,11 +4,8 @@ html {
 font-family: var(--font-body);
 line-height: 1.55;
 color: var(--color-text);
-background:
-radial-gradient(35rem 20rem at 80% -8%, rgba(255, 243, 196, 0.8), transparent 70%),
-radial-gradient(28rem 16rem at -4% 22%, rgba(223, 243, 230, 0.72), transparent 72%),
-radial-gradient(32rem 18rem at 90% 78%, rgba(234, 241, 255, 0.85), transparent 72%),
-var(--color-bg);
+background: var(--color-bg);
+-webkit-font-smoothing: antialiased;
 scroll-behavior: smooth;
 }
 
@@ -41,9 +38,9 @@ h3,
 h4 {
 font-family: var(--font-display);
 line-height: 1.08;
-font-weight: 800;
-letter-spacing: -0.03em;
-color: var(--color-brand-blue-strong);
+font-weight: 700;
+letter-spacing: -0.035em;
+color: var(--color-brand-blue);
 }
 
 h1 {
@@ -55,7 +52,7 @@ font-size: clamp(1.65rem, 3.6vw, 2.8rem);
 }
 
 p {
-color: var(--color-text-soft);
+color: var(--color-brand-navy-soft);
 }
 
 main {

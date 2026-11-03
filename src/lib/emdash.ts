@@ -5,7 +5,7 @@ import { POST_CATEGORIES, type BlogPost, type PostCategory } from '../content/sc
 import { asBoolean, asString, asStringArray, isRecord, toPortableText } from './validators';
 
 const DEFAULT_COVER_IMAGE = mainLogo.src;
-const DEFAULT_COVER_ALT = 'Logotipo de Mara Olivares Nutrició';
+const DEFAULT_COVER_ALT = 'Logotipo de Mara Olivares Nutrición Integrativa';
 const POSTS_CACHE_TTL_MS = 60_000;
 
 let postsCache:

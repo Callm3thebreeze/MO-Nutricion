@@ -1,6 +1,5 @@
 ---
 import BlogList from "../../components/blog/BlogList.astro";
-import WaveDivider from "../../components/ui/WaveDivider.astro";
 import { getPosts } from "../../lib/emdash";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/components/blog.css";
@@ -10,29 +9,21 @@ const posts = await getPosts();
 
 <BaseLayout
   title="Blog de nutrición"
-  description="Artículos en español sobre digestión, microbiota y salud hormonal para mejorar tu bienestar diario."
+  description="Artículos sobre salud hormonal, microbiota, salud digestiva y salud metabólica, con rigor científico."
   canonicalPath="/blog"
 >
-  <section class="section blog-index">
-    <div class="container blog-index__inner">
-      <div class="blog-index__copy scroll-reveal">
-        <p class="eyebrow">Recursos y consejos</p>
-        <h1>Blog de nutrición</h1>
-        <WaveDivider />
-        <p class="blog-intro">
-          Artículos prácticos para entender tus síntomas, cuidar tu digestión y
-          construir hábitos sostenibles paso a paso.
-        </p>
-      </div>
-      <aside
-        class="blog-index__panel scroll-reveal"
-        style="--home-reveal-delay: 90ms"
-      >
-        <p>
-          Lecturas para tomar mejores decisiones sin ruido, con criterio y
-          calma.
-        </p>
-      </aside>
+  <section class="blog-index">
+    <div class="container">
+      <header class="blog-index__header scroll-reveal">
+        <p class="page-label">Recursos y consejos</p>
+        <div class="heading-row">
+          <h1 class="page-title">Blog de <span class="serif-accent">nutrición</span></h1>
+          <p class="heading-row__text">
+            Artículos para entender tus síntomas y cuidar tu salud hormonal,
+            digestiva y metabólica con criterio y sin ruido.
+          </p>
+        </div>
+      </header>
       <BlogList posts={posts} />
     </div>
   </section>

@@ -5,8 +5,10 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 const isHome = pathname === "/";
 
 const navItems = [
-  { href: "/#sobre-mi", label: "Sobre mí" },
-  { href: "/servicios", label: "Servicios" },
+  { href: "/sobre-mi", label: "Sobre mí" },
+  { href: "/servicios", label: "Áreas" },
+  { href: "/como-trabajo", label: "Cómo trabajo" },
+  { href: "/consultas", label: "Consultas" },
   { href: "/contacto", label: "Contacto" },
 ];
 
@@ -30,13 +32,13 @@ const isActive = (href: string): boolean => {
     <a
       class="site-logo"
       href="/"
-      aria-label="Mara Olivares Nutrició, ir al inicio"
+      aria-label="Mara Olivares Nutrición Integrativa, ir al inicio"
     >
       <img
         src={mainLogo.src}
         width={mainLogo.width}
         height={mainLogo.height}
-        alt="Logotipo de Mara Olivares Nutrició"
+        alt="Logotipo de Mara Olivares Nutrición Integrativa"
         loading="eager"
         decoding="async"
       />

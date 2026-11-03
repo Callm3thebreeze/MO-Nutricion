@@ -1,0 +1,96 @@
+---
+import citrusImage from "../../assets/servicios/naranja-alcachofa.png";
+import PageCta from "../../components/ui/PageCta.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { areas } from "../../lib/content";
+import "../../styles/components/services.css";
+import "../../styles/components/pages.css";
+---
+
+<BaseLayout
+  title="Áreas de especialización"
+  description="Áreas de especialización de Mara Olivares: salud hormonal y fertilidad en la mujer, microbiota y salud digestiva, y salud metabólica."
+  canonicalPath="/servicios"
+  mainClass="pages-main"
+>
+  <section class="services-hero">
+    <div class="services-hero__copy">
+      <p class="page-label">Áreas de especialización</p>
+      <h1 class="page-title">
+        Tres áreas, una misma <span class="serif-accent">forma de trabajar</span>
+      </h1>
+      <p class="services-hero__lead">
+        Cada organismo tiene unas necesidades y cada situación requiere una
+        valoración diferente. Mi consulta se estructura en tres áreas de
+        especialización que permiten abordar la salud desde una perspectiva
+        nutricional individualizada.
+      </p>
+      <nav class="services-hero__index" aria-label="Índice de áreas">
+        <ol>
+          {
+            areas.map((area, index) => (
+              <li>
+                <a href={`/servicios/${area.slug}`}>
+                  <span class="serif-accent">0{index + 1}</span>
+                  {area.title}
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+      </nav>
+    </div>
+
+    <div class="checker-panel services-hero__visual">
+      <img
+        src={citrusImage.src}
+        width={citrusImage.width}
+        height={citrusImage.height}
+        alt="Naranja y alcachofa con efecto halftone"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
+    </div>
+  </section>
+
+  <section class="services-areas">
+    <div class="container">
+      <ul class="area-list">
+        {
+          areas.map((area, index) => (
+            <li id={area.slug} class="area-list__item scroll-reveal">
+              <span class="area-list__number serif-accent" aria-hidden="true">0{index + 1}</span>
+              <div class="area-list__main">
+                <h2>
+                  <a href={`/servicios/${area.slug}`}>{area.title}</a>
+                </h2>
+                {area.summary.map((paragraph) => <p>{paragraph}</p>)}
+                {area.forEveryone && <span class="audience-tag">Para hombres y mujeres</span>}
+                <a class="link-arrow" href={`/servicios/${area.slug}`}>
+                  Descubre esta área
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+                </a>
+              </div>
+              <div class="area-list__topics">
+                <h3>Algunos motivos de consulta</h3>
+                <ul class="ruled-list">
+                  {area.highlights.map((topic) => <li>{topic}</li>)}
+                  <li>Entre otros motivos de consulta</li>
+                </ul>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <PageCta
+    spaced
+    text="Valoramos tu caso en una primera consulta de 90 minutos, online o presencial en Albacete."
+    label="Reserva tu consulta"
+  >
+    Cuéntame qué te está <span class="serif-accent">pasando</span>
+  </PageCta>
+</BaseLayout>

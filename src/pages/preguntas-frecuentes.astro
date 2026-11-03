@@ -1,0 +1,52 @@
+---
+import PageCta from "../components/ui/PageCta.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { faqs } from "../lib/content";
+import "../styles/components/pages.css";
+---
+
+<BaseLayout
+  title="Preguntas frecuentes"
+  description="Dudas habituales sobre las consultas de nutrición: analíticas, estrategia nutricional, consultas online, duración del proceso y reservas."
+  canonicalPath="/preguntas-frecuentes"
+  mainClass="pages-main"
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  })} />
+
+  <section class="page-intro">
+    <div class="container faq-layout">
+      <div class="faq-layout__aside" data-pin>
+        <p class="page-label">Preguntas frecuentes</p>
+        <h1 class="page-title">Antes de <span class="serif-accent">empezar</span></h1>
+        <p>Las dudas más habituales sobre las consultas y el proceso de acompañamiento nutricional.</p>
+        <a class="link-arrow" href="/contacto">
+          ¿Otra pregunta? Escríbeme
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
+
+      <div class="faq-list">
+        {
+          faqs.map((faq, index) => (
+            <details class="faq-item" open={index === 0}>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <PageCta label="Reserva tu consulta" secondaryHref="/consultas" secondaryLabel="Consultas y tarifas">
+    Empecemos por conocer <span class="serif-accent">tu caso</span>
+  </PageCta>
+</BaseLayout>

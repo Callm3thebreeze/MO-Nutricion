@@ -1,79 +1,48 @@
 ---
-import BrandIcon from "../ui/BrandIcon.astro";
-
-const services: Array<{
-  id: string;
-  title: string;
-  description: string;
-  icon: "stethoscope" | "heart" | "microbiota" | "book" | "hormone" | "target";
-}> = [
-  {
-    id: "nutricion-clinica",
-    title: "Nutrición clínica",
-    description: "Acompañamiento en condiciones de salud específicas.",
-    icon: "stethoscope",
-  },
-  {
-    id: "salud-digestiva",
-    title: "Salud digestiva",
-    description: "Mejoramos tu digestión y bienestar intestinal.",
-    icon: "heart",
-  },
-  {
-    id: "salud-digestiva",
-    title: "Microbiota intestinal",
-    description: "Estrategias para cuidar equilibrio digestivo y bienestar.",
-    icon: "microbiota",
-  },
-  {
-    id: "educacion-nutricional",
-    title: "Educación nutricional",
-    description: "Aprende a comer mejor y tomar decisiones conscientes.",
-    icon: "book",
-  },
-  {
-    id: "salud-hormonal",
-    title: "Salud hormonal",
-    description: "Apoyo nutricional en etapas clave de tu vida hormonal.",
-    icon: "hormone",
-  },
-  {
-    id: "educacion-nutricional",
-    title: "Cambio de hábitos",
-    description: "Rutinas sostenibles que encajan con tu día a día.",
-    icon: "target",
-  },
-];
+import { areas } from "../../lib/content";
 ---
 
-<section class="section services-summary" id="servicios">
-  <div class="container services-summary__inner">
-    <div class="home-section-heading services-summary__heading home-reveal">
-      <h2>¿Cómo te puedo ayudar?</h2>
+<section class="home-services" id="areas">
+  <div class="container">
+    <div class="heading-row home-reveal">
+      <h2 class="display-title">Áreas de <span class="serif-accent">especialización</span></h2>
+      <p class="heading-row__text home-services__intro">
+        La nutrición interviene en numerosos procesos del organismo. Por eso,
+        cada consulta comienza por comprender qué necesitas y cuáles son los
+        factores que pueden estar influyendo en tu salud. Mi trabajo se centra
+        en tres áreas principales.
+      </p>
     </div>
-    <div class="services-summary__grid">
+
+    <ul class="service-index">
       {
-        services.map((service, index) => (
-          <a
-            class="service-card home-reveal"
-            href={`/servicios#${service.id}`}
-            aria-label={`Quiero saber más sobre ${service.title}`}
-            style={`--home-reveal-delay: ${index * 70}ms`}
-          >
-            <BrandIcon
-              name={service.icon}
-              class="service-card__watermark"
-            />
-            <span class="service-card__icon-wrap">
-              <BrandIcon name={service.icon} class="service-card__icon" />
-            </span>
-            <span class="service-card__content">
-              <h3>{service.title}</h3>
-              <p>{service.description}</p>
-            </span>
-          </a>
+        areas.map((area, index) => (
+          <li class="home-reveal" style={`--home-reveal-delay: ${index * 60}ms`}>
+            <a class="service-index__row" href={`/servicios/${area.slug}`}>
+              <span class="service-index__number serif-accent">0{index + 1}</span>
+              <span class="service-index__main">
+                <span class="service-index__title">{area.title}</span>
+                {area.summary.map((paragraph) => (
+                  <span class="service-index__description">{paragraph}</span>
+                ))}
+                {area.forEveryone && (
+                  <span class="service-index__audience">Para hombres y mujeres</span>
+                )}
+                <span class="service-index__cta">Descubre esta área</span>
+              </span>
+              <span class="service-index__topics">
+                {area.highlights.map((topic) => (
+                  <span>{topic}</span>
+                ))}
+                <span class="service-index__more">entre otros motivos de consulta</span>
+              </span>
+              <span class="service-index__arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+              </span>
+            </a>
+          </li>
         ))
       }
-    </div>
+    </ul>
   </div>
 </section>

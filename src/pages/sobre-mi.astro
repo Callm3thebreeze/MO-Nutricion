@@ -1,0 +1,131 @@
+---
+import portraitImage from "../assets/home/mara-halftone.png";
+import PageCta from "../components/ui/PageCta.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { training } from "../lib/content";
+import "../styles/components/pages.css";
+---
+
+<BaseLayout
+  title="Sobre mí"
+  description="Mara Olivares, farmacéutica, biotecnóloga y dietista-nutricionista. Formación, trayectoria y filosofía de trabajo."
+  canonicalPath="/sobre-mi"
+  mainClass="pages-main"
+>
+  <section class="about-hero">
+    <div class="about-hero__copy">
+      <p class="page-label">Sobre mí</p>
+      <h1 class="page-title">Mara <span class="serif-accent">Olivares</span></h1>
+      <p class="about-hero__subtitle">Nutricionista integrativa</p>
+      <div class="about-hero__text">
+        <p>Soy Mara Olivares, farmacéutica, biotecnóloga y dietista-nutricionista.</p>
+        <p>
+          Mi trayectoria académica y profesional me ha llevado a interesarme por
+          la relación entre los diferentes sistemas del organismo y el papel que
+          desempeña la nutrición en su funcionamiento.
+        </p>
+        <p>
+          La formación en Farmacia y Biotecnología me aportó una base científica
+          para comprender los procesos fisiológicos y bioquímicos que intervienen
+          en la salud. Posteriormente, la Nutrición Humana y Dietética me
+          permitió profundizar en la aplicación de ese conocimiento a la práctica
+          clínica y al acompañamiento nutricional.
+        </p>
+        <p>
+          Mi especial interés se centra en la salud hormonal femenina, la
+          microbiota y la salud digestiva, así como en el metabolismo y su
+          relación con el estado nutricional.
+        </p>
+      </div>
+    </div>
+    <div class="about-hero__media">
+      <img
+        src={portraitImage.src}
+        width={portraitImage.width}
+        height={portraitImage.height}
+        alt="Mara Olivares, dietista-nutricionista"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
+    </div>
+  </section>
+
+  <section class="split-section">
+    <div class="container split-section__inner scroll-reveal">
+      <h2 class="split-section__label">Mi forma de trabajar</h2>
+      <div class="split-section__body">
+        <p class="split-section__statement">
+          Considero que cada persona necesita algo diferente. Por eso, mi forma
+          de trabajar se basa en
+          <span class="serif-accent">escuchar, valorar, comprender</span> y
+          diseñar estrategias individualizadas.
+        </p>
+        <div class="text-columns">
+          <p>
+            Siempre desde el rigor científico y con una visión global de la
+            salud.
+          </p>
+          <p>
+            Me gusta que cada persona entienda qué estamos trabajando, por qué lo
+            hacemos y cómo puede aplicar los cambios a su día a día.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="split-section split-section--cream" id="formacion">
+    <div class="container split-section__inner scroll-reveal">
+      <h2 class="split-section__label">Formación</h2>
+      <div class="split-section__body">
+        <div class="training-grid">
+          <div>
+            <h3>Formación académica</h3>
+            <ul class="ruled-list">
+              {training.academic.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div>
+            <h3>Formación complementaria</h3>
+            <ul class="ruled-list">
+              {training.complementary.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-block">
+    <div class="container quote-block__inner scroll-reveal">
+      <p class="page-label">Filosofía de trabajo</p>
+      <h2>
+        Ciencia para comprender.
+        <span class="serif-accent">Nutrición para acompañar.</span>
+      </h2>
+      <div class="text-columns">
+        <p>
+          La evidencia científica es el punto de partida de mi trabajo, pero la
+          aplicación de sus recomendaciones debe adaptarse a la realidad de cada
+          persona.
+        </p>
+        <p>
+          No busco imponer pautas rígidas ni soluciones rápidas. Mi objetivo es
+          ayudarte a comprender tus necesidades nutricionales y construir cambios
+          que puedas integrar en tu vida cotidiana.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <PageCta
+    spaced
+    text="Cada proceso comienza con una valoración individualizada para conocer tus necesidades y establecer las prioridades de trabajo."
+    label="Reserva tu primera consulta"
+    secondaryHref="/como-trabajo"
+    secondaryLabel="Cómo trabajo"
+  >
+    Empecemos por conocer <span class="serif-accent">tu caso</span>
+  </PageCta>
+</BaseLayout>

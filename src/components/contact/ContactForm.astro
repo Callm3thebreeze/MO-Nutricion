@@ -1,57 +1,49 @@
 ---
-import BrandIcon from "../ui/BrandIcon.astro";
-import WaveDivider from "../ui/WaveDivider.astro";
 import contactFormScript from "../../scripts/contact-form.ts?url";
 
 const contactHighlights = [
   {
-    title: "Primera valoración clara",
+    title: "Valoración individualizada",
     description:
-      "Analizamos tu caso y definimos prioridades desde la primera sesión.",
-    icon: "clipboard" as const,
+      "Primera consulta de 90 minutos para entender tu caso de forma global.",
   },
   {
-    title: "Plan adaptado a ti",
+    title: "Estrategia propia",
     description:
-      "Pautas personalizadas para tu rutina, tus gustos y tus objetivos.",
-    icon: "check" as const,
+      "Sin dietas cerradas: una estrategia adaptada a tus necesidades y objetivos.",
   },
   {
-    title: "Acompañamiento cercano",
+    title: "Seguimiento",
     description:
-      "Seguimiento profesional para sostener tus cambios en el tiempo.",
-    icon: "heart" as const,
+      "Consultas de hasta 60 minutos para valorar tu evolución y ajustar el plan.",
   },
+];
+
+const schedule = [
+  { mode: "Online", time: "Martes y jueves, de 16:00 a 19:00 h" },
+  { mode: "Presencial en Albacete", time: "Miércoles, de 17:30 a 20:30 h" },
 ];
 ---
 
-<section class="section contact-section">
+<section class="contact-section">
   <div class="container contact-wrapper">
-    <header class="contact-intro scroll-reveal">
-      <h1>Cuéntame tu caso y diseñamos tu ruta de mejora</h1>
-      <WaveDivider />
-      <p>
-        Si quieres que valoremos tu caso, completa este formulario y me pondré
-        en contacto contigo lo antes posible.
+    <div class="contact-intro scroll-reveal">
+      <p class="page-label">Contacto</p>
+      <h1 class="page-title">Empecemos por conocer <span class="serif-accent">tu caso</span></h1>
+      <p class="contact-intro__lead">
+        Si quieres comenzar un proceso de acompañamiento nutricional, puedes
+        solicitar tu primera consulta presencial en Albacete u online.
       </p>
-    </header>
+      <p class="contact-intro__text">
+        Cada proceso comienza con una valoración individualizada para conocer
+        tus necesidades y establecer las prioridades de trabajo.
+      </p>
 
-    <div class="contact-content">
-      <ul
-        class="contact-highlights scroll-reveal"
-        style="--home-reveal-delay: 50ms"
-        aria-label="Beneficios del acompañamiento"
-      >
+      <ol class="contact-steps" aria-label="Cómo es el proceso">
         {
-          contactHighlights.map((highlight) => (
-            <li class="contact-highlights__item">
-              <BrandIcon
-                name={highlight.icon}
-                class="contact-highlights__watermark"
-              />
-              <span class="contact-highlights__icon">
-                <BrandIcon name={highlight.icon} />
-              </span>
+          contactHighlights.map((highlight, index) => (
+            <li>
+              <span class="serif-accent" aria-hidden="true">{index + 1}</span>
               <div>
                 <h2>{highlight.title}</h2>
                 <p>{highlight.description}</p>
@@ -59,9 +51,28 @@ const contactHighlights = [
             </li>
           ))
         }
-      </ul>
+      </ol>
 
-      <form
+      <div class="contact-details">
+        <dl aria-label="Horarios de consulta">
+          {
+            schedule.map((item) => (
+              <div>
+                <dt>{item.mode}</dt>
+                <dd>{item.time}</dd>
+              </div>
+            ))
+          }
+        </dl>
+        <ul>
+          <li><a href="mailto:hola@maraolivares.com">hola@maraolivares.com</a></li>
+          <li><a href="tel:+34600135465">+34 600 135 465</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <form
+        id="formulario"
         class="contact-form scroll-reveal"
         style="--home-reveal-delay: 90ms"
         data-contact-form
@@ -129,10 +140,10 @@ const contactHighlights = [
           aria-describedby="error-motivo"
         >
           <option value="">Selecciona una opción</option>
-          <option value="digestivo">Síntomas digestivos</option>
-          <option value="microbiota">Microbiota</option>
-          <option value="hormonal">Salud hormonal</option>
-          <option value="habitos">Hábitos y educación nutricional</option>
+          <option value="hormonal">Salud hormonal y fertilidad en la mujer</option>
+          <option value="digestivo">Microbiota y salud digestiva</option>
+          <option value="metabolica">Salud metabólica</option>
+          <option value="otro">Otro motivo o no lo tengo claro</option>
         </select>
         <p
           id="error-motivo"
@@ -198,7 +209,6 @@ const contactHighlights = [
       >
       </p>
       </form>
-    </div>
   </div>
 </section>
 

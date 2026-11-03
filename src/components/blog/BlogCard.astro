@@ -17,7 +17,7 @@ const coverImageSrc = usesDefaultCover
 
 <article
   class="blog-card scroll-reveal"
-  style={`--home-reveal-delay: ${index * 70}ms`}
+  style={`--home-reveal-delay: ${(index % 3) * 70}ms`}
 >
   <a
     class={`blog-card__media ${usesDefaultCover ? "blog-card__media--brand" : ""}`}
@@ -35,20 +35,18 @@ const coverImageSrc = usesDefaultCover
     />
   </a>
   <div class="blog-card__content">
-    <h2 class="blog-card__title">
-      <a href={`/blog/${post.slug}`}>{post.title}</a>
-    </h2>
     <BlogMeta
       publishedAt={post.publishedAt}
       category={post.category}
       tags={post.tags}
     />
+    <h2 class="blog-card__title">
+      <a href={`/blog/${post.slug}`}>{post.title}</a>
+    </h2>
     <p class="blog-card__excerpt">{post.excerpt}</p>
-    <a
-      class="button button--secondary blog-card__link"
-      href={`/blog/${post.slug}`}
-    >
+    <a class="link-arrow blog-card__link" href={`/blog/${post.slug}`}>
       Leer artículo<span class="sr-only">: {post.title}</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
     </a>
   </div>
 </article>
