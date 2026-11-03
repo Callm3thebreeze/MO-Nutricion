@@ -106,10 +106,10 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   const apiKey = getSecret("RESEND_API_KEY");
-  const toEmail = getSecret("CONTACT_TO_EMAIL") ?? "hola@maraolivares.com";
+  const toEmail = getSecret("CONTACT_TO_EMAIL") ?? "nutricionmaraolivares@gmail.com";
   const fromEmail =
     getSecret("CONTACT_FROM_EMAIL") ??
-    "Mara Olivares Nutrición Integrativa <contacto@maraolivaresnutricio.com>";
+    "Mara Olivares Nutrición <onboarding@resend.dev>";
 
   if (!apiKey) {
     console.error("Missing RESEND_API_KEY binding");
