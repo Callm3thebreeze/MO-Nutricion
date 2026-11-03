@@ -16,11 +16,11 @@
   "dependencies": {
     "@astrojs/check": "^0.9.9",
     "@astrojs/react": "^5.0.4",
-    "@emdash-cms/cloudflare": "^0.14.0",
+    "@emdash-cms/cloudflare": "^1.4.0",
     "@heroicons/react": "^2.2.0",
     "astro": "^6.1.10",
     "astro-portabletext": "^0.13.0",
-    "emdash": "^0.14.0",
+    "emdash": "^1.4.0",
     "gsap": "^3.13.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
@@ -28,7 +28,7 @@
   },
   "private": true,
   "devDependencies": {
-    "@astrojs/cloudflare": "^13.5.5",
-    "wrangler": "^4.95.0"
+    "@astrojs/cloudflare": "^13.7.0",
+    "wrangler": "^4.156.1"
   }
 }
