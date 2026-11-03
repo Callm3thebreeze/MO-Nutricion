@@ -4,6 +4,13 @@ import pomegranateImage from "../../assets/granade.png";
 import orangeImage from "../../assets/orange.png";
 import asparagusImage from "../../assets/sparagus.png";
 import tomatoesImage from "../../assets/tomatoes.png";
+import { rich, text, type CmsPage } from "../../cms/content";
+
+interface Props {
+  page: CmsPage;
+}
+
+const { data, edit } = Astro.props.page;
 
 // la página se renderiza en cada petición: cada visita muestra una imagen al azar,
 // con más probabilidad cuanto mayor es su peso. Las composiciones apaisadas se muestran algo más grandes.
@@ -25,19 +32,16 @@ const hero = pickWeighted(heroImages);
 
 <section class="home-hero" id="inicio">
   <div class="home-hero__copy" data-hero-copy>
-    <!-- Claim provisional: pendiente de definir con la clienta -->
-    <h1 class="home-hero__title" data-split-title>
-      Nutrición real <span class="home-hero__title-light">para una</span>
-      <span class="serif-accent">vida</span>
-      <span class="serif-accent home-hero__mark">mejor</span>
-    </h1>
-    <p class="home-hero__lead">
-      Te acompaño a construir hábitos saludables que se adapten a ti, con
-      ciencia, empatía y <strong>resultados duraderos</strong>.
-    </p>
+    <h1
+      class="home-hero__title"
+      data-split-title
+      {...edit("hero_titulo")}
+      set:html={rich(data.hero_titulo, { lightClass: "home-hero__title-light", lastAccentClass: "home-hero__mark" })}
+    />
+    <p class="home-hero__lead" {...edit("hero_subtitulo")} set:html={rich(data.hero_subtitulo)} />
     <div class="home-hero__actions">
-      <a class="button" href="/como-trabajo">Conoce mi método de trabajo</a>
-      <a class="button button--secondary" href="/contacto">Reserva tu consulta</a>
+      <a class="button" href="/como-trabajo" {...edit("hero_boton_1")}>{text(data.hero_boton_1)}</a>
+      <a class="button button--secondary" href="/contacto" {...edit("hero_boton_2")}>{text(data.hero_boton_2)}</a>
     </div>
   </div>
 

@@ -1,10 +1,22 @@
+---
+import { rich, type CmsPage } from "../../cms/content";
+
+interface Props {
+  page: CmsPage;
+}
+
+const { data, edit } = Astro.props.page;
+---
+
 <section class="home-intro">
   <div class="container home-intro__inner">
     <div class="home-intro__body">
-      <p class="home-intro__text" data-scrub-text>
-        <span class="home-intro__light">Una consulta de nutrición clínica e integrativa en la que</span>
-        cada persona se aborda de forma individualizada.
-      </p>
+      <p
+        class="home-intro__text"
+        data-scrub-text
+        {...edit("intro_texto")}
+        set:html={rich(data.intro_texto, { lightClass: "home-intro__light" })}
+      />
     </div>
   </div>
 </section>

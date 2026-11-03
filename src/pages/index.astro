@@ -7,12 +7,16 @@ import HomeIndicators from '../components/home/HomeIndicators.astro';
 import HomeStatement from '../components/home/HomeStatement.astro';
 import ServicesSummary from '../components/home/ServicesSummary.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getAreas, getPage, plain } from '../cms/content';
 import '../styles/components/home.css';
+
+const page = await getPage('pagina_inicio', 'inicio');
+const areas = await getAreas();
 ---
 
 <BaseLayout
-title="Nutrición integrativa: salud hormonal, digestiva y metabólica"
-description="Consulta de nutrición clínica e integrativa con rigor científico. Salud hormonal y fertilidad en la mujer, microbiota y salud digestiva, y salud metabólica. Online y presencial en Albacete."
+title={plain(page.data.meta_titulo)}
+description={plain(page.data.meta_descripcion)}
 canonicalPath="/"
 mainClass="home-main"
 >
@@ -26,11 +30,11 @@ mainClass="home-main"
 			medicalSpecialty: ['Nutrition', 'Gastroenterologic', 'Endocrinology', 'Obstetric'],
 		})}
 	</script>
-	<HomeHero />
-	<HomeIntro />
-	<ServicesSummary />
-	<HomeStatement />
-	<HomeIndicators />
-	<HomeAbout />
-	<HomeCta />
+	<HomeHero page={page} />
+	<HomeIntro page={page} />
+	<ServicesSummary page={page} areas={areas} />
+	<HomeStatement page={page} />
+	<HomeIndicators page={page} />
+	<HomeAbout page={page} />
+	<HomeCta page={page} />
 </BaseLayout>

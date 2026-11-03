@@ -2,13 +2,17 @@
 import PageCta from "../components/ui/PageCta.astro";
 import PageHero from "../components/ui/PageHero.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { faqs } from "../lib/content";
+import { getPage, items, plain, rich, text } from "../cms/content";
 import "../styles/components/pages.css";
+
+const page = await getPage("pagina_faq", "preguntas-frecuentes");
+const { data, edit } = page;
+const faqs = items<{ pregunta?: string; respuesta?: string }>(data.preguntas);
 ---
 
 <BaseLayout
-  title="Preguntas frecuentes"
-  description="Dudas habituales sobre las consultas de nutrición: analíticas, estrategia nutricional, consultas online, duración del proceso y reservas."
+  title={plain(data.meta_titulo)}
+  description={plain(data.meta_descripcion)}
   canonicalPath="/preguntas-frecuentes"
   mainClass="pages-main"
 >
@@ -17,34 +21,31 @@ import "../styles/components/pages.css";
     '@type': 'FAQPage',
     mainEntity: faqs.map((faq) => ({
       '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+      name: plain(faq.pregunta),
+      acceptedAnswer: { '@type': 'Answer', text: plain(faq.respuesta) },
     })),
-  })} />
+  }).replace(/</g, '\\u003c')} />
 
   <PageHero>
-    <p class="page-label">Preguntas frecuentes</p>
-    <h1 class="page-title">Antes de <span class="serif-accent">empezar</span></h1>
-    <p class="page-hero__lead">
-      Las dudas más habituales sobre las consultas y el proceso de
-      acompañamiento nutricional.
-    </p>
+    <p class="page-label" {...edit("hero_etiqueta")}>{text(data.hero_etiqueta)}</p>
+    <h1 class="page-title" {...edit("hero_titulo")} set:html={rich(data.hero_titulo)} />
+    <p class="page-hero__lead" {...edit("hero_subtitulo")} set:html={rich(data.hero_subtitulo)} />
     <a class="link-arrow" href="/contacto">
-      ¿Otra pregunta? Escríbeme
+      <span {...edit("hero_enlace")}>{text(data.hero_enlace)}</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
     </a>
   </PageHero>
 
   <section class="split-section">
     <div class="container split-section__inner">
-      <h2 class="split-section__label">Dudas habituales</h2>
+      <h2 class="split-section__label" {...edit("lista_titulo")}>{text(data.lista_titulo)}</h2>
       <div class="split-section__body">
-        <div class="faq-list scroll-reveal">
+        <div class="faq-list scroll-reveal" {...edit("preguntas")}>
           {
             faqs.map((faq, index) => (
               <details class="faq-item" open={index === 0}>
-                <summary>{faq.question}</summary>
-                <p>{faq.answer}</p>
+                <summary>{text(faq.pregunta)}</summary>
+                <p set:html={rich(faq.respuesta)} />
               </details>
             ))
           }
@@ -53,7 +54,5 @@ import "../styles/components/pages.css";
     </div>
   </section>
 
-  <PageCta label="Reserva tu consulta" secondaryHref="/consultas" secondaryLabel="Consultas y tarifas">
-    Empecemos por conocer <span class="serif-accent">tu caso</span>
-  </PageCta>
+  <PageCta page={page} secondaryHref="/consultas" />
 </BaseLayout>

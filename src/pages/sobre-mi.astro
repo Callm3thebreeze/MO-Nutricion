@@ -2,40 +2,26 @@
 import portraitImage from "../assets/home/mara-halftone.png";
 import PageCta from "../components/ui/PageCta.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { training } from "../lib/content";
+import { getPage, lines, paragraphs, plain, rich, text } from "../cms/content";
 import "../styles/components/pages.css";
+
+const page = await getPage("pagina_sobre_mi", "sobre-mi");
+const { data, edit } = page;
 ---
 
 <BaseLayout
-  title="Sobre mí"
-  description="Mara Olivares, farmacéutica, biotecnóloga y dietista-nutricionista. Formación, trayectoria y filosofía de trabajo."
+  title={plain(data.meta_titulo)}
+  description={plain(data.meta_descripcion)}
   canonicalPath="/sobre-mi"
   mainClass="pages-main"
 >
   <section class="about-hero">
     <div class="about-hero__copy" data-hero-copy>
-      <p class="page-label">Sobre mí</p>
-      <h1 class="page-title">Mara <span class="serif-accent">Olivares</span></h1>
-      <p class="about-hero__subtitle">Nutricionista integrativa</p>
-      <div class="about-hero__text">
-        <p>Soy Mara Olivares, farmacéutica, biotecnóloga y dietista-nutricionista.</p>
-        <p>
-          Mi trayectoria académica y profesional me ha llevado a interesarme por
-          la relación entre los diferentes sistemas del organismo y el papel que
-          desempeña la nutrición en su funcionamiento.
-        </p>
-        <p>
-          La formación en Farmacia y Biotecnología me aportó una base científica
-          para comprender los procesos fisiológicos y bioquímicos que intervienen
-          en la salud. Posteriormente, la Nutrición Humana y Dietética me
-          permitió profundizar en la aplicación de ese conocimiento a la práctica
-          clínica y al acompañamiento nutricional.
-        </p>
-        <p>
-          Mi especial interés se centra en la salud hormonal femenina, la
-          microbiota y la salud digestiva, así como en el metabolismo y su
-          relación con el estado nutricional.
-        </p>
+      <p class="page-label" {...edit("hero_etiqueta")}>{text(data.hero_etiqueta)}</p>
+      <h1 class="page-title" {...edit("hero_titulo")} set:html={rich(data.hero_titulo)} />
+      <p class="about-hero__subtitle" {...edit("hero_subtitulo")} set:html={rich(data.hero_subtitulo)} />
+      <div class="about-hero__text" {...edit("hero_texto")}>
+        {paragraphs(data.hero_texto).map((paragraph) => <p set:html={rich(paragraph)} />)}
       </div>
     </div>
     <div class="about-hero__media" data-hero-visual="photo">
@@ -53,23 +39,11 @@ import "../styles/components/pages.css";
 
   <section class="split-section">
     <div class="container split-section__inner scroll-reveal">
-      <h2 class="split-section__label">Mi forma de trabajar</h2>
+      <h2 class="split-section__label" {...edit("forma_etiqueta")}>{text(data.forma_etiqueta)}</h2>
       <div class="split-section__body">
-        <p class="split-section__statement">
-          Considero que cada persona necesita algo diferente. Por eso, mi forma
-          de trabajar se basa en
-          <span class="serif-accent">escuchar, valorar, comprender</span> y
-          diseñar estrategias individualizadas.
-        </p>
-        <div class="text-columns">
-          <p>
-            Siempre desde el rigor científico y con una visión global de la
-            salud.
-          </p>
-          <p>
-            Me gusta que cada persona entienda qué estamos trabajando, por qué lo
-            hacemos y cómo puede aplicar los cambios a su día a día.
-          </p>
+        <p class="split-section__statement" {...edit("forma_destacado")} set:html={rich(data.forma_destacado)} />
+        <div class="text-columns" {...edit("forma_texto")}>
+          {paragraphs(data.forma_texto).map((paragraph) => <p set:html={rich(paragraph)} />)}
         </div>
       </div>
     </div>
@@ -77,19 +51,19 @@ import "../styles/components/pages.css";
 
   <section class="split-section split-section--cream" id="formacion">
     <div class="container split-section__inner scroll-reveal">
-      <h2 class="split-section__label">Formación</h2>
+      <h2 class="split-section__label" {...edit("formacion_etiqueta")}>{text(data.formacion_etiqueta)}</h2>
       <div class="split-section__body">
         <div class="training-grid">
           <div>
-            <h3>Formación académica</h3>
-            <ul class="ruled-list">
-              {training.academic.map((item) => <li>{item}</li>)}
+            <h3 {...edit("formacion_academica_titulo")}>{text(data.formacion_academica_titulo)}</h3>
+            <ul class="ruled-list" {...edit("formacion_academica")}>
+              {lines(data.formacion_academica).map((item) => <li set:html={rich(item)} />)}
             </ul>
           </div>
           <div>
-            <h3>Formación complementaria</h3>
-            <ul class="ruled-list">
-              {training.complementary.map((item) => <li>{item}</li>)}
+            <h3 {...edit("formacion_complementaria_titulo")}>{text(data.formacion_complementaria_titulo)}</h3>
+            <ul class="ruled-list" {...edit("formacion_complementaria")}>
+              {lines(data.formacion_complementaria).map((item) => <li set:html={rich(item)} />)}
             </ul>
           </div>
         </div>
@@ -99,33 +73,13 @@ import "../styles/components/pages.css";
 
   <section class="quote-block">
     <div class="container quote-block__inner scroll-reveal">
-      <p class="page-label">Filosofía de trabajo</p>
-      <h2>
-        Ciencia para comprender.
-        <span class="serif-accent">Nutrición para acompañar.</span>
-      </h2>
-      <div class="text-columns">
-        <p>
-          La evidencia científica es el punto de partida de mi trabajo, pero la
-          aplicación de sus recomendaciones debe adaptarse a la realidad de cada
-          persona.
-        </p>
-        <p>
-          No busco imponer pautas rígidas ni soluciones rápidas. Mi objetivo es
-          ayudarte a comprender tus necesidades nutricionales y construir cambios
-          que puedas integrar en tu vida cotidiana.
-        </p>
+      <p class="page-label" {...edit("filosofia_etiqueta")}>{text(data.filosofia_etiqueta)}</p>
+      <h2 {...edit("filosofia_titulo")} set:html={rich(data.filosofia_titulo)} />
+      <div class="text-columns" {...edit("filosofia_texto")}>
+        {paragraphs(data.filosofia_texto).map((paragraph) => <p set:html={rich(paragraph)} />)}
       </div>
     </div>
   </section>
 
-  <PageCta
-    spaced
-    text="Cada proceso comienza con una valoración individualizada para conocer tus necesidades y establecer las prioridades de trabajo."
-    label="Reserva tu primera consulta"
-    secondaryHref="/como-trabajo"
-    secondaryLabel="Cómo trabajo"
-  >
-    Empecemos por conocer <span class="serif-accent">tu caso</span>
-  </PageCta>
+  <PageCta spaced page={page} secondaryHref="/como-trabajo" />
 </BaseLayout>

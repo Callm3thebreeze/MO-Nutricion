@@ -1,13 +1,19 @@
+---
+import { rich, text, type CmsPage } from "../../cms/content";
+
+interface Props {
+  page: CmsPage;
+}
+
+const { data, edit } = Astro.props.page;
+---
+
 <section class="home-final-cta">
   <div class="container">
     <div class="cta-panel home-reveal">
-      <h2>Cada proceso empieza por <span class="serif-accent">comprender tus necesidades</span></h2>
-      <p>
-        Si quieres mejorar tu alimentación, comprender mejor tus síntomas o
-        trabajar sobre algún aspecto de tu salud, podemos empezar por una
-        valoración individualizada.
-      </p>
-      <a class="button" href="/contacto">Reserva tu primera consulta</a>
+      <h2 {...edit("cta_titulo")} set:html={rich(data.cta_titulo)} />
+      <p {...edit("cta_texto")} set:html={rich(data.cta_texto)} />
+      <a class="button" href="/contacto" {...edit("cta_boton")}>{text(data.cta_boton)}</a>
     </div>
   </div>
 </section>

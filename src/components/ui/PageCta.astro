@@ -1,33 +1,29 @@
 ---
+import { rich, text, type CmsPage } from "../../cms/content";
+
 interface Props {
-  text?: string;
+  /** Página con los campos cta_titulo, cta_texto, cta_boton y cta_boton_2 */
+  page: CmsPage;
   href?: string;
-  label?: string;
   secondaryHref?: string;
-  secondaryLabel?: string;
   spaced?: boolean;
 }
 
-const {
-  text,
-  href = "/contacto",
-  label = "Reserva tu consulta",
-  secondaryHref,
-  secondaryLabel,
-  spaced = false,
-} = Astro.props;
+const { page, href = "/contacto", secondaryHref, spaced = false } = Astro.props;
+const { data, edit } = page;
+const secondaryLabel = text(data.cta_boton_2);
 ---
 
 <section class={`pages-cta ${spaced ? "pages-cta--spaced" : ""}`}>
   <div class="container">
     <div class="cta-panel cta-panel--compact scroll-reveal">
-      <h2><slot /></h2>
-      {text && <p>{text}</p>}
+      <h2 {...edit("cta_titulo")} set:html={rich(data.cta_titulo)} />
+      {text(data.cta_texto) && <p {...edit("cta_texto")} set:html={rich(data.cta_texto)} />}
       <div class="button-row">
-        <a class="button" href={href}>{label}</a>
+        <a class="button" href={href} {...edit("cta_boton")}>{text(data.cta_boton)}</a>
         {
           secondaryHref && secondaryLabel && (
-            <a class="button button--secondary" href={secondaryHref}>
+            <a class="button button--secondary" href={secondaryHref} {...edit("cta_boton_2")}>
               {secondaryLabel}
             </a>
           )

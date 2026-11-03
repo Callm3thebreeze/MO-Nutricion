@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 
-import { areas } from '../lib/content';
+import { getAreas } from '../cms/content';
 import { getPosts } from '../lib/emdash';
 import { absoluteUrl } from '../lib/seo';
 
@@ -32,6 +32,7 @@ const toIsoDate = (value: string | undefined): string | undefined => {
 
 export const GET: APIRoute = async ({ site }) => {
   const posts = await getPosts();
+  const areas = await getAreas();
   const staticPaths = [
     '/',
     '/sobre-mi',

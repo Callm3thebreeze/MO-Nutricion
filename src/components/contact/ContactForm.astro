@@ -1,41 +1,30 @@
 ---
 import contactFormScript from "../../scripts/contact-form.ts?url";
+import { getPage, items, rich, text, type CmsPage } from "../../cms/content";
 
-const contactHighlights = [
-  {
-    title: "Valoración individualizada",
-    description:
-      "Primera consulta de 90 minutos para entender tu caso de forma global.",
-  },
-  {
-    title: "Estrategia propia",
-    description:
-      "Sin dietas cerradas: una estrategia adaptada a tus necesidades y objetivos.",
-  },
-  {
-    title: "Seguimiento",
-    description:
-      "Consultas de hasta 60 minutos para valorar tu evolución y ajustar el plan.",
-  },
-];
+interface Props {
+  page: CmsPage;
+}
 
-const schedule = [
-  { mode: "Online", time: "Martes y jueves, de 16:00 a 19:00 h" },
-  { mode: "Presencial en Albacete", time: "Miércoles, de 17:30 a 20:30 h" },
-];
+const { data, edit } = Astro.props.page;
+const contactHighlights = items<{ titulo?: string; descripcion?: string }>(data.pasos);
+const schedule = items<{ modalidad?: string; horario?: string }>(data.horarios);
+const general = await getPage("datos_generales", "general");
+const email = text(general.data.email);
+const phone = text(general.data.telefono);
 ---
 
 <section class="contact-section">
   <div class="container contact-wrapper">
     <div class="contact-intro scroll-reveal">
-      <ol class="contact-steps" aria-label="Cómo es el proceso">
+      <ol class="contact-steps" aria-label="Cómo es el proceso" {...edit("pasos")}>
         {
           contactHighlights.map((highlight, index) => (
             <li>
               <span class="serif-accent" aria-hidden="true">{index + 1}</span>
               <div>
-                <h2>{highlight.title}</h2>
-                <p>{highlight.description}</p>
+                <h2>{text(highlight.titulo)}</h2>
+                <p set:html={rich(highlight.descripcion)} />
               </div>
             </li>
           ))
@@ -43,19 +32,19 @@ const schedule = [
       </ol>
 
       <div class="contact-details">
-        <dl aria-label="Horarios de consulta">
+        <dl aria-label="Horarios de consulta" {...edit("horarios")}>
           {
             schedule.map((item) => (
               <div>
-                <dt>{item.mode}</dt>
-                <dd>{item.time}</dd>
+                <dt>{text(item.modalidad)}</dt>
+                <dd>{text(item.horario)}</dd>
               </div>
             ))
           }
         </dl>
         <ul>
-          <li><a href="mailto:hola@maraolivares.com">hola@maraolivares.com</a></li>
-          <li><a href="tel:+34600135465">+34 600 135 465</a></li>
+          <li><a href={`mailto:${email}`} {...general.edit("email")}>{email}</a></li>
+          <li><a href={`tel:${phone.replace(/[^+\d]/g, "")}`} {...general.edit("telefono")}>{phone}</a></li>
         </ul>
       </div>
     </div>

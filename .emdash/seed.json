@@ -115,6 +115,974 @@
           "defaultValue": false
         }
       ]
+    },
+    {
+      "slug": "pagina_inicio",
+      "label": "Inicio",
+      "labelSingular": "Inicio",
+      "description": "Formato: *texto* = cursiva destacada, **texto** = negrita, ~texto~ = tono suave. Deja una línea en blanco entre párrafos y, en las listas, escribe un elemento por línea.",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
+      "group": "Páginas",
+      "sortOrder": 1,
+      "titleField": "hero_titulo",
+      "fields": [
+        {
+          "slug": "meta_titulo",
+          "label": "SEO · Título de la página",
+          "type": "text"
+        },
+        {
+          "slug": "meta_descripcion",
+          "label": "SEO · Descripción",
+          "type": "text"
+        },
+        {
+          "slug": "hero_titulo",
+          "label": "Portada · Título",
+          "type": "text"
+        },
+        {
+          "slug": "hero_subtitulo",
+          "label": "Portada · Subtítulo",
+          "type": "text"
+        },
+        {
+          "slug": "hero_boton_1",
+          "label": "Portada · Botón principal",
+          "type": "string"
+        },
+        {
+          "slug": "hero_boton_2",
+          "label": "Portada · Botón secundario",
+          "type": "string"
+        },
+        {
+          "slug": "intro_texto",
+          "label": "Introducción · Texto",
+          "type": "text"
+        },
+        {
+          "slug": "areas_titulo",
+          "label": "Áreas · Título",
+          "type": "text"
+        },
+        {
+          "slug": "areas_texto",
+          "label": "Áreas · Texto",
+          "type": "text"
+        },
+        {
+          "slug": "areas_publico",
+          "label": "Áreas · Etiqueta «para hombres y mujeres»",
+          "type": "string"
+        },
+        {
+          "slug": "areas_enlace",
+          "label": "Áreas · Texto del enlace",
+          "type": "string"
+        },
+        {
+          "slug": "areas_mas",
+          "label": "Áreas · Texto tras los motivos de consulta",
+          "type": "string"
+        },
+        {
+          "slug": "enfoque_etiqueta",
+          "label": "Enfoque · Etiqueta",
+          "type": "string"
+        },
+        {
+          "slug": "enfoque_titulo",
+          "label": "Enfoque · Frase destacada",
+          "type": "text"
+        },
+        {
+          "slug": "enfoque_texto",
+          "label": "Enfoque · Párrafos",
+          "type": "text"
+        },
+        {
+          "slug": "indicadores_titulo",
+          "label": "Indicadores · Título",
+          "type": "text"
+        },
+        {
+          "slug": "indicadores_texto",
+          "label": "Indicadores · Texto",
+          "type": "text"
+        },
+        {
+          "slug": "indicadores",
+          "label": "Indicadores · Lista",
+          "type": "repeater",
+          "validation": {
+            "subFields": [
+              {
+                "slug": "titulo",
+                "label": "Título",
+                "type": "string"
+              },
+              {
+                "slug": "descripcion",
+                "label": "Descripción",
+                "type": "text"
+              }
+            ]
+          }
+        },
+        {
+          "slug": "indicadores_cierre",
+          "label": "Indicadores · Frase final",
+          "type": "text"
+        },
+        {
+          "slug": "sobre_mi_etiqueta",
+          "label": "Sobre mí · Etiqueta",
+          "type": "string"
+        },
+        {
+          "slug": "sobre_mi_titulo",
+          "label": "Sobre mí · Título",
+          "type": "text"
+        },
+        {
+          "slug": "sobre_mi_subtitulo",
+          "label": "Sobre mí · Subtítulo",
+          "type": "text"
+        },
+        {
+          "slug": "sobre_mi_texto",
+          "label": "Sobre mí · Párrafos",
+          "type": "text"
+        },
+        {
+          "slug": "sobre_mi_boton",
+          "label": "Sobre mí · Botón",
+          "type": "string"
+        },
+        {
+          "slug": "cta_titulo",
+          "label": "Llamada final · Título",
+          "type": "text"
+        },
+        {
+          "slug": "cta_texto",
+          "label": "Llamada final · Texto",
+          "type": "text"
+        },
+        {
+          "slug": "cta_boton",
+          "label": "Llamada final · Botón principal",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "slug": "pagina_sobre_mi",
+      "label": "Sobre mí",
+      "labelSingular": "Sobre mí",
+      "description": "Formato: *texto* = cursiva destacada, **texto** = negrita, ~texto~ = tono suave. Deja una línea en blanco entre párrafos y, en las listas, escribe un elemento por línea.",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
+      "group": "Páginas",
+      "sortOrder": 2,
+      "titleField": "hero_titulo",
+      "fields": [
+        {
+          "slug": "meta_titulo",
+          "label": "SEO · Título de la página",
+          "type": "text"
+        },
+        {
+          "slug": "meta_descripcion",
+          "label": "SEO · Descripción",
+          "type": "text"
+        },
+        {
+          "slug": "hero_etiqueta",
+          "label": "Portada · Etiqueta",
+          "type": "string"
+        },
+        {
+          "slug": "hero_titulo",
+          "label": "Portada · Título",
+          "type": "text"
+        },
+        {
+          "slug": "hero_subtitulo",
+          "label": "Portada · Subtítulo",
+          "type": "text"
+        },
+        {
+          "slug": "hero_texto",
+          "label": "Portada · Párrafos",
+          "type": "text"
+        },
+        {
+          "slug": "forma_etiqueta",
+          "label": "Forma de trabajar · Título",
+          "type": "string"
+        },
+        {
+          "slug": "forma_destacado",
+          "label": "Forma de trabajar · Frase destacada",
+          "type": "text"
+        },
+        {
+          "slug": "forma_texto",
+          "label": "Forma de trabajar · Párrafos",
+          "type": "text"
+        },
+        {
+          "slug": "formacion_etiqueta",
+          "label": "Formación · Título",
+          "type": "string"
+        },
+        {
+          "slug": "formacion_academica_titulo",
+          "label": "Formación académica · Título",
+          "type": "string"
+        },
+        {
+          "slug": "formacion_academica",
+          "label": "Formación académica · Lista",
+          "type": "text"
+        },
+        {
+          "slug": "formacion_complementaria_titulo",
+          "label": "Formación complementaria · Título",
+          "type": "string"
+        },
+        {
+          "slug": "formacion_complementaria",
+          "label": "Formación complementaria · Lista",
+          "type": "text"
+        },
+        {
+          "slug": "filosofia_etiqueta",
+          "label": "Filosofía · Etiqueta",
+          "type": "string"
+        },
+        {
+          "slug": "filosofia_titulo",
+          "label": "Filosofía · Título",
+          "type": "text"
+        },
+        {
+          "slug": "filosofia_texto",
+          "label": "Filosofía · Párrafos",
+          "type": "text"
+        },
+        {
+          "slug": "cta_titulo",
+          "label": "Llamada final · Título",
+          "type": "text"
+        },
+        {
+          "slug": "cta_texto",
+          "label": "Llamada final · Texto",
+          "type": "text"
+        },
+        {
+          "slug": "cta_boton",
+          "label": "Llamada final · Botón principal",
+          "type": "string"
+        },
+        {
+          "slug": "cta_boton_2",
+          "label": "Llamada final · Botón secundario",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "slug": "pagina_areas",
+      "label": "Áreas (textos de página)",
+      "labelSingular": "Áreas (textos de página)",
+      "description": "Textos del índice de áreas y de los rótulos comunes de cada área. Formato: *texto* = cursiva destacada, **texto** = negrita, ~texto~ = tono suave. Deja una línea en blanco entre párrafos y, en las listas, escribe un elemento por línea.",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
+      "group": "Páginas",
+      "sortOrder": 3,
+      "titleField": "hero_titulo",
+      "fields": [
+        {
+          "slug": "meta_titulo",
+          "label": "SEO · Título de la página",
+          "type": "text"
+        },
+        {
+          "slug": "meta_descripcion",
+          "label": "SEO · Descripción",
+          "type": "text"
+        },
+        {
+          "slug": "hero_etiqueta",
+          "label": "Portada · Etiqueta",
+          "type": "string"
+        },
+        {
+          "slug": "hero_titulo",
+          "label": "Portada · Título",
+          "type": "text"
+        },
+        {
+          "slug": "hero_subtitulo",
+          "label": "Portada · Subtítulo",
+          "type": "text"
+        },
+        {
+          "slug": "motivos_titulo",
+          "label": "Listado · Título de los motivos de consulta",
+          "type": "string"
+        },
+        {
+          "slug": "motivos_cierre",
+          "label": "Listado · Último motivo («entre otros…»)",
+          "type": "string"
+        },
+        {
+          "slug": "enlace_texto",
+          "label": "Listado · Texto del enlace",
+          "type": "string"
+        },
+        {
+          "slug": "publico_texto",
+          "label": "Listado · Etiqueta «para hombres y mujeres»",
+          "type": "string"
+        },
+        {
+          "slug": "cta_titulo",
+          "label": "Llamada final · Título",
+          "type": "text"
+        },
+        {
+          "slug": "cta_texto",
+          "label": "Llamada final · Texto",
+          "type": "text"
+        },
+        {
+          "slug": "cta_boton",
+          "label": "Llamada final · Botón principal",
+          "type": "string"
+        },
+        {
+          "slug": "detalle_volver",
+          "label": "Página de área · Enlace para volver",
+          "type": "string"
+        },
+        {
+          "slug": "detalle_etiqueta",
+          "label": "Página de área · Etiqueta (se añade el número)",
+          "type": "string"
+        },
+        {
+          "slug": "detalle_publico",
+          "label": "Página de área · Aviso «para hombres y mujeres»",
+          "type": "string"
+        },
+        {
+          "slug": "detalle_enfoque_titulo",
+          "label": "Página de área · Título del enfoque",
+          "type": "string"
+        },
+        {
+          "slug": "detalle_temas_titulo",
+          "label": "Página de área · Título de los temas",
+          "type": "string"
+        },
+        {
+          "slug": "detalle_boton",
+          "label": "Página de área · Botón final",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "slug": "areas",
+      "label": "Áreas de especialización",
+      "labelSingular": "Área de especialización",
+      "description": "Cada entrada es un área con su propia página en /servicios/{slug}. Formato: *texto* = cursiva destacada, **texto** = negrita, ~texto~ = tono suave. Deja una línea en blanco entre párrafos y, en las listas, escribe un elemento por línea.",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
+      "urlPattern": "/servicios/{slug}",
+      "group": "Páginas",
+      "sortOrder": 4,
+      "titleField": "titulo",
+      "fields": [
+        {
+          "slug": "titulo",
+          "label": "Título",
+          "type": "string"
+        },
+        {
+          "slug": "orden",
+          "label": "Orden (1, 2, 3…)",
+          "type": "integer"
+        },
+        {
+          "slug": "resumen",
+          "label": "Resumen (inicio y listado de áreas)",
+          "type": "text"
+        },
+        {
+          "slug": "motivos",
+          "label": "Motivos de consulta destacados (lista)",
+          "type": "text"
+        },
+        {
+          "slug": "introduccion",
+          "label": "Introducción (el primer párrafo va en la portada)",
+          "type": "text"
+        },
+        {
+          "slug": "temas",
+          "label": "¿En qué podemos trabajar?",
+          "type": "repeater",
+          "validation": {
+            "subFields": [
+              {
+                "slug": "titulo",
+                "label": "Título",
+                "type": "string"
+              },
+              {
+                "slug": "descripcion",
+                "label": "Descripción",
+                "type": "text"
+              }
+            ]
+          }
+        },
+        {
+          "slug": "extra_titulo",
+          "label": "Bloque adicional · Título (opcional)",
+          "type": "string"
+        },
+        {
+          "slug": "extra_texto",
+          "label": "Bloque adicional · Párrafos (el primero se destaca)",
+          "type": "text"
+        },
+        {
+          "slug": "cierre",
+          "label": "Frase de cierre",
+          "type": "text"
+        },
+        {
+          "slug": "para_todos",
+          "label": "Dirigida a hombres y mujeres",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "slug": "pagina_como_trabajo",
+      "label": "Cómo trabajo",
+      "labelSingular": "Cómo trabajo",
+      "description": "Formato: *texto* = cursiva destacada, **texto** = negrita, ~texto~ = tono suave. Deja una línea en blanco entre párrafos y, en las listas, escribe un elemento por línea.",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
+      "group": "Páginas",
+      "sortOrder": 5,
+      "titleField": "hero_titulo",
+      "fields": [
+        {
+          "slug": "meta_titulo",
+          "label": "SEO · Título de la página",
+          "type": "text"
+        },
+        {
+          "slug": "meta_descripcion",
+          "label": "SEO · Descripción",
+          "type": "text"
+        },
+        {
+          "slug": "hero_etiqueta",
+          "label": "Portada · Etiqueta",
+          "type": "string"
+        },
+        {
+          "slug": "hero_titulo",
+          "label": "Portada · Título",
+          "type": "text"
+        },
+        {
+          "slug": "hero_subtitulo",
+          "label": "Portada · Subtítulo",
+          "type": "text"
+        },
+        {
+          "slug": "hero_texto",
+          "label": "Portada · Texto",
+          "type": "text"
+        },
+        {
+          "slug": "fase_etiqueta",
+          "label": "Fases · Etiqueta (se añade el número)",
+          "type": "string"
+        },
+        {
+          "slug": "fases",
+          "label": "Fases del método",
+          "type": "repeater",
+          "validation": {
+            "subFields": [
+              {
+                "slug": "titulo",
+                "label": "Título",
+                "type": "string"
+              },
+              {
+                "slug": "frase",
+                "label": "Frase destacada",
+                "type": "string"
+              },
+              {
+                "slug": "duracion",
+                "label": "Duración (opcional)",
+                "type": "string"
+              },
+              {
+                "slug": "texto",
+                "label": "Párrafos",
+                "type": "text"
+              }
+            ]
+          }
+        },
+        {
+          "slug": "valoramos_titulo",
+          "label": "Qué valoramos · Título",
+          "type": "string"
+        },
+        {
+          "slug": "valoramos",
+          "label": "Qué valoramos · Lista",
+          "type": "text"
+        },
+        {
+          "slug": "cierre_texto",
+          "label": "Frase de cierre",
+          "type": "text"
+        },
+        {
+          "slug": "cta_titulo",
+          "label": "Llamada final · Título",
+          "type": "text"
+        },
+        {
+          "slug": "cta_texto",
+          "label": "Llamada final · Texto",
+          "type": "text"
+        },
+        {
+          "slug": "cta_boton",
+          "label": "Llamada final · Botón principal",
+          "type": "string"
+        },
+        {
+          "slug": "cta_boton_2",
+          "label": "Llamada final · Botón secundario",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "slug": "pagina_consultas",
+      "label": "Consultas y tarifas",
+      "labelSingular": "Consultas y tarifas",
+      "description": "Formato: *texto* = cursiva destacada, **texto** = negrita, ~texto~ = tono suave. Deja una línea en blanco entre párrafos y, en las listas, escribe un elemento por línea.",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
+      "group": "Páginas",
+      "sortOrder": 6,
+      "titleField": "hero_titulo",
+      "fields": [
+        {
+          "slug": "meta_titulo",
+          "label": "SEO · Título de la página",
+          "type": "text"
+        },
+        {
+          "slug": "meta_descripcion",
+          "label": "SEO · Descripción",
+          "type": "text"
+        },
+        {
+          "slug": "hero_etiqueta",
+          "label": "Portada · Etiqueta",
+          "type": "string"
+        },
+        {
+          "slug": "hero_titulo",
+          "label": "Portada · Título",
+          "type": "text"
+        },
+        {
+          "slug": "hero_subtitulo",
+          "label": "Portada · Subtítulo",
+          "type": "text"
+        },
+        {
+          "slug": "incluye_titulo",
+          "label": "Tarifas · Título de «Incluye»",
+          "type": "string"
+        },
+        {
+          "slug": "tarifas",
+          "label": "Tarifas",
+          "type": "repeater",
+          "validation": {
+            "subFields": [
+              {
+                "slug": "titulo",
+                "label": "Título",
+                "type": "string"
+              },
+              {
+                "slug": "precio",
+                "label": "Precio",
+                "type": "string"
+              },
+              {
+                "slug": "detalle",
+                "label": "Detalle (duración, ahorro…)",
+                "type": "string"
+              },
+              {
+                "slug": "descripcion",
+                "label": "Descripción",
+                "type": "text"
+              },
+              {
+                "slug": "incluye",
+                "label": "Incluye (un elemento por línea)",
+                "type": "text"
+              },
+              {
+                "slug": "nota",
+                "label": "Nota (opcional)",
+                "type": "string"
+              },
+              {
+                "slug": "destacada",
+                "label": "Destacada",
+                "type": "boolean"
+              }
+            ]
+          }
+        },
+        {
+          "slug": "condiciones_titulo",
+          "label": "Condiciones · Título",
+          "type": "string"
+        },
+        {
+          "slug": "condiciones",
+          "label": "Condiciones · Lista",
+          "type": "text"
+        },
+        {
+          "slug": "modalidades_titulo",
+          "label": "Modalidades · Título",
+          "type": "string"
+        },
+        {
+          "slug": "modalidades",
+          "label": "Modalidades",
+          "type": "repeater",
+          "validation": {
+            "subFields": [
+              {
+                "slug": "modalidad",
+                "label": "Modalidad",
+                "type": "string"
+              },
+              {
+                "slug": "dias",
+                "label": "Días",
+                "type": "string"
+              },
+              {
+                "slug": "horario",
+                "label": "Horario",
+                "type": "string"
+              },
+              {
+                "slug": "descripcion",
+                "label": "Descripción",
+                "type": "text"
+              }
+            ]
+          }
+        },
+        {
+          "slug": "cta_titulo",
+          "label": "Llamada final · Título",
+          "type": "text"
+        },
+        {
+          "slug": "cta_texto",
+          "label": "Llamada final · Texto",
+          "type": "text"
+        },
+        {
+          "slug": "cta_boton",
+          "label": "Llamada final · Botón principal",
+          "type": "string"
+        },
+        {
+          "slug": "cta_boton_2",
+          "label": "Llamada final · Botón secundario",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "slug": "pagina_faq",
+      "label": "Preguntas frecuentes",
+      "labelSingular": "Preguntas frecuentes",
+      "description": "Formato: *texto* = cursiva destacada, **texto** = negrita, ~texto~ = tono suave. Deja una línea en blanco entre párrafos y, en las listas, escribe un elemento por línea.",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
+      "group": "Páginas",
+      "sortOrder": 7,
+      "titleField": "hero_titulo",
+      "fields": [
+        {
+          "slug": "meta_titulo",
+          "label": "SEO · Título de la página",
+          "type": "text"
+        },
+        {
+          "slug": "meta_descripcion",
+          "label": "SEO · Descripción",
+          "type": "text"
+        },
+        {
+          "slug": "hero_etiqueta",
+          "label": "Portada · Etiqueta",
+          "type": "string"
+        },
+        {
+          "slug": "hero_titulo",
+          "label": "Portada · Título",
+          "type": "text"
+        },
+        {
+          "slug": "hero_subtitulo",
+          "label": "Portada · Subtítulo",
+          "type": "text"
+        },
+        {
+          "slug": "hero_enlace",
+          "label": "Portada · Enlace a contacto",
+          "type": "string"
+        },
+        {
+          "slug": "lista_titulo",
+          "label": "Preguntas · Título",
+          "type": "string"
+        },
+        {
+          "slug": "preguntas",
+          "label": "Preguntas",
+          "type": "repeater",
+          "validation": {
+            "subFields": [
+              {
+                "slug": "pregunta",
+                "label": "Pregunta",
+                "type": "string"
+              },
+              {
+                "slug": "respuesta",
+                "label": "Respuesta",
+                "type": "text"
+              }
+            ]
+          }
+        },
+        {
+          "slug": "cta_titulo",
+          "label": "Llamada final · Título",
+          "type": "text"
+        },
+        {
+          "slug": "cta_boton",
+          "label": "Llamada final · Botón principal",
+          "type": "string"
+        },
+        {
+          "slug": "cta_boton_2",
+          "label": "Llamada final · Botón secundario",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "slug": "pagina_contacto",
+      "label": "Contacto",
+      "labelSingular": "Contacto",
+      "description": "Formato: *texto* = cursiva destacada, **texto** = negrita, ~texto~ = tono suave. Deja una línea en blanco entre párrafos y, en las listas, escribe un elemento por línea.",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
+      "group": "Páginas",
+      "sortOrder": 8,
+      "titleField": "hero_titulo",
+      "fields": [
+        {
+          "slug": "meta_titulo",
+          "label": "SEO · Título de la página",
+          "type": "text"
+        },
+        {
+          "slug": "meta_descripcion",
+          "label": "SEO · Descripción",
+          "type": "text"
+        },
+        {
+          "slug": "hero_etiqueta",
+          "label": "Portada · Etiqueta",
+          "type": "string"
+        },
+        {
+          "slug": "hero_titulo",
+          "label": "Portada · Título",
+          "type": "text"
+        },
+        {
+          "slug": "hero_subtitulo",
+          "label": "Portada · Subtítulo",
+          "type": "text"
+        },
+        {
+          "slug": "hero_texto",
+          "label": "Portada · Texto",
+          "type": "text"
+        },
+        {
+          "slug": "pasos",
+          "label": "Pasos del proceso",
+          "type": "repeater",
+          "validation": {
+            "subFields": [
+              {
+                "slug": "titulo",
+                "label": "Título",
+                "type": "string"
+              },
+              {
+                "slug": "descripcion",
+                "label": "Descripción",
+                "type": "text"
+              }
+            ]
+          }
+        },
+        {
+          "slug": "horarios",
+          "label": "Horarios",
+          "type": "repeater",
+          "validation": {
+            "subFields": [
+              {
+                "slug": "modalidad",
+                "label": "Modalidad",
+                "type": "string"
+              },
+              {
+                "slug": "horario",
+                "label": "Horario",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slug": "datos_generales",
+      "label": "Datos de contacto y pie",
+      "labelSingular": "Datos de contacto y pie",
+      "description": "Datos que aparecen en varias páginas: correo, teléfono y textos del pie de página.",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
+      "group": "Páginas",
+      "sortOrder": 9,
+      "titleField": "email",
+      "fields": [
+        {
+          "slug": "email",
+          "label": "Correo electrónico visible",
+          "type": "string"
+        },
+        {
+          "slug": "telefono",
+          "label": "Teléfono",
+          "type": "string"
+        },
+        {
+          "slug": "colegiada",
+          "label": "Número de colegiada",
+          "type": "string"
+        },
+        {
+          "slug": "pie_areas",
+          "label": "Pie · Áreas",
+          "type": "text"
+        },
+        {
+          "slug": "pie_modalidad",
+          "label": "Pie · Modalidades",
+          "type": "text"
+        },
+        {
+          "slug": "pie_online",
+          "label": "Pie · Horario online",
+          "type": "string"
+        },
+        {
+          "slug": "pie_presencial",
+          "label": "Pie · Horario presencial",
+          "type": "string"
+        },
+        {
+          "slug": "pie_cta_titulo",
+          "label": "Pie · Título del botón",
+          "type": "string"
+        },
+        {
+          "slug": "pie_cta_boton",
+          "label": "Pie · Botón",
+          "type": "string"
+        },
+        {
+          "slug": "pie_legal",
+          "label": "Pie · Texto legal",
+          "type": "string"
+        }
+      ]
     }
   ],
   "taxonomies": [
@@ -466,6 +1434,509 @@
             "estres",
             "rutina"
           ]
+        }
+      }
+    ],
+    "pagina_inicio": [
+      {
+        "id": "pagina_inicio-inicio",
+        "slug": "inicio",
+        "status": "published",
+        "data": {
+          "meta_titulo": "Nutrición integrativa: salud hormonal, digestiva y metabólica",
+          "meta_descripcion": "Consulta de nutrición clínica e integrativa con rigor científico. Salud hormonal y fertilidad en la mujer, microbiota y salud digestiva, y salud metabólica. Online y presencial en Albacete.",
+          "hero_titulo": "Nutrición real ~para una~ *vida* *mejor*",
+          "hero_subtitulo": "Te acompaño a construir hábitos saludables que se adapten a ti, con ciencia, empatía y **resultados duraderos**.",
+          "hero_boton_1": "Conoce mi método de trabajo",
+          "hero_boton_2": "Reserva tu consulta",
+          "intro_texto": "~Una consulta de nutrición clínica e integrativa en la que~ cada persona se aborda de forma individualizada.",
+          "areas_titulo": "Áreas de *especialización*",
+          "areas_texto": "La nutrición interviene en numerosos procesos del organismo. Por eso, cada consulta comienza por comprender qué necesitas y cuáles son los factores que pueden estar influyendo en tu salud. Mi trabajo se centra en tres áreas principales.",
+          "areas_publico": "Para hombres y mujeres",
+          "areas_enlace": "Descubre esta área",
+          "areas_mas": "entre otros motivos de consulta",
+          "enfoque_etiqueta": "Más allá de una dieta",
+          "enfoque_titulo": "No existen dos personas iguales. *Tampoco dos planes nutricionales iguales.*",
+          "enfoque_texto": "**No entiendo** la nutrición como una lista de alimentos permitidos y prohibidos ni como un conjunto de pautas que debas seguir de forma indefinida.\n\n**Entiendo** la nutrición como una herramienta para cuidar la salud, cubrir las necesidades del organismo y mejorar la relación con la alimentación.\n\nPor eso, antes de establecer cualquier estrategia nutricional, necesito conocer tu historia, comprender qué está ocurriendo y valorar cuáles son tus necesidades reales.\n\nCada propuesta se construye desde cero, teniendo en cuenta tus circunstancias, preferencias, síntomas, objetivos y respuesta individual.",
+          "indicadores_titulo": "Tu salud no se define por un *único parámetro*",
+          "indicadores_texto": "Una analítica aporta información muy valiosa, pero no cuenta por sí sola toda la historia. Durante el proceso también prestamos atención a otros indicadores que nos ayudan a valorar tu evolución.",
+          "indicadores": [
+            {
+              "titulo": "Energía y vitalidad",
+              "descripcion": "Cómo te encuentras a lo largo del día."
+            },
+            {
+              "titulo": "Descanso",
+              "descripcion": "Calidad del sueño y sensación de recuperación."
+            },
+            {
+              "titulo": "Salud digestiva",
+              "descripcion": "Digestiones, tránsito intestinal, molestias y tolerancia alimentaria."
+            },
+            {
+              "titulo": "Estado nutricional",
+              "descripcion": "Calidad, variedad, densidad de nutrientes y suficiencia de la alimentación."
+            },
+            {
+              "titulo": "Sintomatología",
+              "descripcion": "Evolución de las molestias y otros síntomas relevantes."
+            },
+            {
+              "titulo": "Marcadores clínicos",
+              "descripcion": "Analíticas y parámetros objetivos cuando están indicados."
+            },
+            {
+              "titulo": "Estilo de vida",
+              "descripcion": "Alimentación, actividad física, descanso y hábitos cotidianos."
+            }
+          ],
+          "indicadores_cierre": "La evolución no se mide únicamente en resultados analíticos, sino también en *cómo te encuentras* y en los cambios que consigues mantener.",
+          "sobre_mi_etiqueta": "Sobre mí",
+          "sobre_mi_titulo": "Mara *Olivares*",
+          "sobre_mi_subtitulo": "Farmacéutica, biotecnóloga y dietista-nutricionista.",
+          "sobre_mi_texto": "Mi formación en Farmacia, Biotecnología y Nutrición Humana y Dietética me ha permitido desarrollar una visión amplia de los procesos que intervienen en la salud.\n\nMi interés profesional se centra especialmente en la relación entre nutrición, salud hormonal femenina, microbiota, sistema digestivo y metabolismo.\n\nEntiendo la práctica nutricional como un proceso de evaluación, aprendizaje y acompañamiento. Me interesa comprender qué hay detrás de cada caso, interpretar la información disponible y trasladar el conocimiento científico a estrategias nutricionales útiles y aplicables a la vida real.\n\nPor eso, cada consulta parte de una valoración individual y de un trabajo conjunto, con seguimiento y adaptación a lo largo del tiempo.",
+          "sobre_mi_boton": "Conoce mi formación y trayectoria",
+          "cta_titulo": "Cada proceso empieza por *comprender tus necesidades*",
+          "cta_texto": "Si quieres mejorar tu alimentación, comprender mejor tus síntomas o trabajar sobre algún aspecto de tu salud, podemos empezar por una valoración individualizada.",
+          "cta_boton": "Reserva tu primera consulta"
+        }
+      }
+    ],
+    "pagina_sobre_mi": [
+      {
+        "id": "pagina_sobre_mi-sobre-mi",
+        "slug": "sobre-mi",
+        "status": "published",
+        "data": {
+          "meta_titulo": "Sobre mí",
+          "meta_descripcion": "Mara Olivares, farmacéutica, biotecnóloga y dietista-nutricionista. Formación, trayectoria y filosofía de trabajo.",
+          "hero_etiqueta": "Sobre mí",
+          "hero_titulo": "Mara *Olivares*",
+          "hero_subtitulo": "Nutricionista integrativa",
+          "hero_texto": "Soy Mara Olivares, farmacéutica, biotecnóloga y dietista-nutricionista.\n\nMi trayectoria académica y profesional me ha llevado a interesarme por la relación entre los diferentes sistemas del organismo y el papel que desempeña la nutrición en su funcionamiento.\n\nLa formación en Farmacia y Biotecnología me aportó una base científica para comprender los procesos fisiológicos y bioquímicos que intervienen en la salud. Posteriormente, la Nutrición Humana y Dietética me permitió profundizar en la aplicación de ese conocimiento a la práctica clínica y al acompañamiento nutricional.\n\nMi especial interés se centra en la salud hormonal femenina, la microbiota y la salud digestiva, así como en el metabolismo y su relación con el estado nutricional.",
+          "forma_etiqueta": "Mi forma de trabajar",
+          "forma_destacado": "Considero que cada persona necesita algo diferente. Por eso, mi forma de trabajar se basa en *escuchar, valorar, comprender* y diseñar estrategias individualizadas.",
+          "forma_texto": "Siempre desde el rigor científico y con una visión global de la salud.\n\nMe gusta que cada persona entienda qué estamos trabajando, por qué lo hacemos y cómo puede aplicar los cambios a su día a día.",
+          "formacion_etiqueta": "Formación",
+          "formacion_academica_titulo": "Formación académica",
+          "formacion_academica": "Doble Grado en Farmacia y Biotecnología · Universidad CEU San Pablo\nGrado en Nutrición Humana y Dietética · Universidad de Alcalá (CUNIMAD)\nColegiada MAD01729",
+          "formacion_complementaria_titulo": "Formación complementaria",
+          "formacion_complementaria": "Especialización en Nutrición, Medicina y Salud Hormonal en la Mujer · ICNS\nFormación en patologías digestivas · MPunti\nFormación en microbiota · Regenera\nPrácticas en Salud Digestiva y Microbiota con el Dr. Vigaray · Inmunomet\nFormación GIDS · Rocío Pérez\nFormación continuada en salud metabólica, hormonal y digestiva",
+          "filosofia_etiqueta": "Filosofía de trabajo",
+          "filosofia_titulo": "Ciencia para comprender. *Nutrición para acompañar.*",
+          "filosofia_texto": "La evidencia científica es el punto de partida de mi trabajo, pero la aplicación de sus recomendaciones debe adaptarse a la realidad de cada persona.\n\nNo busco imponer pautas rígidas ni soluciones rápidas. Mi objetivo es ayudarte a comprender tus necesidades nutricionales y construir cambios que puedas integrar en tu vida cotidiana.",
+          "cta_titulo": "Empecemos por conocer *tu caso*",
+          "cta_texto": "Cada proceso comienza con una valoración individualizada para conocer tus necesidades y establecer las prioridades de trabajo.",
+          "cta_boton": "Reserva tu primera consulta",
+          "cta_boton_2": "Cómo trabajo"
+        }
+      }
+    ],
+    "pagina_areas": [
+      {
+        "id": "pagina_areas-areas",
+        "slug": "areas",
+        "status": "published",
+        "data": {
+          "meta_titulo": "Áreas de especialización",
+          "meta_descripcion": "Áreas de especialización de Mara Olivares: salud hormonal y fertilidad en la mujer, microbiota y salud digestiva, y salud metabólica.",
+          "hero_etiqueta": "Áreas de especialización",
+          "hero_titulo": "Tres áreas, una misma *forma de trabajar*",
+          "hero_subtitulo": "Cada organismo tiene unas necesidades y cada situación requiere una valoración diferente. Mi consulta se estructura en tres áreas de especialización que permiten abordar la salud desde una perspectiva nutricional individualizada.",
+          "motivos_titulo": "Algunos motivos de consulta",
+          "motivos_cierre": "Entre otros motivos de consulta",
+          "enlace_texto": "Descubre esta área",
+          "publico_texto": "Para hombres y mujeres",
+          "cta_titulo": "Cuéntame qué te está *pasando*",
+          "cta_texto": "Valoramos tu caso en una primera consulta de 90 minutos, online o presencial en Albacete.",
+          "cta_boton": "Reserva tu consulta",
+          "detalle_volver": "Áreas de especialización",
+          "detalle_etiqueta": "Área",
+          "detalle_publico": "Esta área está dirigida tanto a hombres como a mujeres",
+          "detalle_enfoque_titulo": "El enfoque",
+          "detalle_temas_titulo": "¿En qué podemos trabajar?",
+          "detalle_boton": "Reserva tu consulta"
+        }
+      }
+    ],
+    "areas": [
+      {
+        "id": "areas-salud-hormonal",
+        "slug": "salud-hormonal",
+        "status": "published",
+        "data": {
+          "titulo": "Salud hormonal y fertilidad en la mujer",
+          "orden": 1,
+          "resumen": "La salud hormonal femenina cambia a lo largo de las distintas etapas de la vida. Comprender el ciclo menstrual, identificar los factores que influyen en sus síntomas y cuidar el estado nutricional son aspectos fundamentales de este proceso.",
+          "motivos": "Alteraciones del ciclo menstrual\nSíndrome premenstrual\nEndometriosis y adenomiosis\nSíndrome de ovario poliquístico\nBúsqueda de embarazo y salud reproductiva",
+          "introduccion": "La salud hormonal femenina está relacionada con numerosos procesos fisiológicos que cambian a lo largo de la vida.\n\nEl ciclo menstrual, la función ovárica, el metabolismo y la salud reproductiva están influidos por diferentes factores, entre ellos el estado nutricional y los hábitos de vida.\n\nEl abordaje nutricional busca acompañar estos procesos, mejorar la calidad de la alimentación y atender las necesidades específicas de cada etapa, desde el conocimiento de la fisiología y el rigor científico.",
+          "temas": [
+            {
+              "titulo": "Ciclo menstrual y salud hormonal",
+              "descripcion": "Comprender el ciclo menstrual es una parte importante del cuidado de la salud femenina. Trabajamos la educación menstrual, el conocimiento de las fases del ciclo y la identificación de patrones y síntomas."
+            },
+            {
+              "titulo": "Síndrome premenstrual y molestias menstruales",
+              "descripcion": "Valoración de los hábitos alimentarios, el estado nutricional y otros factores que pueden influir en la sintomatología asociada al ciclo."
+            },
+            {
+              "titulo": "Endometriosis y adenomiosis",
+              "descripcion": "Acompañamiento nutricional individualizado para atender las necesidades nutricionales, la salud digestiva y el bienestar general de mujeres con diagnóstico de endometriosis o adenomiosis."
+            },
+            {
+              "titulo": "Síndrome de ovario poliquístico (SOP)",
+              "descripcion": "Abordaje nutricional adaptado a las características de cada mujer, prestando especial atención a la salud metabólica, la sensibilidad a la insulina cuando corresponda y la calidad global de la alimentación."
+            },
+            {
+              "titulo": "Alteraciones del ciclo menstrual",
+              "descripcion": "Valoración nutricional y de hábitos ante irregularidades menstruales y otros cambios del ciclo, en coordinación con el seguimiento ginecológico cuando sea necesario."
+            },
+            {
+              "titulo": "Fertilidad y preparación preconcepcional",
+              "descripcion": "La etapa previa a la búsqueda de embarazo es una oportunidad para revisar el estado nutricional, los hábitos y la suficiencia de nutrientes importantes para la salud reproductiva."
+            },
+            {
+              "titulo": "Reproducción asistida",
+              "descripcion": "Acompañamiento nutricional durante los procesos de reproducción asistida, atendiendo las necesidades de cada etapa y coordinando el trabajo con el equipo sanitario correspondiente."
+            },
+            {
+              "titulo": "Perimenopausia y menopausia",
+              "descripcion": "Adaptación de la alimentación y los hábitos a los cambios fisiológicos de esta etapa, prestando atención a la salud metabólica, ósea, muscular y cardiovascular."
+            }
+          ],
+          "extra_titulo": "Educación menstrual y conocimiento de la fertilidad",
+          "extra_texto": "Conocer el ciclo menstrual permite comprender mejor los cambios fisiológicos que se producen a lo largo del mes.\n\nLa educación menstrual y el conocimiento de los signos de fertilidad pueden ayudar a interpretar el ciclo y reconocer los patrones individuales.\n\nSe contempla el acompañamiento en educación del ciclo y método sintotérmico dentro del ámbito de formación y competencia profesional correspondiente.",
+          "cierre": "Cada mujer tiene una historia, unas necesidades y una etapa vital diferente. El objetivo es ofrecer un acompañamiento nutricional adaptado a esa realidad, sin recurrir a protocolos generalizados.",
+          "para_todos": false
+        }
+      },
+      {
+        "id": "areas-salud-digestiva",
+        "slug": "salud-digestiva",
+        "status": "published",
+        "data": {
+          "titulo": "Microbiota y salud digestiva",
+          "orden": 2,
+          "resumen": "La salud digestiva influye en cómo nos sentimos, en nuestra alimentación y en numerosos procesos fisiológicos.\n\nAbordamos las alteraciones digestivas desde una valoración individualizada, teniendo en cuenta la sintomatología, los hábitos alimentarios, la tolerancia a los alimentos y el contexto clínico de cada persona.",
+          "motivos": "SIBO y alteraciones de la microbiota\nHinchazón abdominal y gases\nEstreñimiento y diarrea\nSíndrome del intestino irritable\nDificultades de tolerancia alimentaria",
+          "introduccion": "La salud digestiva es mucho más que hacer una buena digestión.\n\nEl aparato digestivo participa en la digestión y absorción de nutrientes, en la interacción con la microbiota intestinal y en diferentes procesos relacionados con el funcionamiento del organismo.\n\nCuando aparecen molestias digestivas persistentes o dificultades para tolerar determinados alimentos, es importante valorar el contexto completo y no limitarse a eliminar alimentos de forma indefinida.\n\nEl objetivo es desarrollar una estrategia nutricional individualizada que permita mejorar el bienestar digestivo y favorecer una alimentación lo más completa y variada posible, dentro de las necesidades y tolerancias de cada persona.",
+          "temas": [
+            {
+              "titulo": "Microbiota intestinal y disbiosis",
+              "descripcion": "Valoración de la alimentación, los hábitos y los antecedentes relacionados con la salud intestinal. Acompañamiento nutricional cuando existen alteraciones de la microbiota."
+            },
+            {
+              "titulo": "SIBO y sobrecrecimiento bacteriano",
+              "descripcion": "Abordaje nutricional individualizado en personas con diagnóstico de SIBO, teniendo en cuenta la sintomatología, la tolerancia alimentaria y el contexto clínico."
+            },
+            {
+              "titulo": "Hinchazón abdominal y gases",
+              "descripcion": "Valoración de los hábitos alimentarios, la composición de la dieta, el ritmo de las comidas y otros factores relacionados con la sintomatología digestiva."
+            },
+            {
+              "titulo": "Síndrome del intestino irritable",
+              "descripcion": "Estrategias nutricionales adaptadas a los síntomas y a la tolerancia individual, evitando restricciones innecesarias y trabajando, cuando sea posible, hacia una alimentación suficiente y variada."
+            },
+            {
+              "titulo": "Estreñimiento y diarrea",
+              "descripcion": "Valoración de la ingesta de fibra, hidratación, hábitos, composición de la alimentación y otros factores que pueden influir en el tránsito intestinal."
+            },
+            {
+              "titulo": "Reflujo y molestias digestivas altas",
+              "descripcion": "Adaptación de la alimentación y de determinados hábitos para atender las necesidades individuales y favorecer el bienestar digestivo."
+            },
+            {
+              "titulo": "Intolerancias y sensibilidad alimentaria",
+              "descripcion": "Valoración de las dificultades de tolerancia, la calidad nutricional de la dieta y las posibilidades de reintroducción o diversificación cuando estén indicadas."
+            },
+            {
+              "titulo": "Sensibilidad a la histamina",
+              "descripcion": "Acompañamiento nutricional en personas con sospecha o diagnóstico de intolerancia a la histamina, prestando especial atención a evitar restricciones excesivas y déficits nutricionales."
+            }
+          ],
+          "extra_titulo": "",
+          "extra_texto": "",
+          "cierre": "No se trata de retirar cada vez más alimentos, sino de comprender qué puede estar ocurriendo y trabajar para mejorar la tolerancia, la calidad de la alimentación y el bienestar digestivo.",
+          "para_todos": true
+        }
+      },
+      {
+        "id": "areas-salud-metabolica",
+        "slug": "salud-metabolica",
+        "status": "published",
+        "data": {
+          "titulo": "Salud metabólica",
+          "orden": 3,
+          "resumen": "El metabolismo está relacionado con la forma en la que el organismo obtiene, utiliza y almacena la energía y los nutrientes.\n\nEl abordaje nutricional busca mejorar la salud metabólica y el estado nutricional mediante estrategias adaptadas a cada persona, sin reducir el proceso a contar calorías o perder peso.",
+          "motivos": "Resistencia a la insulina\nAlteraciones de glucosa y colesterol\nHígado graso\nComposición corporal\nSobrepeso y obesidad",
+          "introduccion": "El metabolismo engloba los procesos mediante los cuales el organismo obtiene, transforma y utiliza la energía y los nutrientes.\n\nLa alimentación, la actividad física, el descanso, la composición corporal y otros factores influyen en la salud metabólica.\n\nEl abordaje nutricional se centra en mejorar la calidad de la alimentación, cubrir las necesidades del organismo y trabajar sobre los factores modificables relacionados con la salud metabólica.",
+          "temas": [
+            {
+              "titulo": "Resistencia a la insulina",
+              "descripcion": "Estrategias nutricionales adaptadas a la situación metabólica de cada persona, teniendo en cuenta los hábitos, la composición de la alimentación y los marcadores clínicos disponibles."
+            },
+            {
+              "titulo": "Alteraciones de glucosa y metabolismo glucídico",
+              "descripcion": "Acompañamiento nutricional para mejorar la calidad de la alimentación y favorecer un mejor control metabólico, en coordinación con el seguimiento médico cuando corresponda."
+            },
+            {
+              "titulo": "Colesterol y perfil lipídico",
+              "descripcion": "Adaptación de la alimentación para mejorar la calidad de las grasas, la fibra y el patrón dietético global, teniendo en cuenta el perfil lipídico individual."
+            },
+            {
+              "titulo": "Hígado graso y salud hepática",
+              "descripcion": "Abordaje nutricional orientado a mejorar los hábitos alimentarios y los factores metabólicos relacionados con la salud hepática."
+            },
+            {
+              "titulo": "Sobrepeso y obesidad",
+              "descripcion": "Acompañamiento nutricional individualizado, con especial atención a la salud, la suficiencia nutricional y la sostenibilidad de los cambios."
+            },
+            {
+              "titulo": "Composición corporal y masa muscular",
+              "descripcion": "Trabajo nutricional orientado a mejorar o mantener la masa muscular, adaptar la ingesta energética y proteica y favorecer una composición corporal saludable."
+            },
+            {
+              "titulo": "Déficits nutricionales",
+              "descripcion": "Valoración de la alimentación y del estado nutricional para identificar posibles insuficiencias de vitaminas, minerales y otros nutrientes, y plantear estrategias de corrección cuando estén indicadas."
+            }
+          ],
+          "extra_titulo": "",
+          "extra_texto": "",
+          "cierre": "La salud metabólica no se reduce al peso corporal. También importa cómo está nutrido el organismo, cómo responde a la alimentación y cómo evoluciona su funcionamiento.",
+          "para_todos": true
+        }
+      }
+    ],
+    "pagina_como_trabajo": [
+      {
+        "id": "pagina_como_trabajo-como-trabajo",
+        "slug": "como-trabajo",
+        "status": "published",
+        "data": {
+          "meta_titulo": "Cómo trabajo",
+          "meta_descripcion": "Un proceso individualizado, no una dieta estándar: valoración inicial, estrategia nutricional personalizada, seguimiento y consolidación de hábitos.",
+          "hero_etiqueta": "Cómo trabajo",
+          "hero_titulo": "Un proceso individualizado, *no una dieta estándar*",
+          "hero_subtitulo": "Cada consulta comienza por conocer tu situación y comprender qué necesitas.",
+          "hero_texto": "No trabajo con menús cerrados ni con protocolos universales. Mi metodología parte de una valoración individualizada y se desarrolla mediante una estrategia nutricional que se adapta a tu evolución.",
+          "fase_etiqueta": "Fase",
+          "fases": [
+            {
+              "titulo": "Valoración inicial",
+              "frase": "Primero, necesito conocerte.",
+              "duracion": "90 minutos",
+              "texto": "La primera consulta tiene una duración aproximada de 90 minutos.\n\nDurante este encuentro revisamos tu historia clínica, antecedentes, síntomas, alimentación, hábitos y objetivos.\n\nTambién valoramos las analíticas y pruebas disponibles cuando son relevantes para tu caso.\n\nEl objetivo es reunir toda la información necesaria para comprender tu situación y establecer las prioridades de trabajo."
+            },
+            {
+              "titulo": "Estrategia nutricional personalizada",
+              "frase": "Una propuesta adaptada a tu realidad.",
+              "duracion": "",
+              "texto": "A partir de la valoración, elaboro una estrategia nutricional individualizada.\n\nNo se trata de aplicar una dieta estándar, sino de construir una propuesta adaptada a tus necesidades nutricionales, preferencias, horarios, tolerancias, circunstancias y objetivos.\n\nPriorizamos una alimentación completa, suficiente y variada, con especial atención a la calidad de los alimentos y la densidad de nutrientes.\n\nLas recomendaciones deben ser realistas y compatibles con tu vida cotidiana."
+            },
+            {
+              "titulo": "Seguimiento y evaluación",
+              "frase": "Tu proceso evoluciona contigo.",
+              "duracion": "Hasta 60 minutos",
+              "texto": "El seguimiento permite valorar cómo estás respondiendo a la estrategia planteada y realizar los ajustes necesarios.\n\nNo evaluamos únicamente el cumplimiento de las pautas o los cambios en el peso. También prestamos atención a la evolución de los síntomas, la energía, el descanso, la salud digestiva, la tolerancia alimentaria y otros indicadores relevantes.\n\nLas consultas de seguimiento tienen una duración de hasta 60 minutos."
+            },
+            {
+              "titulo": "Consolidación de hábitos",
+              "frase": "El objetivo es que los cambios permanezcan.",
+              "duracion": "",
+              "texto": "La nutrición debe integrarse en tu vida, no convertirse en una fuente constante de preocupación o restricciones.\n\nTrabajamos progresivamente para que puedas comprender tus necesidades, tomar decisiones alimentarias con autonomía y mantener los hábitos que contribuyen a tu salud.\n\nNo buscamos llegar rápido. Buscamos construir una evolución sostenible."
+            }
+          ],
+          "valoramos_titulo": "Qué valoramos durante el proceso",
+          "valoramos": "Historia clínica y antecedentes\nCalidad y suficiencia de la alimentación\nIngesta y densidad de nutrientes\nSíntomas y evolución clínica\nSalud digestiva y tolerancia alimentaria\nEnergía y vitalidad\nSueño, descanso y recuperación\nActividad física y hábitos cotidianos\nAnalíticas y marcadores clínicos cuando proceda",
+          "cierre_texto": "Una buena estrategia nutricional no es la que más restricciones impone, sino la que *responde a tus necesidades* y puedes mantener en el tiempo.",
+          "cta_titulo": "Empecemos por la *valoración inicial*",
+          "cta_texto": "La primera consulta dura 90 minutos y se puede realizar online o de forma presencial en Albacete.",
+          "cta_boton": "Reserva tu consulta",
+          "cta_boton_2": "Consultas y tarifas"
+        }
+      }
+    ],
+    "pagina_consultas": [
+      {
+        "id": "pagina_consultas-consultas",
+        "slug": "consultas",
+        "status": "published",
+        "data": {
+          "meta_titulo": "Consultas y tarifas",
+          "meta_descripcion": "Primera consulta de 90 minutos, consultas de seguimiento y pack de acompañamiento nutricional. Online o presencial en Albacete.",
+          "hero_etiqueta": "Consultas y tarifas",
+          "hero_titulo": "Consultas y *acompañamiento nutricional*",
+          "hero_subtitulo": "Cada proceso comienza con una valoración individualizada para conocer tus necesidades y establecer las prioridades de trabajo.",
+          "incluye_titulo": "Incluye",
+          "tarifas": [
+            {
+              "titulo": "Primera consulta",
+              "precio": "85 €",
+              "detalle": "90 minutos",
+              "descripcion": "Una primera valoración completa para conocer tu historia, comprender tus necesidades y establecer las prioridades de trabajo.",
+              "incluye": "Revisión de antecedentes e historia clínica\nValoración de síntomas y objetivos\nEvaluación de hábitos y alimentación\nRevisión de analíticas y pruebas disponibles cuando proceda\nDefinición de la estrategia nutricional individualizada",
+              "nota": "",
+              "destacada": false
+            },
+            {
+              "titulo": "Consulta de seguimiento",
+              "precio": "55 €",
+              "detalle": "Hasta 60 minutos",
+              "descripcion": "Un espacio para valorar tu evolución, resolver dudas y adaptar la estrategia nutricional según tu respuesta y necesidades.",
+              "incluye": "Revisión de la evolución\nValoración de síntomas y bienestar\nRevisión de la alimentación y tolerancias\nAjuste de las recomendaciones\nNuevos objetivos cuando sea necesario",
+              "nota": "",
+              "destacada": false
+            },
+            {
+              "titulo": "Pack de acompañamiento nutricional",
+              "precio": "200 €",
+              "detalle": "Ahorras 50 €",
+              "descripcion": "El pack está pensado para quienes desean realizar un proceso con continuidad y seguimiento.",
+              "incluye": "1 primera consulta de 90 minutos\n3 consultas de seguimiento de hasta 60 minutos",
+              "nota": "Precio por separado: 250 €. Precio del pack: 200 €.",
+              "destacada": true
+            }
+          ],
+          "condiciones_titulo": "Condiciones del pack",
+          "condiciones": "Validez máxima de un año desde la fecha de compra.\nLas consultas deben reservarse con antelación.\nLa reserva estará sujeta a disponibilidad de agenda.",
+          "modalidades_titulo": "Modalidades de consulta",
+          "modalidades": [
+            {
+              "modalidad": "Consulta online",
+              "dias": "Martes y jueves",
+              "horario": "16:00 – 19:00 h",
+              "descripcion": "Podrás realizar tu consulta desde cualquier lugar, con el mismo proceso de valoración y seguimiento individualizado."
+            },
+            {
+              "modalidad": "Consulta presencial en Albacete",
+              "dias": "Miércoles",
+              "horario": "17:30 – 20:30 h",
+              "descripcion": "Un espacio de consulta presencial para realizar tu valoración y seguimiento nutricional."
+            }
+          ],
+          "cta_titulo": "Reserva tu *primera consulta*",
+          "cta_texto": "¿Tienes dudas antes de empezar? Revisa las preguntas frecuentes o escríbeme.",
+          "cta_boton": "Reserva tu consulta",
+          "cta_boton_2": "Preguntas frecuentes"
+        }
+      }
+    ],
+    "pagina_faq": [
+      {
+        "id": "pagina_faq-preguntas-frecuentes",
+        "slug": "preguntas-frecuentes",
+        "status": "published",
+        "data": {
+          "meta_titulo": "Preguntas frecuentes",
+          "meta_descripcion": "Dudas habituales sobre las consultas de nutrición: analíticas, estrategia nutricional, consultas online, duración del proceso y reservas.",
+          "hero_etiqueta": "Preguntas frecuentes",
+          "hero_titulo": "Antes de *empezar*",
+          "hero_subtitulo": "Las dudas más habituales sobre las consultas y el proceso de acompañamiento nutricional.",
+          "hero_enlace": "¿Otra pregunta? Escríbeme",
+          "lista_titulo": "Dudas habituales",
+          "preguntas": [
+            {
+              "pregunta": "¿Necesito tener una analítica reciente para empezar?",
+              "respuesta": "No es imprescindible. Si dispones de analíticas o pruebas recientes, podemos revisarlas durante la valoración cuando sean relevantes. Si no las tienes, valoraremos tu situación y determinaremos si es necesario solicitar alguna prueba a través del profesional sanitario correspondiente."
+            },
+            {
+              "pregunta": "¿Voy a recibir una dieta?",
+              "respuesta": "No trabajo con dietas cerradas ni menús estándar. Elaboro una estrategia nutricional individualizada, adaptada a tus necesidades, preferencias, horarios, tolerancias y objetivos. El contenido de las recomendaciones dependerá de cada caso."
+            },
+            {
+              "pregunta": "¿Tengo que pesar los alimentos o contar calorías?",
+              "respuesta": "No necesariamente. El enfoque no se basa en contar calorías de forma sistemática ni en imponer cantidades rígidas. La metodología se adapta a cada persona y a las necesidades de su proceso."
+            },
+            {
+              "pregunta": "¿Puedo acudir si no quiero perder peso?",
+              "respuesta": "Por supuesto. La consulta no está orientada exclusivamente a la pérdida de peso. También trabajamos salud hormonal, digestiva, metabólica, suficiencia nutricional, composición corporal y mejora de hábitos."
+            },
+            {
+              "pregunta": "¿La consulta de salud hormonal es solo para mujeres que quieren quedarse embarazadas?",
+              "respuesta": "No. La salud hormonal femenina abarca mucho más que la fertilidad. También trabajamos educación menstrual, conocimiento del ciclo, síntomas premenstruales, alteraciones menstruales y necesidades nutricionales en distintas etapas de la vida."
+            },
+            {
+              "pregunta": "¿Atendéis a hombres?",
+              "respuesta": "Sí. Las consultas de microbiota y salud digestiva y de salud metabólica están abiertas tanto a hombres como a mujeres."
+            },
+            {
+              "pregunta": "¿Puedo acudir si tengo una enfermedad diagnosticada?",
+              "respuesta": "Sí. La consulta puede ofrecer acompañamiento nutricional en personas con diferentes patologías, siempre respetando el ámbito de actuación profesional y coordinando el abordaje con el equipo médico cuando sea necesario."
+            },
+            {
+              "pregunta": "¿Cuánto dura el proceso?",
+              "respuesta": "Depende de cada persona, sus necesidades y objetivos. No existe una duración universal. El seguimiento se adapta a la evolución y a las circunstancias individuales."
+            },
+            {
+              "pregunta": "¿Puedo hacer las consultas online?",
+              "respuesta": "Sí. Se realizan consultas online los martes y jueves por la tarde."
+            },
+            {
+              "pregunta": "¿Cómo puedo reservar?",
+              "respuesta": "Puedes solicitar tu cita a través del formulario de contacto de la web o mediante los datos de contacto indicados."
+            }
+          ],
+          "cta_titulo": "Empecemos por conocer *tu caso*",
+          "cta_boton": "Reserva tu consulta",
+          "cta_boton_2": "Consultas y tarifas"
+        }
+      }
+    ],
+    "pagina_contacto": [
+      {
+        "id": "pagina_contacto-contacto",
+        "slug": "contacto",
+        "status": "published",
+        "data": {
+          "meta_titulo": "Contacto",
+          "meta_descripcion": "Reserva tu primera consulta de nutrición con Mara Olivares, online o presencial en Albacete.",
+          "hero_etiqueta": "Contacto",
+          "hero_titulo": "Empecemos por conocer *tu caso*",
+          "hero_subtitulo": "Si quieres comenzar un proceso de acompañamiento nutricional, puedes solicitar tu primera consulta presencial en Albacete u online.",
+          "hero_texto": "Cada proceso comienza con una valoración individualizada para conocer tus necesidades y establecer las prioridades de trabajo.",
+          "pasos": [
+            {
+              "titulo": "Valoración individualizada",
+              "descripcion": "Primera consulta de 90 minutos para entender tu caso de forma global."
+            },
+            {
+              "titulo": "Estrategia propia",
+              "descripcion": "Sin dietas cerradas: una estrategia adaptada a tus necesidades y objetivos."
+            },
+            {
+              "titulo": "Seguimiento",
+              "descripcion": "Consultas de hasta 60 minutos para valorar tu evolución y ajustar el plan."
+            }
+          ],
+          "horarios": [
+            {
+              "modalidad": "Online",
+              "horario": "Martes y jueves, de 16:00 a 19:00 h"
+            },
+            {
+              "modalidad": "Presencial en Albacete",
+              "horario": "Miércoles, de 17:30 a 20:30 h"
+            }
+          ]
+        }
+      }
+    ],
+    "datos_generales": [
+      {
+        "id": "datos_generales-general",
+        "slug": "general",
+        "status": "published",
+        "data": {
+          "email": "hola@maraolivares.com",
+          "telefono": "+34 600 135 465",
+          "colegiada": "MAD01729",
+          "pie_areas": "Salud hormonal y fertilidad en la mujer · Microbiota y salud digestiva · Salud metabólica.",
+          "pie_modalidad": "Consulta presencial en Albacete y online.",
+          "pie_online": "Online · martes y jueves",
+          "pie_presencial": "Presencial en Albacete · miércoles",
+          "pie_cta_titulo": "Primera consulta",
+          "pie_cta_boton": "Agenda tu cita",
+          "pie_legal": "Aviso legal y política de privacidad disponibles próximamente."
         }
       }
     ]

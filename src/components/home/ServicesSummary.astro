@@ -1,17 +1,20 @@
 ---
-import { areas } from "../../lib/content";
+import { lines, paragraphs, rich, text, type CmsArea, type CmsPage } from "../../cms/content";
+
+interface Props {
+  page: CmsPage;
+  areas: CmsArea[];
+}
+
+const { page, areas } = Astro.props;
+const { data, edit } = page;
 ---
 
 <section class="home-services" id="areas">
   <div class="container">
     <div class="heading-row home-reveal">
-      <h2 class="display-title">Áreas de <span class="serif-accent">especialización</span></h2>
-      <p class="heading-row__text home-services__intro">
-        La nutrición interviene en numerosos procesos del organismo. Por eso,
-        cada consulta comienza por comprender qué necesitas y cuáles son los
-        factores que pueden estar influyendo en tu salud. Mi trabajo se centra
-        en tres áreas principales.
-      </p>
+      <h2 class="display-title" {...edit("areas_titulo")} set:html={rich(data.areas_titulo)} />
+      <p class="heading-row__text home-services__intro" {...edit("areas_texto")} set:html={rich(data.areas_texto)} />
     </div>
 
     <ul class="service-index">
@@ -19,22 +22,22 @@ import { areas } from "../../lib/content";
         areas.map((area, index) => (
           <li class="home-reveal" style={`--home-reveal-delay: ${index * 60}ms`}>
             <a class="service-index__row" href={`/servicios/${area.slug}`}>
-              <span class="service-index__number serif-accent">0{index + 1}</span>
+              <span class="service-index__number serif-accent">{String(index + 1).padStart(2, "0")}</span>
               <span class="service-index__main">
-                <span class="service-index__title">{area.title}</span>
-                {area.summary.map((paragraph) => (
-                  <span class="service-index__description">{paragraph}</span>
+                <span class="service-index__title" {...area.edit("titulo")}>{text(area.data.titulo)}</span>
+                {paragraphs(area.data.resumen).map((paragraph) => (
+                  <span class="service-index__description" set:html={rich(paragraph)} />
                 ))}
-                {area.forEveryone && (
-                  <span class="service-index__audience">Para hombres y mujeres</span>
+                {area.data.para_todos && (
+                  <span class="service-index__audience">{text(data.areas_publico)}</span>
                 )}
-                <span class="service-index__cta">Descubre esta área</span>
+                <span class="service-index__cta">{text(data.areas_enlace)}</span>
               </span>
               <span class="service-index__topics">
-                {area.highlights.map((topic) => (
+                {lines(area.data.motivos).map((topic) => (
                   <span>{topic}</span>
                 ))}
-                <span class="service-index__more">entre otros motivos de consulta</span>
+                <span class="service-index__more">{text(data.areas_mas)}</span>
               </span>
               <span class="service-index__arrow" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>

@@ -2,44 +2,42 @@
 import PageCta from "../components/ui/PageCta.astro";
 import PageHero from "../components/ui/PageHero.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { methodPhases, processAssessment } from "../lib/content";
+import { getPage, items, lines, paragraphs, plain, rich, text } from "../cms/content";
 import "../styles/components/pages.css";
+
+const page = await getPage("pagina_como_trabajo", "como-trabajo");
+const { data, edit } = page;
+const phases = items<{ titulo?: string; frase?: string; duracion?: string; texto?: string }>(data.fases);
 ---
 
 <BaseLayout
-  title="Cómo trabajo"
-  description="Un proceso individualizado, no una dieta estándar: valoración inicial, estrategia nutricional personalizada, seguimiento y consolidación de hábitos."
+  title={plain(data.meta_titulo)}
+  description={plain(data.meta_descripcion)}
   canonicalPath="/como-trabajo"
   mainClass="pages-main"
 >
   <PageHero>
-    <p class="page-label">Cómo trabajo</p>
-    <h1 class="page-title">
-      Un proceso individualizado, <span class="serif-accent">no una dieta estándar</span>
-    </h1>
-    <p class="page-hero__lead">Cada consulta comienza por conocer tu situación y comprender qué necesitas.</p>
-    <p class="page-hero__text">
-      No trabajo con menús cerrados ni con protocolos universales. Mi
-      metodología parte de una valoración individualizada y se desarrolla
-      mediante una estrategia nutricional que se adapta a tu evolución.
-    </p>
+    <p class="page-label" {...edit("hero_etiqueta")}>{text(data.hero_etiqueta)}</p>
+    <h1 class="page-title" {...edit("hero_titulo")} set:html={rich(data.hero_titulo)} />
+    <p class="page-hero__lead" {...edit("hero_subtitulo")} set:html={rich(data.hero_subtitulo)} />
+    <p class="page-hero__text" {...edit("hero_texto")} set:html={rich(data.hero_texto)} />
   </PageHero>
 
   <section class="method pages-section">
     <div class="container">
-      <ol class="phase-list">
+      <ol class="phase-list" {...edit("fases")}>
         {
-          methodPhases.map((phase, index) => (
+          phases.map((phase, index) => (
             <li class="phase scroll-reveal">
               <div class="phase__header">
                 <span class="phase__number serif-accent" aria-hidden="true">{index + 1}</span>
-                <p class="page-label">Fase {index + 1}</p>
-                <h2>{phase.title}</h2>
-                {phase.duration && <span class="phase__duration">{phase.duration}</span>}
+                <p class="page-label">{text(data.fase_etiqueta)} {index + 1}</p>
+                <h2>{text(phase.titulo)}</h2>
+                {text(phase.duracion) && <span class="phase__duration">{text(phase.duracion)}</span>}
               </div>
               <div class="phase__body">
-                <p class="phase__lead serif-accent">{phase.lead}</p>
-                {phase.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+                <p class="phase__lead serif-accent">{text(phase.frase)}</p>
+                {paragraphs(phase.texto).map((paragraph) => <p set:html={rich(paragraph)} />)}
               </div>
             </li>
           ))
@@ -50,10 +48,10 @@ import "../styles/components/pages.css";
 
   <section class="split-section split-section--cream">
     <div class="container split-section__inner scroll-reveal">
-      <h2 class="split-section__label">Qué valoramos durante el proceso</h2>
+      <h2 class="split-section__label" {...edit("valoramos_titulo")}>{text(data.valoramos_titulo)}</h2>
       <div class="split-section__body">
-        <ul class="ruled-list assessment-list">
-          {processAssessment.map((item) => <li>{item}</li>)}
+        <ul class="ruled-list assessment-list" {...edit("valoramos")}>
+          {lines(data.valoramos).map((item) => <li set:html={rich(item)} />)}
         </ul>
       </div>
     </div>
@@ -61,20 +59,9 @@ import "../styles/components/pages.css";
 
   <section class="area-closing">
     <div class="container area-closing__inner scroll-reveal">
-      <p class="area-closing__text">
-        Una buena estrategia nutricional no es la que más restricciones impone,
-        sino la que <span class="serif-accent">responde a tus necesidades</span>
-        y puedes mantener en el tiempo.
-      </p>
+      <p class="area-closing__text" {...edit("cierre_texto")} set:html={rich(data.cierre_texto)} />
     </div>
   </section>
 
-  <PageCta
-    text="La primera consulta dura 90 minutos y se puede realizar online o de forma presencial en Albacete."
-    label="Reserva tu consulta"
-    secondaryHref="/consultas"
-    secondaryLabel="Consultas y tarifas"
-  >
-    Empecemos por la <span class="serif-accent">valoración inicial</span>
-  </PageCta>
+  <PageCta page={page} secondaryHref="/consultas" />
 </BaseLayout>

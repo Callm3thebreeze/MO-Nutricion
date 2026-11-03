@@ -12,6 +12,10 @@ const SECURITY_HEADERS = {
   'X-Frame-Options': 'DENY',
 } as const;
 
+// <style> inline y el <script type="module"> con el que Vite recarga en caliente cada hoja de estilos
+const SITE_DEV_STYLES =
+  /<style[^>]*data-vite-dev-id="[^"]*\/src\/styles\/[^"]*"[^>]*>[\s\S]*?<\/style>|<script[^>]*src="\/src\/styles\/[^"]*"[^>]*><\/script>/g;
+
 export const onRequest = defineMiddleware(async (context, next) => {
   const rewriteTarget = ROUTE_REWRITES[context.url.pathname];
 
@@ -19,7 +23,20 @@ export const onRequest = defineMiddleware(async (context, next) => {
     return context.rewrite(rewriteTarget);
   }
 
-  const response = await next();
+  let response = await next();
+
+  // En desarrollo Vite inyecta en todas las páginas los estilos de la web que ya ha cargado,
+  // también en el panel de EmDash. En producción cada ruta solo lleva los suyos.
+  if (
+    import.meta.env.DEV &&
+    context.url.pathname.startsWith('/_emdash/admin') &&
+    response.headers.get('content-type')?.includes('text/html')
+  ) {
+    const html = await response.text();
+    const headers = new Headers(response.headers);
+    headers.delete('content-length');
+    response = new Response(html.replace(SITE_DEV_STYLES, ''), { status: response.status, headers });
+  }
 
   for (const [header, value] of Object.entries(SECURITY_HEADERS)) {
     if (!response.headers.has(header)) {

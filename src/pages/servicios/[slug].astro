@@ -1,68 +1,83 @@
 ---
 import PageHero from "../../components/ui/PageHero.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { areas } from "../../lib/content";
+import { getAreas, getPage, items, paragraphs, plain, rich, text } from "../../cms/content";
 import "../../styles/components/pages.css";
 
+const areas = await getAreas();
 const index = areas.findIndex((item) => item.slug === Astro.params.slug);
 
 if (index === -1) {
   return Astro.rewrite("/404");
 }
 
-const area = areas[index];
+const { data: labels, edit: editLabels } = await getPage("pagina_areas", "areas");
+const { data, edit } = areas[index];
+const number = (position: number) => String(position + 1).padStart(2, "0");
+
+const [lead, ...approach] = paragraphs(data.introduccion);
+const [extraStatement, ...extraParagraphs] = paragraphs(data.extra_texto);
+const topics = items<{ titulo?: string; descripcion?: string }>(data.temas);
 
 const otherAreas = areas
   .map((item, position) => ({ ...item, position }))
-  .filter((item) => item.slug !== area.slug);
+  .filter((item) => item.slug !== areas[index].slug);
 ---
 
 <BaseLayout
-  title={area.title}
-  description={area.summary.join(" ")}
-  canonicalPath={`/servicios/${area.slug}`}
+  title={plain(data.titulo)}
+  description={paragraphs(data.resumen).map(plain).join(" ")}
+  canonicalPath={`/servicios/${areas[index].slug}`}
   mainClass="pages-main"
 >
   <PageHero>
     <a class="link-arrow link-arrow--back" href="/servicios">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg>
-      Áreas de especialización
+      {text(labels.detalle_volver)}
     </a>
-    <p class="page-label">Área 0{index + 1}</p>
-    <h1 class="page-title">{area.title}</h1>
-    <p class="page-hero__lead">{area.intro[0]}</p>
-    {area.forEveryone && (
-      <span class="audience-tag">Esta área está dirigida tanto a hombres como a mujeres</span>
+    <p class="page-label">{text(labels.detalle_etiqueta)} {number(index)}</p>
+    <h1 class="page-title" {...edit("titulo")}>{text(data.titulo)}</h1>
+    {lead && <p class="page-hero__lead" {...edit("introduccion")} set:html={rich(lead)} />}
+    {Boolean(data.para_todos) && (
+      <span class="audience-tag" {...editLabels("detalle_publico")}>{text(labels.detalle_publico)}</span>
     )}
   </PageHero>
 
-  <section class="split-section">
-    <div class="container split-section__inner scroll-reveal">
-      <h2 class="split-section__label">El enfoque</h2>
-      <div class="split-section__body">
-        <div class="text-columns">
-          {area.intro.slice(1).map((paragraph) => <p>{paragraph}</p>)}
+  {
+    approach.length > 0 && (
+      <section class="split-section">
+        <div class="container split-section__inner scroll-reveal">
+          <h2 class="split-section__label" {...editLabels("detalle_enfoque_titulo")}>
+            {text(labels.detalle_enfoque_titulo)}
+          </h2>
+          <div class="split-section__body">
+            <div class="text-columns" {...edit("introduccion")}>
+              {approach.map((paragraph) => <p set:html={rich(paragraph)} />)}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
+    )
+  }
 
   <section class="split-section">
     <div class="container split-section__inner">
-      <h2 class="split-section__label scroll-reveal">¿En qué podemos trabajar?</h2>
+      <h2 class="split-section__label scroll-reveal" {...editLabels("detalle_temas_titulo")}>
+        {text(labels.detalle_temas_titulo)}
+      </h2>
       <div class="split-section__body">
-        <ul class="topic-grid">
+        <ul class="topic-grid" {...edit("temas")}>
           {
-            area.topics.map((topic, topicIndex) => (
+            topics.map((topic, topicIndex) => (
               <li
                 class="topic-grid__item scroll-reveal"
                 style={`--home-reveal-delay: ${(topicIndex % 2) * 80}ms`}
               >
                 <span class="topic-grid__number serif-accent" aria-hidden="true">
-                  {String(topicIndex + 1).padStart(2, "0")}
+                  {number(topicIndex)}
                 </span>
-                <h3>{topic.title}</h3>
-                <p>{topic.description}</p>
+                <h3>{text(topic.titulo)}</h3>
+                <p set:html={rich(topic.descripcion)} />
               </li>
             ))
           }
@@ -72,14 +87,14 @@ const otherAreas = areas
   </section>
 
   {
-    area.extra && (
+    text(data.extra_titulo) && (
       <section class="split-section split-section--cream">
         <div class="container split-section__inner scroll-reveal">
-          <h2 class="split-section__label">{area.extra.title}</h2>
-          <div class="split-section__body">
-            <p class="split-section__statement">{area.extra.paragraphs[0]}</p>
+          <h2 class="split-section__label" {...edit("extra_titulo")}>{text(data.extra_titulo)}</h2>
+          <div class="split-section__body" {...edit("extra_texto")}>
+            {extraStatement && <p class="split-section__statement" set:html={rich(extraStatement)} />}
             <div class="text-columns">
-              {area.extra.paragraphs.slice(1).map((paragraph) => <p>{paragraph}</p>)}
+              {extraParagraphs.map((paragraph) => <p set:html={rich(paragraph)} />)}
             </div>
           </div>
         </div>
@@ -89,8 +104,8 @@ const otherAreas = areas
 
   <section class="area-closing">
     <div class="container area-closing__inner scroll-reveal">
-      <p class="area-closing__text">{area.closing}</p>
-      <a class="button" href="/contacto">Reserva tu consulta</a>
+      <p class="area-closing__text" {...edit("cierre")} set:html={rich(data.cierre)} />
+      <a class="button" href="/contacto" {...editLabels("detalle_boton")}>{text(labels.detalle_boton)}</a>
     </div>
   </section>
 
@@ -101,8 +116,8 @@ const otherAreas = areas
           otherAreas.map((item) => (
             <li>
               <a href={`/servicios/${item.slug}`}>
-                <span class="page-label">Área 0{item.position + 1}</span>
-                <strong>{item.title}</strong>
+                <span class="page-label">{text(labels.detalle_etiqueta)} {number(item.position)}</span>
+                <strong>{text(item.data.titulo)}</strong>
               </a>
             </li>
           ))

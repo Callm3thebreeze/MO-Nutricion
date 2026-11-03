@@ -1,32 +1,20 @@
+---
+import { paragraphs, rich, text, type CmsPage } from "../../cms/content";
+
+interface Props {
+  page: CmsPage;
+}
+
+const { data, edit } = Astro.props.page;
+---
+
 <section class="home-statement">
   <div class="container home-statement__inner home-reveal">
-    <h2 class="home-statement__meta">Más allá de una dieta</h2>
+    <h2 class="home-statement__meta" {...edit("enfoque_etiqueta")}>{text(data.enfoque_etiqueta)}</h2>
     <div class="home-statement__body">
-      <p class="home-statement__text">
-        No existen dos personas iguales.
-        <span class="serif-accent">Tampoco dos planes nutricionales iguales.</span>
-      </p>
-      <div class="home-statement__columns">
-        <p>
-          <strong>No entiendo</strong> la nutrición como una lista de alimentos permitidos y
-          prohibidos ni como un conjunto de pautas que debas seguir de forma
-          indefinida.
-        </p>
-        <p>
-          <strong>Entiendo</strong> la nutrición como una herramienta para cuidar la salud,
-          cubrir las necesidades del organismo y mejorar la relación con la
-          alimentación.
-        </p>
-        <p>
-          Por eso, antes de establecer cualquier estrategia nutricional,
-          necesito conocer tu historia, comprender qué está ocurriendo y valorar
-          cuáles son tus necesidades reales.
-        </p>
-        <p>
-          Cada propuesta se construye desde cero, teniendo en cuenta tus
-          circunstancias, preferencias, síntomas, objetivos y respuesta
-          individual.
-        </p>
+      <p class="home-statement__text" {...edit("enfoque_titulo")} set:html={rich(data.enfoque_titulo)} />
+      <div class="home-statement__columns" {...edit("enfoque_texto")}>
+        {paragraphs(data.enfoque_texto).map((paragraph) => <p set:html={rich(paragraph)} />)}
       </div>
     </div>
   </div>

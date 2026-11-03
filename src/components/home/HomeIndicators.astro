@@ -1,36 +1,33 @@
 ---
-import { healthIndicators } from "../../lib/content";
+import { items, rich, text, type CmsPage } from "../../cms/content";
+
+interface Props {
+  page: CmsPage;
+}
+
+const { data, edit } = Astro.props.page;
+const indicators = items<{ titulo?: string; descripcion?: string }>(data.indicadores);
 ---
 
 <section class="home-values">
   <div class="container home-values__inner">
     <div class="heading-row home-reveal">
-      <h2 class="display-title">
-        Tu salud no se define por un <span class="serif-accent">único parámetro</span>
-      </h2>
-      <p class="heading-row__text">
-        Una analítica aporta información muy valiosa, pero no cuenta por sí
-        sola toda la historia. Durante el proceso también prestamos atención a
-        otros indicadores que nos ayudan a valorar tu evolución.
-      </p>
+      <h2 class="display-title" {...edit("indicadores_titulo")} set:html={rich(data.indicadores_titulo)} />
+      <p class="heading-row__text" {...edit("indicadores_texto")} set:html={rich(data.indicadores_texto)} />
     </div>
-    <ul class="values-grid">
+    <ul class="values-grid" {...edit("indicadores")}>
       {
-        healthIndicators.map((indicator, index) => (
+        indicators.map((indicator, index) => (
           <li
             class="values-grid__item home-reveal"
             style={`--home-reveal-delay: ${(index % 3) * 80}ms`}
           >
-            <h3>{indicator.title}</h3>
-            <p>{indicator.description}</p>
+            <h3>{text(indicator.titulo)}</h3>
+            <p set:html={rich(indicator.descripcion)} />
           </li>
         ))
       }
     </ul>
-    <p class="home-values__closing home-reveal">
-      La evolución no se mide únicamente en resultados analíticos, sino también
-      en <span class="serif-accent">cómo te encuentras</span> y en los cambios
-      que consigues mantener.
-    </p>
+    <p class="home-values__closing home-reveal" {...edit("indicadores_cierre")} set:html={rich(data.indicadores_cierre)} />
   </div>
 </section>

@@ -1,5 +1,10 @@
 ---
 import mainLogo from "../../assets/logo/simple-logo.png";
+import { getPage, rich, text } from "../../cms/content";
+
+const { data, edit } = await getPage("datos_generales", "general");
+const email = text(data.email);
+const phone = text(data.telefono);
 ---
 
 <footer class="site-footer">
@@ -19,8 +24,11 @@ import mainLogo from "../../assets/logo/simple-logo.png";
           decoding="async"
         />
       </a>
-      <p>Salud hormonal y fertilidad en la mujer · Microbiota y salud digestiva · Salud metabólica.</p>
-      <p>Consulta presencial en Albacete y online.<br />Colegiada MAD01729.</p>
+      <p {...edit("pie_areas")} set:html={rich(data.pie_areas)} />
+      <p>
+        <span {...edit("pie_modalidad")} set:html={rich(data.pie_modalidad)} /><br />
+        Colegiada <span {...edit("colegiada")}>{text(data.colegiada)}</span>.
+      </p>
     </div>
 
     <nav class="site-footer__column" aria-label="Navegación del pie">
@@ -39,21 +47,21 @@ import mainLogo from "../../assets/logo/simple-logo.png";
     <div class="site-footer__column">
       <h2>Contacto</h2>
       <ul class="site-footer__list">
-        <li><a href="mailto:hola@maraolivares.com">hola@maraolivares.com</a></li>
-        <li><a href="tel:+34600135465">+34 600 135 465</a></li>
-        <li>Online · martes y jueves</li>
-        <li>Presencial en Albacete · miércoles</li>
+        <li><a href={`mailto:${email}`} {...edit("email")}>{email}</a></li>
+        <li><a href={`tel:${phone.replace(/[^+\d]/g, "")}`} {...edit("telefono")}>{phone}</a></li>
+        <li {...edit("pie_online")}>{text(data.pie_online)}</li>
+        <li {...edit("pie_presencial")}>{text(data.pie_presencial)}</li>
       </ul>
     </div>
 
     <div class="site-footer__column">
-      <h2>Primera consulta</h2>
-      <a class="button button--secondary" href="/contacto">Agenda tu cita</a>
+      <h2 {...edit("pie_cta_titulo")}>{text(data.pie_cta_titulo)}</h2>
+      <a class="button button--secondary" href="/contacto" {...edit("pie_cta_boton")}>{text(data.pie_cta_boton)}</a>
     </div>
   </div>
 
   <div class="container site-footer__legal">
     <p>© {new Date().getFullYear()} Mara Olivares – Nutrición Integrativa</p>
-    <p>Aviso legal y política de privacidad disponibles próximamente.</p>
+    <p {...edit("pie_legal")}>{text(data.pie_legal)}</p>
   </div>
 </footer>

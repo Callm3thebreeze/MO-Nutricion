@@ -2,69 +2,82 @@
 import PageCta from "../components/ui/PageCta.astro";
 import PageHero from "../components/ui/PageHero.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { consultations, packConditions, schedule } from "../lib/content";
+import { getPage, items, lines, plain, rich, text } from "../cms/content";
 import "../styles/components/pages.css";
+
+const page = await getPage("pagina_consultas", "consultas");
+const { data, edit } = page;
+
+interface Fee {
+  titulo?: string;
+  precio?: string;
+  detalle?: string;
+  descripcion?: string;
+  incluye?: string;
+  nota?: string;
+  destacada?: boolean;
+}
+
+const fees = items<Fee>(data.tarifas);
+const modalities = items<{ modalidad?: string; dias?: string; horario?: string; descripcion?: string }>(
+  data.modalidades,
+);
 ---
 
 <BaseLayout
-  title="Consultas y tarifas"
-  description="Primera consulta de 90 minutos, consultas de seguimiento y pack de acompañamiento nutricional. Online o presencial en Albacete."
+  title={plain(data.meta_titulo)}
+  description={plain(data.meta_descripcion)}
   canonicalPath="/consultas"
   mainClass="pages-main"
 >
   <PageHero>
-    <p class="page-label">Consultas y tarifas</p>
-    <h1 class="page-title">
-      Consultas y <span class="serif-accent">acompañamiento nutricional</span>
-    </h1>
-    <p class="page-hero__lead">
-      Cada proceso comienza con una valoración individualizada para conocer
-      tus necesidades y establecer las prioridades de trabajo.
-    </p>
+    <p class="page-label" {...edit("hero_etiqueta")}>{text(data.hero_etiqueta)}</p>
+    <h1 class="page-title" {...edit("hero_titulo")} set:html={rich(data.hero_titulo)} />
+    <p class="page-hero__lead" {...edit("hero_subtitulo")} set:html={rich(data.hero_subtitulo)} />
   </PageHero>
 
   <section class="fees pages-section">
     <div class="container">
-      <ul class="fee-list">
+      <ul class="fee-list" {...edit("tarifas")}>
         {
-          consultations.map((item, index) => (
+          fees.map((item, index) => (
             <li
-              class={`fee-card scroll-reveal ${item.featured ? "fee-card--featured" : ""}`}
+              class={`fee-card scroll-reveal ${item.destacada ? "fee-card--featured" : ""}`}
               style={`--home-reveal-delay: ${index * 80}ms`}
             >
-              <h2>{item.title}</h2>
-              <p class="fee-card__price">{item.price}</p>
-              <p class="fee-card__detail">{item.detail}</p>
-              <p class="fee-card__description">{item.description}</p>
-              <h3>Incluye</h3>
+              <h2>{text(item.titulo)}</h2>
+              <p class="fee-card__price">{text(item.precio)}</p>
+              <p class="fee-card__detail">{text(item.detalle)}</p>
+              <p class="fee-card__description" set:html={rich(item.descripcion)} />
+              <h3>{text(data.incluye_titulo)}</h3>
               <ul class="ruled-list">
-                {item.includes.map((line) => <li>{line}</li>)}
+                {lines(item.incluye).map((line) => <li set:html={rich(line)} />)}
               </ul>
-              {item.note && <p class="fee-card__note">{item.note}</p>}
+              {text(item.nota) && <p class="fee-card__note">{text(item.nota)}</p>}
             </li>
           ))
         }
       </ul>
-      <div class="fee-conditions scroll-reveal">
-        <strong>Condiciones del pack</strong>
-        {packConditions.map((condition) => <span>{condition}</span>)}
+      <div class="fee-conditions scroll-reveal" {...edit("condiciones")}>
+        <strong>{text(data.condiciones_titulo)}</strong>
+        {lines(data.condiciones).map((condition) => <span set:html={rich(condition)} />)}
       </div>
     </div>
   </section>
 
   <section class="split-section split-section--cream" style="margin-top: var(--page-space)">
     <div class="container split-section__inner scroll-reveal">
-      <h2 class="split-section__label">Modalidades de consulta</h2>
+      <h2 class="split-section__label" {...edit("modalidades_titulo")}>{text(data.modalidades_titulo)}</h2>
       <div class="split-section__body">
-        <div class="modality-grid">
+        <div class="modality-grid" {...edit("modalidades")}>
           {
-            schedule.map((item) => (
+            modalities.map((item) => (
               <div class="modality">
-                <h3>{item.mode}</h3>
+                <h3>{text(item.modalidad)}</h3>
                 <p class="modality__time">
-                  {item.days} · {item.time}
+                  {text(item.dias)} · {text(item.horario)}
                 </p>
-                <p>{item.description}</p>
+                <p set:html={rich(item.descripcion)} />
               </div>
             ))
           }
@@ -73,13 +86,5 @@ import "../styles/components/pages.css";
     </div>
   </section>
 
-  <PageCta
-    spaced
-    text="¿Tienes dudas antes de empezar? Revisa las preguntas frecuentes o escríbeme."
-    label="Reserva tu consulta"
-    secondaryHref="/preguntas-frecuentes"
-    secondaryLabel="Preguntas frecuentes"
-  >
-    Reserva tu <span class="serif-accent">primera consulta</span>
-  </PageCta>
+  <PageCta spaced page={page} secondaryHref="/preguntas-frecuentes" />
 </BaseLayout>
