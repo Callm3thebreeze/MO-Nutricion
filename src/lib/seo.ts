@@ -1,4 +1,4 @@
-const FALLBACK_SITE_URL = 'https://maraolivaresnutricio.com';
+const FALLBACK_SITE_URL = 'https://monutricion.com';
 
 export const SITE_NAME = 'Mara Olivares Nutrición Integrativa';
 export const SITE_DESCRIPTION =

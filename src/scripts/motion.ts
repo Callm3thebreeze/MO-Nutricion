@@ -30,7 +30,6 @@ const initMotion = async (): Promise<void> => {
 
 	if (heroCopy) {
 		const title = heroCopy.querySelector<HTMLElement>('[data-split-title], .page-title');
-		const others = Array.from(heroCopy.children).filter((child) => child !== title);
 		const timeline = gsap.timeline({ defaults: { ease, duration: 1.1 } });
 
 		// si se llega con transición de vista, el bloque ilustrado ya lo anima el navegador
@@ -53,8 +52,6 @@ const initMotion = async (): Promise<void> => {
 			gsap.set(title, { opacity: 1 });
 			timeline.from(split.lines, { yPercent: 60, opacity: 0, stagger: 0.12 }, 0.2);
 		}
-
-		timeline.fromTo(others, { y: 24, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.1 }, 0.45);
 	}
 
 	// Títulos de página: entrada por líneas
@@ -88,7 +85,7 @@ const initMotion = async (): Promise<void> => {
 
 	// Texto que se ilumina palabra a palabra al avanzar el scroll
 	document.querySelectorAll<HTMLElement>('[data-scrub-text]').forEach((text) => {
-		const split = SplitText.create(text, { type: 'words' });
+		const split = SplitText.create(text, { type: 'words', aria: 'none' }); // aria-label no es válido en <p>
 		gsap.from(split.words, {
 			opacity: 0.14,
 			stagger: 0.08,

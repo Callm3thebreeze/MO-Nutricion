@@ -3,6 +3,7 @@ import PageCta from "../components/ui/PageCta.astro";
 import PageHero from "../components/ui/PageHero.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getPage, items, lines, plain, rich, text } from "../cms/content";
+import { feesGraph } from "../lib/schema";
 import "../styles/components/pages.css";
 
 const page = await getPage("pagina_consultas", "consultas");
@@ -19,6 +20,10 @@ interface Fee {
 }
 
 const fees = items<Fee>(data.tarifas);
+const feesLd = feesGraph(
+  Astro.site,
+  fees.map((fee) => ({ name: plain(fee.titulo), price: plain(fee.precio), description: plain(fee.detalle) })),
+);
 const modalities = items<{ modalidad?: string; dias?: string; horario?: string; descripcion?: string }>(
   data.modalidades,
 );
@@ -30,6 +35,7 @@ const modalities = items<{ modalidad?: string; dias?: string; horario?: string; 
   canonicalPath="/consultas"
   mainClass="pages-main"
 >
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(feesLd)} />
   <PageHero>
     <p class="page-label" {...edit("hero_etiqueta")}>{text(data.hero_etiqueta)}</p>
     <h1 class="page-title" {...edit("hero_titulo")} set:html={rich(data.hero_titulo)} />

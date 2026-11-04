@@ -236,8 +236,24 @@ display: none;
 }
 
 /* Estado inicial de las animaciones de GSAP (src/scripts/motion.ts) */
-.js-motion :where(.home-reveal, .scroll-reveal, [data-split-title], .page-title, [data-hero-copy] > *, [data-hero-visual]) {
+.js-motion :where(.home-reveal, .scroll-reveal, [data-split-title], .page-title, [data-hero-visual]) {
 opacity: 0;
+}
+
+/* El resto del texto del hero entra solo con CSS: es el elemento LCP y no debe esperar a que cargue GSAP */
+.js-motion [data-hero-copy] > :not([data-split-title], .page-title) {
+animation: hero-copy-in 1.1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+
+.js-motion [data-hero-copy] > * { animation-delay: 0.35s; }
+.js-motion [data-hero-copy] > :nth-child(n + 3) { animation-delay: 0.45s; }
+.js-motion [data-hero-copy] > :nth-child(n + 4) { animation-delay: 0.55s; }
+
+@keyframes hero-copy-in {
+from {
+opacity: 0;
+transform: translateY(24px);
+}
 }
 
 /* Piezas compartidas de la nueva línea */

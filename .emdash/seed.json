@@ -1028,7 +1028,7 @@
       "slug": "datos_generales",
       "label": "Datos de contacto y pie",
       "labelSingular": "Datos de contacto y pie",
-      "description": "Datos que aparecen en varias páginas: correo, teléfono y textos del pie de página.",
+      "description": "Datos que aparecen en varias páginas: correo y textos del pie de página.",
       "supports": [
         "drafts",
         "revisions"
@@ -1040,11 +1040,6 @@
         {
           "slug": "email",
           "label": "Correo electrónico visible",
-          "type": "string"
-        },
-        {
-          "slug": "telefono",
-          "label": "Teléfono",
           "type": "string"
         },
         {
@@ -1171,7 +1166,7 @@
           "cover_image_alt": "Logotipo de Mara Olivares Nutrició",
           "seo_title": "Señales digestivas que indican que necesitas apoyo nutricional",
           "seo_description": "Descubre cinco señales frecuentes de desequilibrio digestivo y pasos iniciales para mejorar con enfoque nutricional.",
-          "canonical_url": "https://maraolivaresnutricio.com/blog/senales-digestion-necesita-apoyo",
+          "canonical_url": "https://monutricion.com/blog/senales-digestion-necesita-apoyo",
           "content": [
             {
               "_type": "block",
@@ -1262,7 +1257,7 @@
           "cover_image_alt": "Logotipo de Mara Olivares Nutrició",
           "seo_title": "Microbiota intestinal: hábitos cotidianos que sí funcionan",
           "seo_description": "Aprende cómo proteger tu microbiota con fibra, prebióticos naturales y rutinas sencillas que mejoran tu salud digestiva.",
-          "canonical_url": "https://maraolivaresnutricio.com/blog/microbiota-intestinal-habitos-diarios",
+          "canonical_url": "https://monutricion.com/blog/microbiota-intestinal-habitos-diarios",
           "content": [
             {
               "_type": "block",
@@ -1353,7 +1348,7 @@
           "cover_image_alt": "Logotipo de Mara Olivares Nutrició",
           "seo_title": "Nutrición y salud hormonal: bases para tu energía diaria",
           "seo_description": "Te cuento cómo estructurar tu alimentación para apoyar el equilibrio hormonal y mejorar energía, estrés y bienestar.",
-          "canonical_url": "https://maraolivaresnutricio.com/blog/nutricion-y-salud-hormonal-claves",
+          "canonical_url": "https://monutricion.com/blog/nutricion-y-salud-hormonal-claves",
           "content": [
             {
               "_type": "block",
@@ -1913,8 +1908,7 @@
         "slug": "general",
         "status": "published",
         "data": {
-          "email": "hola@maraolivares.com",
-          "telefono": "+34 600 135 465",
+          "email": "nutricionmaraolivares@gmail.com",
           "colegiada": "MAD01729",
           "pie_online": "Online · martes y jueves",
           "pie_presencial": "Presencial en Albacete · miércoles",

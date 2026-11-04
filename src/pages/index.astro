@@ -20,16 +20,6 @@ description={plain(page.data.meta_descripcion)}
 canonicalPath="/"
 mainClass="home-main"
 >
-	<script slot="head" type="application/ld+json" is:inline>
-		{JSON.stringify({
-			'@context': 'https://schema.org',
-			'@type': 'MedicalBusiness',
-			name: 'Mara Olivares Nutrición Integrativa',
-			url: 'https://maraolivaresnutricio.com',
-			areaServed: ['España', 'Albacete'],
-			medicalSpecialty: ['Nutrition', 'Gastroenterologic', 'Endocrinology', 'Obstetric'],
-		})}
-	</script>
 	<HomeHero page={page} />
 	<HomeIntro page={page} />
 	<ServicesSummary page={page} areas={areas} />

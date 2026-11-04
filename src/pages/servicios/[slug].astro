@@ -2,6 +2,7 @@
 import PageHero from "../../components/ui/PageHero.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getAreas, getPage, items, paragraphs, plain, rich, text } from "../../cms/content";
+import { areaGraph } from "../../lib/schema";
 import "../../styles/components/pages.css";
 
 const areas = await getAreas();
@@ -19,6 +20,10 @@ const [lead, ...approach] = paragraphs(data.introduccion);
 const [extraStatement, ...extraParagraphs] = paragraphs(data.extra_texto);
 const topics = items<{ titulo?: string; descripcion?: string }>(data.temas);
 
+const areaPath = `/servicios/${areas[index].slug}`;
+const description = paragraphs(data.resumen).map(plain).join(" ");
+const areaLd = areaGraph(Astro.site, plain(data.titulo), areaPath, description);
+
 const otherAreas = areas
   .map((item, position) => ({ ...item, position }))
   .filter((item) => item.slug !== areas[index].slug);
@@ -26,10 +31,11 @@ const otherAreas = areas
 
 <BaseLayout
   title={plain(data.titulo)}
-  description={paragraphs(data.resumen).map(plain).join(" ")}
-  canonicalPath={`/servicios/${areas[index].slug}`}
+  description={description}
+  canonicalPath={areaPath}
   mainClass="pages-main"
 >
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(areaLd)} />
   <PageHero>
     <a class="link-arrow link-arrow--back" href="/servicios">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg>

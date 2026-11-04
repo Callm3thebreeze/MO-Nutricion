@@ -16,11 +16,48 @@ const SECURITY_HEADERS = {
 const SITE_DEV_STYLES =
   /<style[^>]*data-vite-dev-id="[^"]*\/src\/styles\/[^"]*"[^>]*>[\s\S]*?<\/style>|<script[^>]*src="\/src\/styles\/[^"]*"[^>]*><\/script>/g;
 
+// HTML público cacheado en el borde de Cloudflare: evita las lecturas de D1 en cada visita.
+// Los cambios del CMS tardan como mucho EDGE_TTL segundos en verse (quien tiene sesión, el panel y la API no pasan por caché).
+// La Cache API no actúa en *.workers.dev: solo funciona en el dominio propio.
+const EDGE_TTL = 300;
+const edgeCache = (globalThis as { caches?: { default?: Cache } }).caches?.default;
+
+const isCacheable = (request: Request, pathname: string): boolean =>
+  import.meta.env.PROD &&
+  request.method === 'GET' &&
+  !request.headers.has('cookie') &&
+  !request.headers.has('authorization') &&
+  !pathname.startsWith('/_') &&
+  !pathname.startsWith('/api/') &&
+  !pathname.startsWith('/admin');
+
 export const onRequest = defineMiddleware(async (context, next) => {
   const rewriteTarget = ROUTE_REWRITES[context.url.pathname];
 
   if (rewriteTarget && context.url.pathname !== rewriteTarget) {
     return context.rewrite(rewriteTarget);
+  }
+
+  const { pathname } = context.url;
+
+  // /sobre-mi/ → /sobre-mi para no duplicar URLs (fuera de las rutas internas de EmDash y la API)
+  if (
+    pathname.length > 1 &&
+    pathname.endsWith('/') &&
+    !pathname.startsWith('/_') &&
+    !pathname.startsWith('/api/') &&
+    context.request.method === 'GET'
+  ) {
+    return context.redirect((pathname.replace(/\/+$/, '') || '/') + context.url.search, 301);
+  }
+
+  const cacheable = edgeCache !== undefined && isCacheable(context.request, pathname);
+
+  if (cacheable) {
+    const cached = await edgeCache.match(context.request);
+    if (cached) {
+      return cached;
+    }
   }
 
   let response = await next();
@@ -44,11 +81,32 @@ export const onRequest = defineMiddleware(async (context, next) => {
     }
   }
 
+  // el subdominio de pruebas de Cloudflare no debe competir con el dominio final
+  if (context.url.hostname.endsWith('.workers.dev')) {
+    response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  }
+
   const forwardedProto = context.request.headers.get('x-forwarded-proto');
   const isHttps = context.url.protocol === 'https:' || forwardedProto === 'https';
 
   if (import.meta.env.PROD && isHttps && !response.headers.has('Strict-Transport-Security')) {
     response.headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
+  }
+
+  if (
+    cacheable &&
+    response.status === 200 &&
+    response.headers.get('content-type')?.includes('text/html') &&
+    !response.headers.has('set-cookie')
+  ) {
+    response.headers.set('Cache-Control', `public, max-age=0, s-maxage=${EDGE_TTL}`);
+    const stored = edgeCache.put(context.request, response.clone()).catch(() => undefined);
+    const ctx = (context.locals as { cfContext?: { waitUntil(promise: Promise<unknown>): void } }).cfContext;
+    if (ctx) {
+      ctx.waitUntil(stored);
+    } else {
+      await stored;
+    }
   }
 
   return response;

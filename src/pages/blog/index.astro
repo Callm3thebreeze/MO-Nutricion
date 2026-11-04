@@ -11,6 +11,7 @@ const posts = await getPosts();
   title="Blog de nutrición"
   description="Artículos sobre salud hormonal, microbiota, salud digestiva y salud metabólica, con rigor científico."
   canonicalPath="/blog"
+  noindex={posts.length === 0}
 >
   <section class="blog-index">
     <div class="container">

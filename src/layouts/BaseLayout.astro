@@ -3,6 +3,8 @@ import Footer from "../components/ui/Footer.astro";
 import Header from "../components/ui/Header.astro";
 import SeoHead from "../components/ui/SeoHead.astro";
 import SkipLink from "../components/ui/SkipLink.astro";
+import mainLogo from "../assets/logo/main-logo.png";
+import { siteGraph } from "../lib/schema";
 
 import "../styles/reset.css";
 import "../styles/tokens.css";
@@ -31,6 +33,7 @@ const { mainClass, ...seoProps } = Astro.props;
     <link rel="icon" href="/favicon.ico" sizes="32x32 48x48" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(siteGraph(Astro.site, mainLogo.src))} />
     <slot name="head" />
     <script is:inline src="/motion-init.js"></script>
   </head>

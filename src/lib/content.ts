@@ -238,9 +238,7 @@ export const schedule = [
 ];
 
 export const contactInfo = {
-	email: 'hola@maraolivares.com',
-	phone: '+34 600 135 465',
-	phoneHref: 'tel:+34600135465',
+	email: 'nutricionmaraolivares@gmail.com',
 	license: 'MAD01729',
 };
 

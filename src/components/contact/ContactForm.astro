@@ -11,7 +11,6 @@ const contactHighlights = items<{ titulo?: string; descripcion?: string }>(data.
 const schedule = items<{ modalidad?: string; horario?: string }>(data.horarios);
 const general = await getPage("datos_generales", "general");
 const email = text(general.data.email);
-const phone = text(general.data.telefono);
 ---
 
 <section class="contact-section">
@@ -44,7 +43,6 @@ const phone = text(general.data.telefono);
         </dl>
         <ul>
           <li><a href={`mailto:${email}`} {...general.edit("email")}>{email}</a></li>
-          <li><a href={`tel:${phone.replace(/[^+\d]/g, "")}`} {...general.edit("telefono")}>{phone}</a></li>
         </ul>
       </div>
     </div>

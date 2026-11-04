@@ -3,8 +3,8 @@
 // así que nunca sobrescribe cambios hechos desde el panel.
 //
 // Uso:
-//   npx emdash login --url https://maraolivaresnutricio.com      (una vez)
-//   node --experimental-strip-types scripts/cms-import.ts --url https://maraolivaresnutricio.com
+//   npx emdash login --url https://monutricion.com      (una vez)
+//   node --experimental-strip-types scripts/cms-import.ts --url https://monutricion.com
 //
 // Opciones: --token <token> o la variable EMDASH_TOKEN para usar un token concreto,
 //           --header "Nombre: valor" para cabeceras adicionales (p. ej. una cookie en local).
@@ -25,7 +25,7 @@ const { values: args } = parseArgs({
 });
 
 if (!args.url) {
-	console.error('Falta --url (p. ej. --url https://maraolivaresnutricio.com)');
+	console.error('Falta --url (p. ej. --url https://monutricion.com)');
 	process.exit(1);
 }
 

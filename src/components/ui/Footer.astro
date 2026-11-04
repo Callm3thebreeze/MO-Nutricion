@@ -1,10 +1,9 @@
 ---
-import mainLogo from "../../assets/logo/simple-logo.png";
+import mainLogo from "../../assets/logo/simple-logo.webp";
 import { getPage, text } from "../../cms/content";
 
 const { data, edit } = await getPage("datos_generales", "general");
 const email = text(data.email);
-const phone = text(data.telefono);
 ---
 
 <footer class="site-footer">
@@ -33,7 +32,6 @@ const phone = text(data.telefono);
       <h2>Contacto</h2>
       <ul class="site-footer__list">
         <li><a href={`mailto:${email}`} {...edit("email")}>{email}</a></li>
-        <li><a href={`tel:${phone.replace(/[^+\d]/g, "")}`} {...edit("telefono")}>{phone}</a></li>
       </ul>
     </div>
 

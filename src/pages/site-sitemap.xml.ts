@@ -41,7 +41,7 @@ export const GET: APIRoute = async ({ site }) => {
     '/como-trabajo',
     '/consultas',
     '/preguntas-frecuentes',
-    '/blog',
+    ...(posts.length > 0 ? ['/blog'] : []),
     '/contacto',
   ];
 

@@ -531,12 +531,11 @@ export const collections: ModelCollection[] = [
 		slug: 'datos_generales',
 		label: 'Datos de contacto y pie',
 		labelSingular: 'Datos de contacto y pie',
-		description: 'Datos que aparecen en varias páginas: correo, teléfono y textos del pie de página.',
+		description: 'Datos que aparecen en varias páginas: correo y textos del pie de página.',
 		titleField: 'email',
 		sortOrder: 9,
 		fields: [
 			str('email', 'Correo electrónico visible'),
-			str('telefono', 'Teléfono'),
 			str('colegiada', 'Número de colegiada'),
 			str('pie_online', 'Pie · Horario online'),
 			str('pie_presencial', 'Pie · Horario presencial'),
@@ -545,7 +544,6 @@ export const collections: ModelCollection[] = [
 		entries: {
 			general: {
 				email: contactInfo.email,
-				telefono: contactInfo.phone,
 				colegiada: contactInfo.license,
 				pie_online: 'Online · martes y jueves',
 				pie_presencial: 'Presencial en Albacete · miércoles',

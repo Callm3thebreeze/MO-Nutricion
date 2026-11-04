@@ -5,6 +5,8 @@ import defaultCoverImage from '../../assets/logo/alt-logo.png';
 import BlogMeta from '../../components/blog/BlogMeta.astro';
 import { getPostBySlug } from '../../lib/emdash';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { breadcrumb } from '../../lib/schema';
+import { absoluteUrl } from '../../lib/seo';
 import '../../styles/components/blog.css';
 
 const slug = Astro.params.slug?.trim() ?? '';
@@ -19,6 +21,27 @@ const usesDefaultCover = post?.coverImage.src.startsWith('/assets/logo/') ?? fal
 const coverImageSrc = usesDefaultCover
 	? defaultCoverImage.src
 	: post?.coverImage.src;
+
+const articleUrl = post?.canonicalUrl ?? absoluteUrl(postPath, Astro.site);
+const articleLd = post && {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'BlogPosting',
+			headline: post.title,
+			description: post.excerpt,
+			datePublished: post.publishedAt,
+			dateModified: post.updatedAt ?? post.publishedAt,
+			url: articleUrl,
+			mainEntityOfPage: articleUrl,
+			inLanguage: 'es-ES',
+			...(coverImageSrc && { image: coverImageSrc.startsWith('http') ? coverImageSrc : absoluteUrl(coverImageSrc, Astro.site) }),
+			author: { '@id': absoluteUrl('/#mara', Astro.site) },
+			publisher: { '@id': absoluteUrl('/#business', Astro.site) },
+		},
+		breadcrumb(Astro.site, [['Inicio', '/'], ['Blog', '/blog'], [post.title, postPath]]),
+	],
+};
 ---
 
 <BaseLayout
@@ -35,24 +58,7 @@ const coverImageSrc = usesDefaultCover
 >
 	{
 		post && (
-			<script slot="head" type="application/ld+json" is:inline>
-				{JSON.stringify({
-					'@context': 'https://schema.org',
-					'@type': 'BlogPosting',
-					headline: post.title,
-					description: post.excerpt,
-					datePublished: post.publishedAt,
-					dateModified: post.updatedAt ?? post.publishedAt,
-					url: post.canonicalUrl ?? `https://maraolivaresnutricio.com${postPath}`,
-					image: coverImageSrc?.startsWith('http')
-						? coverImageSrc
-						: `https://maraolivaresnutricio.com${coverImageSrc}`,
-					publisher: {
-						'@type': 'Organization',
-						name: 'Mara Olivares Nutrición Integrativa',
-					},
-				})}
-			</script>
+			<script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(articleLd)} />
 		)
 	}
 

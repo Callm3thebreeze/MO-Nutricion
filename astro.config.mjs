@@ -4,7 +4,7 @@ import react from '@astrojs/react';
 import emdash from 'emdash/astro';
 import emdashConfig from './src/emdash/virtual-config';
 
-const siteUrl = process.env.SITE_URL ?? 'https://maraolivaresnutricio.com';
+const siteUrl = process.env.SITE_URL ?? 'https://monutricion.com';
 
 export default defineConfig({
 	site: siteUrl,
