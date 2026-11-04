@@ -11,9 +11,7 @@
     "deploy": "npm run build && wrangler deploy",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check",
-    "cms:seed": "node --experimental-strip-types scripts/cms-seed.ts",
-    "cms:import": "node --experimental-strip-types scripts/cms-import.ts"
+    "check": "astro check"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
