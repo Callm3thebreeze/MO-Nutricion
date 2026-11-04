@@ -85,7 +85,8 @@
 --grid-gap: var(--space-fluid-sm);
 --card-padding: clamp(1.25rem, 2vw, 1.75rem);
 --panel-padding: clamp(1.5rem, 4vw, 3rem);
---max-width: 81rem;
+/* fija hasta 1920px; por encima crece para que el margen lateral no siga aumentando */
+--max-width: clamp(81rem, 100vw - 39rem, 112rem);
 /* inicio del contenido alineado con .container desde una columna a sangre */
 --page-edge: max(var(--container-gutter), calc((100vw - var(--max-width)) / 2));
 --page-space: clamp(6rem, 12vw, 11rem);

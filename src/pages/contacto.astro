@@ -21,6 +21,7 @@ mainClass="contact-main"
 <h1 class="page-title" {...edit('hero_titulo')} set:html={rich(data.hero_titulo)} />
 <p class="page-hero__lead" {...edit('hero_subtitulo')} set:html={rich(data.hero_subtitulo)} />
 <p class="page-hero__text" {...edit('hero_texto')} set:html={rich(data.hero_texto)} />
+<a class="button button--secondary" href="/consultas" {...edit('tarifas_boton')}>{text(data.tarifas_boton)}</a>
 </PageHero>
 <ContactForm page={page} />
 </BaseLayout>

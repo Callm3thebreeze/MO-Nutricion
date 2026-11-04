@@ -980,6 +980,11 @@
           "type": "text"
         },
         {
+          "slug": "tarifas_boton",
+          "label": "Portada · Botón de precios y tarifas",
+          "type": "string"
+        },
+        {
           "slug": "pasos",
           "label": "Pasos del proceso",
           "type": "repeater",
@@ -1048,16 +1053,6 @@
           "type": "string"
         },
         {
-          "slug": "pie_areas",
-          "label": "Pie · Áreas",
-          "type": "text"
-        },
-        {
-          "slug": "pie_modalidad",
-          "label": "Pie · Modalidades",
-          "type": "text"
-        },
-        {
           "slug": "pie_online",
           "label": "Pie · Horario online",
           "type": "string"
@@ -1065,16 +1060,6 @@
         {
           "slug": "pie_presencial",
           "label": "Pie · Horario presencial",
-          "type": "string"
-        },
-        {
-          "slug": "pie_cta_titulo",
-          "label": "Pie · Título del botón",
-          "type": "string"
-        },
-        {
-          "slug": "pie_cta_boton",
-          "label": "Pie · Botón",
           "type": "string"
         },
         {
@@ -1518,9 +1503,9 @@
           "forma_destacado": "Considero que cada persona necesita algo diferente. Por eso, mi forma de trabajar se basa en *escuchar, valorar, comprender* y diseñar estrategias individualizadas.",
           "forma_texto": "Siempre desde el rigor científico y con una visión global de la salud.\n\nMe gusta que cada persona entienda qué estamos trabajando, por qué lo hacemos y cómo puede aplicar los cambios a su día a día.",
           "formacion_etiqueta": "Formación",
-          "formacion_academica_titulo": "Formación académica",
+          "formacion_academica_titulo": "Académica",
           "formacion_academica": "Doble Grado en Farmacia y Biotecnología · Universidad CEU San Pablo\nGrado en Nutrición Humana y Dietética · Universidad de Alcalá (CUNIMAD)\nColegiada MAD01729",
-          "formacion_complementaria_titulo": "Formación complementaria",
+          "formacion_complementaria_titulo": "Complementaria",
           "formacion_complementaria": "Especialización en Nutrición, Medicina y Salud Hormonal en la Mujer · ICNS\nFormación en patologías digestivas · MPunti\nFormación en microbiota · Regenera\nPrácticas en Salud Digestiva y Microbiota con el Dr. Vigaray · Inmunomet\nFormación GIDS · Rocío Pérez\nFormación continuada en salud metabólica, hormonal y digestiva",
           "filosofia_etiqueta": "Filosofía de trabajo",
           "filosofia_titulo": "Ciencia para comprender. *Nutrición para acompañar.*",
@@ -1736,7 +1721,7 @@
             {
               "titulo": "Seguimiento y evaluación",
               "frase": "Tu proceso evoluciona contigo.",
-              "duracion": "Hasta 60 minutos",
+              "duracion": "≈ 60 minutos",
               "texto": "El seguimiento permite valorar cómo estás respondiendo a la estrategia planteada y realizar los ajustes necesarios.\n\nNo evaluamos únicamente el cumplimiento de las pautas o los cambios en el peso. También prestamos atención a la evolución de los síntomas, la energía, el descanso, la salud digestiva, la tolerancia alimentaria y otros indicadores relevantes.\n\nLas consultas de seguimiento tienen una duración de hasta 60 minutos."
             },
             {
@@ -1765,7 +1750,7 @@
           "meta_titulo": "Consultas y tarifas",
           "meta_descripcion": "Primera consulta de 90 minutos, consultas de seguimiento y pack de acompañamiento nutricional. Online o presencial en Albacete.",
           "hero_etiqueta": "Consultas y tarifas",
-          "hero_titulo": "Consultas y *acompañamiento nutricional*",
+          "hero_titulo": "Consultas *a tu medida*",
           "hero_subtitulo": "Cada proceso comienza con una valoración individualizada para conocer tus necesidades y establecer las prioridades de trabajo.",
           "incluye_titulo": "Incluye",
           "tarifas": [
@@ -1894,6 +1879,7 @@
           "hero_titulo": "Empecemos por conocer *tu caso*",
           "hero_subtitulo": "Si quieres comenzar un proceso de acompañamiento nutricional, puedes solicitar tu primera consulta presencial en Albacete u online.",
           "hero_texto": "Cada proceso comienza con una valoración individualizada para conocer tus necesidades y establecer las prioridades de trabajo.",
+          "tarifas_boton": "Ver precios y tarifas",
           "pasos": [
             {
               "titulo": "Valoración individualizada",
@@ -1930,12 +1916,8 @@
           "email": "hola@maraolivares.com",
           "telefono": "+34 600 135 465",
           "colegiada": "MAD01729",
-          "pie_areas": "Salud hormonal y fertilidad en la mujer · Microbiota y salud digestiva · Salud metabólica.",
-          "pie_modalidad": "Consulta presencial en Albacete y online.",
           "pie_online": "Online · martes y jueves",
           "pie_presencial": "Presencial en Albacete · miércoles",
-          "pie_cta_titulo": "Primera consulta",
-          "pie_cta_boton": "Agenda tu cita",
           "pie_legal": "Aviso legal y política de privacidad disponibles próximamente."
         }
       }

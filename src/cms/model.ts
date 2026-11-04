@@ -203,9 +203,9 @@ export const collections: ModelCollection[] = [
 					'Me gusta que cada persona entienda qué estamos trabajando, por qué lo hacemos y cómo puede aplicar los cambios a su día a día.',
 				]),
 				formacion_etiqueta: 'Formación',
-				formacion_academica_titulo: 'Formación académica',
+				formacion_academica_titulo: 'Académica',
 				formacion_academica: lines(training.academic),
-				formacion_complementaria_titulo: 'Formación complementaria',
+				formacion_complementaria_titulo: 'Complementaria',
 				formacion_complementaria: lines(training.complementary),
 				filosofia_etiqueta: 'Filosofía de trabajo',
 				filosofia_titulo: 'Ciencia para comprender. *Nutrición para acompañar.*',
@@ -403,7 +403,7 @@ export const collections: ModelCollection[] = [
 				meta_descripcion:
 					'Primera consulta de 90 minutos, consultas de seguimiento y pack de acompañamiento nutricional. Online o presencial en Albacete.',
 				hero_etiqueta: 'Consultas y tarifas',
-				hero_titulo: 'Consultas y *acompañamiento nutricional*',
+				hero_titulo: 'Consultas *a tu medida*',
 				hero_subtitulo:
 					'Cada proceso comienza con una valoración individualizada para conocer tus necesidades y establecer las prioridades de trabajo.',
 				incluye_titulo: 'Incluye',
@@ -484,6 +484,7 @@ export const collections: ModelCollection[] = [
 			txt('hero_titulo', 'Portada · Título'),
 			txt('hero_subtitulo', 'Portada · Subtítulo'),
 			txt('hero_texto', 'Portada · Texto'),
+			str('tarifas_boton', 'Portada · Botón de precios y tarifas'),
 			list('pasos', 'Pasos del proceso', [
 				{ slug: 'titulo', label: 'Título', type: 'string' },
 				{ slug: 'descripcion', label: 'Descripción', type: 'text' },
@@ -504,6 +505,7 @@ export const collections: ModelCollection[] = [
 					'Si quieres comenzar un proceso de acompañamiento nutricional, puedes solicitar tu primera consulta presencial en Albacete u online.',
 				hero_texto:
 					'Cada proceso comienza con una valoración individualizada para conocer tus necesidades y establecer las prioridades de trabajo.',
+				tarifas_boton: 'Ver precios y tarifas',
 				pasos: [
 					{
 						titulo: 'Valoración individualizada',
@@ -536,12 +538,8 @@ export const collections: ModelCollection[] = [
 			str('email', 'Correo electrónico visible'),
 			str('telefono', 'Teléfono'),
 			str('colegiada', 'Número de colegiada'),
-			txt('pie_areas', 'Pie · Áreas'),
-			txt('pie_modalidad', 'Pie · Modalidades'),
 			str('pie_online', 'Pie · Horario online'),
 			str('pie_presencial', 'Pie · Horario presencial'),
-			str('pie_cta_titulo', 'Pie · Título del botón'),
-			str('pie_cta_boton', 'Pie · Botón'),
 			str('pie_legal', 'Pie · Texto legal'),
 		],
 		entries: {
@@ -549,12 +547,8 @@ export const collections: ModelCollection[] = [
 				email: contactInfo.email,
 				telefono: contactInfo.phone,
 				colegiada: contactInfo.license,
-				pie_areas: 'Salud hormonal y fertilidad en la mujer · Microbiota y salud digestiva · Salud metabólica.',
-				pie_modalidad: 'Consulta presencial en Albacete y online.',
 				pie_online: 'Online · martes y jueves',
 				pie_presencial: 'Presencial en Albacete · miércoles',
-				pie_cta_titulo: 'Primera consulta',
-				pie_cta_boton: 'Agenda tu cita',
 				pie_legal: 'Aviso legal y política de privacidad disponibles próximamente.',
 			},
 		},

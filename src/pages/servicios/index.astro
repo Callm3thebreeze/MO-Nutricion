@@ -18,23 +18,15 @@ const number = (index: number) => String(index + 1).padStart(2, "0");
   mainClass="pages-main"
 >
   <PageHero>
-      <p class="page-label" {...edit("hero_etiqueta")}>{text(data.hero_etiqueta)}</p>
-      <h1 class="page-title" {...edit("hero_titulo")} set:html={rich(data.hero_titulo)} />
-      <p class="page-hero__lead" {...edit("hero_subtitulo")} set:html={rich(data.hero_subtitulo)} />
-      <nav class="page-hero__index" aria-label="Índice de áreas">
-        <ol>
-          {
-            areas.map((area, index) => (
-              <li>
-                <a href={`/servicios/${area.slug}`}>
-                  <span class="serif-accent">{number(index)}</span>
-                  {text(area.data.titulo)}
-                </a>
-              </li>
-            ))
-          }
-        </ol>
-      </nav>
+    <p class="page-label" {...edit("hero_etiqueta")}>{text(data.hero_etiqueta)}</p>
+    <h1 class="page-title" {...edit("hero_titulo")} set:html={rich(data.hero_titulo)} />
+    <p class="page-hero__lead" {...edit("hero_subtitulo")} set:html={rich(data.hero_subtitulo)} />
+
+    <div class="areas-venn" slot="visual" aria-hidden="true">
+      <span class="areas-venn__circle"></span>
+      <span class="areas-venn__circle"></span>
+      <span class="areas-venn__circle"></span>
+    </div>
   </PageHero>
 
   <section class="services-areas">

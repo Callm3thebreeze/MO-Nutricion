@@ -312,6 +312,19 @@ color: var(--color-brand-blue-text);
 text-wrap: balance;
 }
 
+/* sobre el fondo crema el botón amarillo no destaca: pasa a contorno azul */
+.cta-panel .button--secondary {
+background: transparent;
+box-shadow: inset 0 0 0 2px var(--color-brand-blue-text);
+color: var(--color-brand-blue-text);
+}
+
+.cta-panel .button--secondary:hover,
+.cta-panel .button--secondary:active {
+background: var(--color-brand-blue-text);
+color: #fff;
+}
+
 .cta-panel--compact h2 {
 font-size: clamp(2.5rem, 4.6vw, 4.5rem);
 }

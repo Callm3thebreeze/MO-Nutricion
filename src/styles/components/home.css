@@ -75,6 +75,31 @@
 	color: var(--color-brand-navy);
 }
 
+/* pantallas muy anchas: el bloque de texto crece con el contenedor */
+@media (min-width: 120rem) {
+	.home-hero {
+		min-height: max(51rem, 40vw);
+	}
+
+	.home-hero__title {
+		max-width: 6.8em;
+		font-size: clamp(5.5rem, 4.6vw, 8rem);
+	}
+
+	.home-hero__lead {
+		max-width: 24em;
+		font-size: clamp(1.19rem, 1vw, 1.6rem);
+	}
+
+	.home-hero__image {
+		width: min(82%, 46rem);
+	}
+
+	.home-hero__image--wide {
+		width: min(94%, 54rem);
+	}
+}
+
 /* Introducción: texto que se revela con el scroll */
 
 .home-intro {

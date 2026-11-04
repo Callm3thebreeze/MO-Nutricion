@@ -307,7 +307,7 @@ export const methodPhases = [
 	{
 		title: 'Seguimiento y evaluación',
 		lead: 'Tu proceso evoluciona contigo.',
-		duration: 'Hasta 60 minutos',
+		duration: '≈ 60 minutos',
 		paragraphs: [
 			'El seguimiento permite valorar cómo estás respondiendo a la estrategia planteada y realizar los ajustes necesarios.',
 			'No evaluamos únicamente el cumplimiento de las pautas o los cambios en el peso. También prestamos atención a la evolución de los síntomas, la energía, el descanso, la salud digestiva, la tolerancia alimentaria y otros indicadores relevantes.',

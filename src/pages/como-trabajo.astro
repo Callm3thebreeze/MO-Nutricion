@@ -1,4 +1,5 @@
 ---
+import notebookImage from "../assets/notebook.png";
 import PageCta from "../components/ui/PageCta.astro";
 import PageHero from "../components/ui/PageHero.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -21,6 +22,18 @@ const phases = items<{ titulo?: string; frase?: string; duracion?: string; texto
     <h1 class="page-title" {...edit("hero_titulo")} set:html={rich(data.hero_titulo)} />
     <p class="page-hero__lead" {...edit("hero_subtitulo")} set:html={rich(data.hero_subtitulo)} />
     <p class="page-hero__text" {...edit("hero_texto")} set:html={rich(data.hero_texto)} />
+
+    <div class="split-hero__visual" slot="visual" data-hero-visual>
+      <img
+        src={notebookImage.src}
+        width={notebookImage.width}
+        height={notebookImage.height}
+        alt="Cuaderno de cuadrícula con un bolígrafo, con efecto halftone"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
+    </div>
   </PageHero>
 
   <section class="method pages-section">

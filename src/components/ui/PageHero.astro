@@ -1,5 +1,12 @@
+---
+const hasVisual = Astro.slots.has("visual");
+---
+
 <section class="page-hero">
-  <div class="container page-hero__copy" data-hero-copy>
-    <slot />
+  <div class:list={["container", { "split-hero": hasVisual }]}>
+    <div class="page-hero__copy" data-hero-copy>
+      <slot />
+    </div>
+    <slot name="visual" />
   </div>
 </section>
