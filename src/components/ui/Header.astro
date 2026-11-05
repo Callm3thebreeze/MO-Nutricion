@@ -180,6 +180,14 @@ const isActive = (href: string): boolean => {
 
         setTopState(false);
 
+        // cerca del inicio el menú siempre se ve: en móvil un pequeño desplazamiento (rebote de iOS,
+        // barra del navegador) lo ocultaba cuando aún se ve la parte de arriba de la página
+        if (currentScrollY < Math.max(160, window.innerHeight * 0.6)) {
+          header.classList.remove("site-header--hidden");
+          lastScrollY = currentScrollY;
+          return;
+        }
+
         if (Math.abs(currentScrollY - lastScrollY) < 8) {
           return;
         }
