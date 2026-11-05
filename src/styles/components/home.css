@@ -471,13 +471,42 @@
 }
 
 @media (max-width: 46rem) {
-	.home-hero__copy {
-		gap: 2rem;
+	/* la cuadrícula va primero, como franja de casillas enteras, y la ilustración se sale por abajo */
+	.home-hero {
+		--checker-cell: calc(100vw / 6);
 	}
 
 	.home-hero__visual {
-		min-height: 24rem;
-		padding: 2.5rem 1.25rem;
+		order: -1;
+		position: relative;
+		z-index: 1;
+		align-items: flex-end;
+		height: calc(var(--checker-cell) * 3);
+		min-height: 0;
+		background: none;
+		padding: 0 1rem;
+	}
+
+	.home-hero__image {
+		position: relative;
+	}
+
+	.home-hero__image,
+	.home-hero__image--wide {
+		width: auto;
+		max-width: 92%;
+		/* las verticales (tomates, granada) dependen del alto: toda la franja y lo que sobresale */
+		max-height: calc(var(--checker-cell) * 3.9);
+		margin-bottom: calc(var(--checker-cell) * -1);
+	}
+
+	.home-hero__image--wide {
+		max-width: 98%;
+	}
+
+	.home-hero__copy {
+		gap: 1.5rem;
+		padding-top: calc(var(--checker-cell) + 2.5rem);
 	}
 
 	.service-index__row {

@@ -1,6 +1,7 @@
 ---
 import notebookImage from "../assets/notebook.webp";
 import PageCta from "../components/ui/PageCta.astro";
+import CheckerCells from "../components/ui/CheckerCells.astro";
 import PageHero from "../components/ui/PageHero.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getPage, items, lines, paragraphs, plain, rich, text } from "../cms/content";
@@ -24,6 +25,7 @@ const phases = items<{ titulo?: string; frase?: string; duracion?: string; texto
     <p class="page-hero__text" {...edit("hero_texto")} set:html={rich(data.hero_texto)} />
 
     <div class="split-hero__visual" slot="visual" data-hero-visual>
+      <CheckerCells />
       <img
         src={notebookImage.src}
         width={notebookImage.width}

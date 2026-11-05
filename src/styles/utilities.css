@@ -359,6 +359,21 @@ padding: 4rem 2.5rem;
 background: repeating-conic-gradient(var(--color-brand-blue) 0 25%, var(--color-surface) 0 50%) 0 0 / calc(var(--checker-cell) * 2) calc(var(--checker-cell) * 2);
 }
 
+/* Franja de cuadrícula en móvil: 6 columnas reales a todo el ancho. El navegador ajusta cada borde
+   a un píxel entero; con el degradado repetido, las casillas de tamaño fraccionario dejaban líneas
+   de color intermedio y una franja de la columna siguiente. */
+.checker-cells {
+display: none;
+position: absolute;
+inset: 0;
+grid-template-columns: repeat(6, 1fr);
+grid-template-rows: repeat(3, 1fr);
+}
+
+.checker-cells > :is(:nth-child(12n + 2), :nth-child(12n + 4), :nth-child(12n + 6), :nth-child(12n + 7), :nth-child(12n + 9), :nth-child(12n + 11)) {
+background: var(--color-brand-blue);
+}
+
 .checker-panel img {
 height: auto;
 filter: drop-shadow(0 1.5rem 2rem rgba(29, 39, 88, 0.18));
@@ -371,5 +386,9 @@ filter: drop-shadow(0 1.5rem 2rem rgba(29, 39, 88, 0.18));
 
 .checker-panel {
 padding: 2.5rem 1.25rem;
+}
+
+.checker-cells {
+display: grid;
 }
 }

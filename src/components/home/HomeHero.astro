@@ -5,6 +5,7 @@ import orangeImage from "../../assets/orange.webp";
 import asparagusImage from "../../assets/sparagus.webp";
 import tomatoesImage from "../../assets/tomatoes.webp";
 import { rich, text, type CmsPage } from "../../cms/content";
+import CheckerCells from "../ui/CheckerCells.astro";
 
 interface Props {
   page: CmsPage;
@@ -50,6 +51,7 @@ const fallback = heroImages[0];
   </div>
 
   <div class="home-hero__visual" data-hero-visual>
+    <CheckerCells />
     <img
       class="home-hero__image"
       data-speed="0.88"

@@ -38,10 +38,17 @@ const initMotion = async (): Promise<void> => {
 				// retrato: aparición sencilla
 				timeline.to(heroVisual, { opacity: 1, duration: 1.2, ease: 'power2.out' }, 0.2);
 			} else {
+				// en móvil la franja baja desde arriba; los márgenes negativos dejan ver la ilustración que sobresale y su sombra
+				const stacked = window.matchMedia('(max-width: 46rem)').matches;
 				timeline.fromTo(
 					heroVisual,
-					{ clipPath: 'inset(0 0 0 100%)', opacity: 1 },
-					{ clipPath: 'inset(0 0 0 0%)', duration: 1.4, ease: 'power4.inOut' },
+					{ clipPath: stacked ? 'inset(0 -25% 100% -25%)' : 'inset(0 0 0 100%)', opacity: 1 },
+					{
+						clipPath: stacked ? 'inset(0 -25% -150% -25%)' : 'inset(0 0 0 0%)',
+						duration: 1.4,
+						ease: 'power4.inOut',
+						clearProps: 'clipPath',
+					},
 				);
 				timeline.from(heroVisual.querySelector('img'), { scale: 0.85, rotate: -6, duration: 1.6 }, '<0.35');
 			}
