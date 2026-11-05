@@ -12,8 +12,9 @@ interface Props {
 
 const { data, edit } = Astro.props.page;
 
-// la página se renderiza en cada petición: cada visita muestra una imagen al azar,
-// con más probabilidad cuanto mayor es su peso. Las composiciones apaisadas se muestran algo más grandes.
+// cada visita muestra una imagen al azar, con más probabilidad cuanto mayor es su peso.
+// El sorteo se hace en el navegador porque el HTML se cachea en el borde (src/middleware.ts).
+// Las composiciones apaisadas se muestran algo más grandes.
 const heroImages = [
   { image: tomatoesImage, alt: "Tomates en rama con efecto halftone", weight: 3 },
   { image: pomegranateImage, alt: "Granada abierta y calabaza con efecto halftone", weight: 3 },
@@ -22,12 +23,15 @@ const heroImages = [
   { image: eggsImage, alt: "Huevos fritos con efecto halftone", weight: 1 },
 ];
 
-const pickWeighted = <T extends { weight: number }>(items: T[]): T => {
-  let ticket = Math.random() * items.reduce((total, item) => total + item.weight, 0);
-  return items.find((item) => (ticket -= item.weight) < 0) ?? items[0];
-};
-
-const hero = pickWeighted(heroImages);
+const heroOptions = heroImages.map(({ image, alt, weight, wide }) => ({
+  src: image.src,
+  width: image.width,
+  height: image.height,
+  alt,
+  weight,
+  wide: Boolean(wide),
+}));
+const fallback = heroImages[0];
 ---
 
 <section class="home-hero" id="inicio">
@@ -47,15 +51,30 @@ const hero = pickWeighted(heroImages);
 
   <div class="home-hero__visual" data-hero-visual>
     <img
-      src={hero.image.src}
-      width={hero.image.width}
-      height={hero.image.height}
-      alt={hero.alt}
-      class={`home-hero__image ${hero.wide ? "home-hero__image--wide" : ""}`}
+      class="home-hero__image"
       data-speed="0.88"
       loading="eager"
       decoding="async"
       fetchpriority="high"
     />
+    <script is:inline define:vars={{ heroOptions }}>
+      const img = document.currentScript.previousElementSibling;
+      let ticket = Math.random() * heroOptions.reduce((total, item) => total + item.weight, 0);
+      const hero = heroOptions.find((item) => (ticket -= item.weight) < 0) ?? heroOptions[0];
+      img.width = hero.width;
+      img.height = hero.height;
+      img.alt = hero.alt;
+      img.classList.toggle("home-hero__image--wide", hero.wide);
+      img.src = hero.src;
+    </script>
+    <noscript>
+      <img
+        src={fallback.image.src}
+        width={fallback.image.width}
+        height={fallback.image.height}
+        alt={fallback.alt}
+        class="home-hero__image"
+      />
+    </noscript>
   </div>
 </section>
