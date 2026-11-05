@@ -14,4 +14,8 @@ export default defineConfig({
 		prerenderEnvironment: 'node',
 	}),
 	integrations: [react(), emdash(emdashConfig)],
+	vite: {
+		// el entorno de compilación de Cloudflare tiene un límite de archivos abiertos (EMFILE con ~1.000 a la vez)
+		build: { rollupOptions: { maxParallelFileOps: 64 } },
+	},
 });
