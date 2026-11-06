@@ -91,7 +91,7 @@ export const POST: APIRoute = async ({ request }) => {
     errors.mensaje = "El mensaje debe tener entre 20 y 4.000 caracteres.";
   }
   if (!consentimiento) {
-    errors.consentimiento = "Debes aceptar el consentimiento para continuar.";
+    errors.consentimiento = "Marca que has leído la información legal para enviar el formulario.";
   }
 
   if (Object.keys(errors).length > 0) {

@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/components/blog.css";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  revised: string;
+}
+
+const { title, description, path, revised } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} canonicalPath={path} mainClass="pages-main">
+  <section class="article-section">
+    <div class="container article-layout">
+      <article>
+        <header class="article-header">
+          <h1 class="page-title">{title}</h1>
+          <p>Última fecha de revisión: {revised}</p>
+        </header>
+        <div class="article-content legal-content">
+          <slot />
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

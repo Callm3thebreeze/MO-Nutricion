@@ -539,7 +539,6 @@ export const collections: ModelCollection[] = [
 			str('colegiada', 'Número de colegiada'),
 			str('pie_online', 'Pie · Horario online'),
 			str('pie_presencial', 'Pie · Horario presencial'),
-			str('pie_legal', 'Pie · Texto legal'),
 		],
 		entries: {
 			general: {
@@ -547,7 +546,6 @@ export const collections: ModelCollection[] = [
 				colegiada: contactInfo.license,
 				pie_online: 'Online · martes y jueves',
 				pie_presencial: 'Presencial en Albacete · miércoles',
-				pie_legal: 'Aviso legal y política de privacidad disponibles próximamente.',
 			},
 		},
 	},

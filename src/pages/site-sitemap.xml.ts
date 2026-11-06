@@ -43,6 +43,8 @@ export const GET: APIRoute = async ({ site }) => {
     '/preguntas-frecuentes',
     ...(posts.length > 0 ? ['/blog'] : []),
     '/contacto',
+    '/aviso-legal',
+    '/politica-privacidad',
   ];
 
   const entries: SitemapItem[] = [

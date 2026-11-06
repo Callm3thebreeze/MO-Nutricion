@@ -239,3 +239,9 @@
 .article-footer {
 	margin-top: 5rem;
 }
+
+/* Textos legales: URLs largas sin desbordar en móvil */
+.legal-content {
+	margin-top: 2.5rem;
+	overflow-wrap: anywhere;
+}

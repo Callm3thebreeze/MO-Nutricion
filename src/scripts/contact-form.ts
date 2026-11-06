@@ -107,7 +107,7 @@ firstInvalidField = mensajeField;
 
 const consentimientoField = form.querySelector<HTMLInputElement>('[name="consentimiento"]');
 if (!consentimiento && consentimientoField) {
-setFieldError(consentimientoField, 'Debes aceptar el consentimiento para continuar.');
+setFieldError(consentimientoField, 'Marca que has leído la información legal para enviar el formulario.');
 if (!firstInvalidField) {
 firstInvalidField = consentimientoField;
 }

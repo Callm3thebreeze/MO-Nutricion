@@ -119,22 +119,10 @@
 	gap: 0.5rem;
 }
 
-.form-row--checkbox {
-	grid-template-columns: auto 1fr;
-	gap: 0.75rem;
-	align-items: start;
-}
-
 .contact-form label {
 	font-size: 0.94rem;
 	font-weight: 600;
 	color: var(--color-brand-navy);
-}
-
-.form-row--checkbox label {
-	font-weight: 400;
-	line-height: 1.5;
-	color: var(--color-brand-navy-soft);
 }
 
 .contact-form input,
@@ -204,4 +192,52 @@
 	min-height: 1.25rem;
 	font-weight: 600;
 	color: var(--color-brand-blue-text);
+}
+
+/* Casilla obligatoria + primera capa de protección de datos (texto fijado por la asesoría) */
+.privacy-consent {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 0.75rem;
+	align-items: start;
+}
+
+.contact-form .privacy-consent label {
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--color-brand-navy-soft);
+}
+
+.privacy-consent a,
+.privacy-table a {
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+}
+
+.privacy-info summary {
+	cursor: pointer;
+	font-size: 0.82rem;
+	color: var(--color-brand-navy-soft);
+}
+
+.privacy-table {
+	width: 100%;
+	margin-top: 0.75rem;
+	border-collapse: collapse;
+	font-size: 0.82rem;
+	line-height: 1.45;
+	color: var(--color-brand-navy-soft);
+}
+
+.privacy-table th,
+.privacy-table td {
+	padding: 0.5rem 0.65rem;
+	border: 1px solid var(--color-line);
+	text-align: left;
+	vertical-align: top;
+}
+
+.privacy-table th {
+	font-weight: 600;
+	color: var(--color-brand-navy);
 }

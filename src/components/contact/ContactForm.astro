@@ -150,7 +150,7 @@ const email = text(general.data.email);
         </p>
       </div>
 
-      <div class="form-row form-row--checkbox">
+      <div class="privacy-consent">
         <input
           id="consentimiento"
           name="consentimiento"
@@ -159,10 +159,22 @@ const email = text(general.data.email);
           aria-describedby="error-consentimiento"
         />
         <label for="consentimiento">
-          Acepto el tratamiento de mis datos para recibir respuesta a mi
-          consulta.
+          He leído la <a href="/politica-privacidad" target="_blank">política de privacidad</a>
         </label>
       </div>
+
+      <details class="privacy-info">
+        <summary>Información básica sobre protección de datos</summary>
+        <table class="privacy-table">
+          <tbody>
+            <tr><th scope="row">Finalidad</th><td>Ponernos en contacto con Vd. en relación a su consulta</td></tr>
+            <tr><th scope="row">Legitimación</th><td>Relación precontractual con el interesado.</td></tr>
+            <tr><th scope="row">Destinatarios</th><td>Responsable de esta web y empresa de hosting</td></tr>
+            <tr><th scope="row">Derechos</th><td>Tiene derecho a ejercitar sus derechos de acceso, rectificación, cancelación así como el resto de derechos tal y como se explica en la <a href="/politica-privacidad" target="_blank">política de privacidad</a>.</td></tr>
+            <tr><th scope="row">Info adicional</th><td>Puede consultar la información adicional en el apartado “<a href="/politica-privacidad" target="_blank">Política de Privacidad</a>”</td></tr>
+          </tbody>
+        </table>
+      </details>
       <p
         id="error-consentimiento"
         class="field-error"
