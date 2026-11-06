@@ -54,7 +54,14 @@ export const onRequest = defineMiddleware(async (context, next) => {
     cacheKey.searchParams.set('__v', __BUILD_ID__);
     const cached = await edgeCache!.match(cacheKey);
     // copia: las cabeceras de la Cache API son inmutables y Astro las retoca al terminar
-    if (cached) return new Response(cached.body, cached);
+    if (cached) {
+      const hit = new Response(cached.body, cached);
+      // sin esto Cloudflare aplica su «Browser Cache TTL» (4 h) a los aciertos y el navegador
+      // guardaría HTML que tras un despliegue apunta a CSS/JS que ya no existen
+      hit.headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
+      hit.headers.delete('CF-Cache-Status');
+      return hit;
+    }
   }
 
   const response = await next();
