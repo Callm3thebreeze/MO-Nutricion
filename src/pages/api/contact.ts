@@ -109,7 +109,7 @@ export const POST: APIRoute = async ({ request }) => {
   const toEmail = getSecret("CONTACT_TO_EMAIL") ?? "nutricionmaraolivares@gmail.com";
   const fromEmail =
     getSecret("CONTACT_FROM_EMAIL") ??
-    "Mara Olivares Nutrición <onboarding@resend.dev>";
+    "Mara Olivares Nutrición <web@monutricion.com>";
 
   if (!apiKey) {
     console.error("Missing RESEND_API_KEY binding");
@@ -174,7 +174,8 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   if (!resendResponse.ok) {
-    console.error("Resend request failed", resendResponse.status);
+    // el cuerpo trae el motivo (remitente sin verificar, destinatario no permitido…)
+    console.error("Resend request failed", resendResponse.status, await resendResponse.text().catch(() => ""));
     return json(
       {
         ok: false,
