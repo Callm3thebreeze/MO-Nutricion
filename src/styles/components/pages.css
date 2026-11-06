@@ -497,6 +497,10 @@
 	gap: 2.5rem;
 }
 
+.area-closing .button-row {
+	margin-top: 0;
+}
+
 .area-closing__text {
 	max-width: 58rem;
 	font-size: clamp(1.875rem, 3.4vw, 3.125rem);

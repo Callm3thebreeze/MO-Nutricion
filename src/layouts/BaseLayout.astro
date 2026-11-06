@@ -24,12 +24,15 @@ interface Props {
 }
 
 const { mainClass, ...seoProps } = Astro.props;
+import parkinsansLatin from "../assets/fonts/parkinsans-latin.woff2?url";
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <SeoHead {...seoProps} />
+    <!-- la fuente del texto se pide en paralelo al CSS en vez de esperar a leerlo -->
+    <link rel="preload" href={parkinsansLatin} as="font" type="font/woff2" crossorigin />
     <link rel="icon" href="/favicon.ico" sizes="32x32 48x48" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

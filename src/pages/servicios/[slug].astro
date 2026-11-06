@@ -111,7 +111,10 @@ const otherAreas = areas
   <section class="area-closing">
     <div class="container area-closing__inner scroll-reveal">
       <p class="area-closing__text" {...edit("cierre")} set:html={rich(data.cierre)} />
-      <a class="button" href="/contacto" {...editLabels("detalle_boton")}>{text(labels.detalle_boton)}</a>
+      <div class="button-row">
+        <a class="button" href="/contacto" {...editLabels("detalle_boton")}>{text(labels.detalle_boton)}</a>
+        <a class="button button--secondary" href="/consultas" {...editLabels("detalle_boton_2")}>{text(labels.detalle_boton_2)}</a>
+      </div>
     </div>
   </section>
 

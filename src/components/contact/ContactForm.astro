@@ -1,5 +1,4 @@
 ---
-import contactFormScript from "../../scripts/contact-form.ts?url";
 import { getPage, items, rich, text, type CmsPage } from "../../cms/content";
 
 interface Props {
@@ -200,4 +199,7 @@ const email = text(general.data.email);
   </div>
 </section>
 
-<script is:inline type="module" src={contactFormScript}></script>
+<script>
+  // Astro lo compila y empaqueta (con ?url se publicaba el .ts sin compilar y el navegador no lo ejecutaba)
+  import "../../scripts/contact-form.ts";
+</script>
